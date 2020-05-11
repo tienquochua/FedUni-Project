@@ -1,0 +1,7 @@
+Queries for Login:
+SELECT * FROM [User] where Username='*the username*' and Password='*password'
+
+Queries for Asset View:
+SELECT ad.AssetName AS 'Item', ad.PurchaseDate AS 'Purchase Date', v.VendorName AS 'Vendor', v.VendorLocation AS 'Purchase Location', av.Status, av.LastUpdate AS 'Last Update'
+FROM [AssetDetail] ad, [AssetView] av, [Vendor] v 
+WHERE ad.AssetID=av.AssetID AND v.VendorID=av.VendorID
