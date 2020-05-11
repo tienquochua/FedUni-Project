@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.assetBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.logoutBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -44,14 +44,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "JATT IT Asset Register Application";
             // 
-            // button1
+            // assetBtn
             // 
-            this.button1.Location = new System.Drawing.Point(161, 135);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 82);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Asset";
-            this.button1.UseVisualStyleBackColor = true;
+            this.assetBtn.Location = new System.Drawing.Point(161, 135);
+            this.assetBtn.Name = "assetBtn";
+            this.assetBtn.Size = new System.Drawing.Size(85, 82);
+            this.assetBtn.TabIndex = 2;
+            this.assetBtn.Text = "Asset";
+            this.assetBtn.UseVisualStyleBackColor = true;
+            this.assetBtn.Click += new System.EventHandler(this.assetBtn_Click);
             // 
             // button2
             // 
@@ -62,25 +63,26 @@
             this.button2.Text = "Staff";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // logoutBtn
             // 
-            this.button3.Location = new System.Drawing.Point(492, 267);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(89, 28);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Log out";
-            this.button3.UseVisualStyleBackColor = true;
+            this.logoutBtn.Location = new System.Drawing.Point(492, 267);
+            this.logoutBtn.Name = "logoutBtn";
+            this.logoutBtn.Size = new System.Drawing.Size(89, 28);
+            this.logoutBtn.TabIndex = 4;
+            this.logoutBtn.Text = "Log out";
+            this.logoutBtn.UseVisualStyleBackColor = true;
+            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
             // 
-            // Form1
+            // homeFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 307);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.logoutBtn);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.assetBtn);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "homeFrm";
             this.Text = "Home";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -89,8 +91,8 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button assetBtn;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button logoutBtn;
     }
 }

@@ -34,6 +34,7 @@ namespace ITAsset
                 this.Hide();
                 homeFrm f1 = new homeFrm();
                 f1.ShowDialog();
+
             }
             else
             {
@@ -51,7 +52,7 @@ namespace ITAsset
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Hủy bỏ quá trình đăng nhập?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Do you want to cancel Login process ?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 Application.Exit();
             }

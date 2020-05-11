@@ -42,7 +42,7 @@
             this.loginBtn.Location = new System.Drawing.Point(97, 189);
             this.loginBtn.Name = "loginBtn";
             this.loginBtn.Size = new System.Drawing.Size(75, 32);
-            this.loginBtn.TabIndex = 0;
+            this.loginBtn.TabIndex = 3;
             this.loginBtn.Text = "Login";
             this.loginBtn.UseVisualStyleBackColor = true;
             this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
@@ -52,7 +52,7 @@
             this.cancelBtn.Location = new System.Drawing.Point(228, 189);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 32);
-            this.cancelBtn.TabIndex = 1;
+            this.cancelBtn.TabIndex = 4;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
@@ -90,7 +90,7 @@
             this.txtPassword.Location = new System.Drawing.Point(151, 125);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(171, 22);
-            this.txtPassword.TabIndex = 5;
+            this.txtPassword.TabIndex = 2;
             // 
             // txtUsername
             // 
