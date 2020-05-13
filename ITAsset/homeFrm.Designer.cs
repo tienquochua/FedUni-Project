@@ -83,6 +83,7 @@
             this.Controls.Add(this.assetBtn);
             this.Controls.Add(this.label1);
             this.Name = "homeFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.ResumeLayout(false);
             this.PerformLayout();

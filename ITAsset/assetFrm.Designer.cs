@@ -49,6 +49,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -89,9 +91,9 @@
             // 
             // registerBtn
             // 
-            this.registerBtn.Location = new System.Drawing.Point(256, 402);
+            this.registerBtn.Location = new System.Drawing.Point(247, 402);
             this.registerBtn.Name = "registerBtn";
-            this.registerBtn.Size = new System.Drawing.Size(100, 36);
+            this.registerBtn.Size = new System.Drawing.Size(120, 36);
             this.registerBtn.TabIndex = 6;
             this.registerBtn.Text = "Item Register";
             this.registerBtn.UseVisualStyleBackColor = true;
@@ -110,7 +112,8 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Name = "assetFrm";
-            this.Text = "assetFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Asset Viewing";
             this.Load += new System.EventHandler(this.assetFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

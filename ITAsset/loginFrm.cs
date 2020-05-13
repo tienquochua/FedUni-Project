@@ -17,8 +17,8 @@ namespace ITAsset
         {
             InitializeComponent();
             txtPassword.UseSystemPasswordChar = true;
-            txtUsername.MaxLength = 10;
-            txtPassword.MaxLength = 10;
+            txtUsername.MaxLength = 20;
+            txtPassword.MaxLength = 20;
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
@@ -56,6 +56,15 @@ namespace ITAsset
             {
                 Application.Exit();
             }
+        }
+
+        private void txtPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) loginBtn_Click(sender, e);
+        }
+        private void txtUsername_KeyUp(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }
