@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ITAsset
 {
-    public partial class updateForm : Form
+    public partial class staffUpdateFrm : Form
     {
-        public updateForm()
+        public staffUpdateFrm()
         {
             InitializeComponent();
         }

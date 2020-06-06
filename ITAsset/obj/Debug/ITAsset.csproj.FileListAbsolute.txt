@@ -13,7 +13,6 @@ E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.assetFrm.resources
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.assetRegFrm.resources
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.homeFrm.resources
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.staffFrm.resources
-E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.updateForm.resources
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\bin\Debug\System.Configuration.ConfigurationManager.dll
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\bin\Debug\System.Security.AccessControl.dll
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\bin\Debug\System.Security.Permissions.dll
@@ -23,3 +22,7 @@ E:\BaiTap\Visual Studio\ITAsset\ITAsset\bin\Debug\System.Security.AccessControl.
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\bin\Debug\System.Security.Permissions.xml
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\bin\Debug\System.Security.Principal.Windows.xml
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.csproj.CopyComplete
+E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.AssetUpdateForm.resources
+E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.staffRegFrm.resources
+E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.staffUpdateFrm.resources
+E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.vendorRegFrm.resources

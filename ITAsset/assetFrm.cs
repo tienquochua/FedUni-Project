@@ -15,7 +15,14 @@ namespace ITAsset
     {
         string strConn;
         database objDTB;
-        DataTable assetTable;
+        DataTable assetTable, vendorID;
+        int curRow;
+        public static string ValueForText1 = "";
+        public static string ValueForText2 = "";
+        public static string ValueForText3 = "";
+        public static string ValueForText4 = "";
+        public static string ValueForText5 = "";
+        public static string ValueForText6 = "";
         public assetFrm()
         {
             InitializeComponent();
@@ -25,10 +32,14 @@ namespace ITAsset
 
         private void assetFrm_Load(object sender, EventArgs e)
         {
-            assetTable = objDTB.ReadData("SELECT ad.AssetID AS 'Item No.', ad.AssetName AS 'Item', ad.PurchaseDate AS 'Purchase Date', v.VendorName AS 'Vendor', v.VendorLocation AS 'Purchase Location', av.Status, av.LastUpdate AS 'Last Update' " +
-                "FROM [AssetDetail] ad, [AssetView] av, [Vendor] v " +
-                "WHERE ad.AssetID=av.AssetID AND v.VendorID=av.VendorID");
+            assetTable = objDTB.ReadData("SELECT av.AssetID AS 'Item No.', av.AssetName AS 'Item', av.PurchaseDate AS 'Purchase Date', v.VendorName AS 'Vendor', av.PurchaseLocation AS 'Purchase Location', av.Status, av.LastUpdate AS 'Last Update' " +
+                "FROM [AssetView] av INNER JOIN [Vendor] v " +
+                "ON av.VendorID= v.VendorID");
             dataGridView1.DataSource = assetTable;
+            dataGridView1.Columns[2].DefaultCellStyle.Format = "yyyy/MM/dd";
+            dataGridView1.Columns[6].DefaultCellStyle.Format = "yyyy/MM/dd HH:mm:ss";
+
+
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -37,6 +48,30 @@ namespace ITAsset
             homeFrm f1 = new homeFrm();
             f1.ShowDialog();
             
+        }
+
+        private void registerBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            assetRegFrm f2 = new assetRegFrm();
+            f2.ShowDialog();
+        }
+
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            curRow = dataGridView1.CurrentRow.Index;
+            DataRow dataRow = assetTable.Rows[curRow];
+            ValueForText1 = dataRow[0].ToString();
+            ValueForText2 = dataRow[1].ToString();
+            ValueForText3 = dataRow[2].ToString();
+            ValueForText4 = dataRow[3].ToString();
+            ValueForText5 = dataRow[4].ToString();
+            ValueForText6 = dataRow[5].ToString();
+
+            this.Hide();
+            AssetUpdateForm f3 = new AssetUpdateForm();
+            f3.ShowDialog();
+
         }
     }
 }
