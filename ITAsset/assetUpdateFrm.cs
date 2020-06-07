@@ -17,7 +17,6 @@ namespace ITAsset
         string strConn;
         database objDTB;
         DataTable vendorTable;
-        int curRow;
         public AssetUpdateForm()
         {
             InitializeComponent();
@@ -46,8 +45,6 @@ namespace ITAsset
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            //objDTB.UpdateData(vendorTable, "SELECT * FROM [Vendor]");
-            //MessageBox.Show("Update Complete");
             SqlConnection conn = new SqlConnection(strConn);
             SqlDataReader dr = null;
             conn.Open();
@@ -60,17 +57,13 @@ namespace ITAsset
             cmd.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
             cmd.Parameters.AddWithValue("@lastup", DateTime.Now.ToString());
             dr = cmd.ExecuteReader();
-            this.Hide();
-            assetFrm f1 = new assetFrm();
-            f1.ShowDialog();
-
+            MessageBox.Show("Update Complete");
+            this.Close();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            assetFrm f1 = new assetFrm();
-            f1.ShowDialog();
+            this.Close();
         }
     }
 }

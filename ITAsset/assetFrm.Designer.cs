@@ -115,10 +115,13 @@
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "assetFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asset Viewing";
-            this.Load += new System.EventHandler(this.assetFrm_Load);
+            this.Activated += new System.EventHandler(this.assetFrm_Activated);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.otherForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

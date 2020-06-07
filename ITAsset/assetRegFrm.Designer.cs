@@ -41,6 +41,7 @@
             this.purLocationTxt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.vendorCbb = new System.Windows.Forms.ComboBox();
+            this.vendorAddBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -165,11 +166,22 @@
             this.vendorCbb.Size = new System.Drawing.Size(190, 24);
             this.vendorCbb.TabIndex = 14;
             // 
+            // vendorAddBtn
+            // 
+            this.vendorAddBtn.Location = new System.Drawing.Point(357, 203);
+            this.vendorAddBtn.Name = "vendorAddBtn";
+            this.vendorAddBtn.Size = new System.Drawing.Size(75, 24);
+            this.vendorAddBtn.TabIndex = 15;
+            this.vendorAddBtn.Text = "Add";
+            this.vendorAddBtn.UseVisualStyleBackColor = true;
+            this.vendorAddBtn.Click += new System.EventHandler(this.vendorAddBtn_Click);
+            // 
             // assetRegFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 340);
+            this.ClientSize = new System.Drawing.Size(445, 340);
+            this.Controls.Add(this.vendorAddBtn);
             this.Controls.Add(this.vendorCbb);
             this.Controls.Add(this.purLocationTxt);
             this.Controls.Add(this.label6);
@@ -183,9 +195,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "assetRegFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "assetRegFrm";
-            this.Load += new System.EventHandler(this.assetRegFrm_Load);
+            this.Activated += new System.EventHandler(this.assetRegFrm_Activated);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,5 +221,6 @@
         private System.Windows.Forms.TextBox purLocationTxt;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox vendorCbb;
+        private System.Windows.Forms.Button vendorAddBtn;
     }
 }

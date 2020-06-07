@@ -13,26 +13,31 @@ namespace ITAsset
 {
     public partial class loginFrm : Form
     {
+        string strConn;
         public loginFrm()
         {
             InitializeComponent();
             txtPassword.UseSystemPasswordChar = true;
             txtUsername.MaxLength = 20;
             txtPassword.MaxLength = 20;
+            strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection("Data Source=(local)\\MSSQLSERVER01;Initial Catalog=.ITASSET;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(strConn);
             SqlDataReader dr = null;
             conn.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM [User] where Username='" + txtUsername.Text.Trim() + "'and Password='" + txtPassword.Text.Trim() + "'", conn);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [User] where Username=@uname and Password=@pass ", conn);
+            cmd.Parameters.AddWithValue("@uname", txtUsername.Text);
+            cmd.Parameters.AddWithValue("@pass", txtPassword.Text);
             dr = cmd.ExecuteReader();
 
             if (dr.HasRows)
             {
                 this.Hide();
                 homeFrm f1 = new homeFrm();
+                f1.FormClosed += new FormClosedEventHandler(loginFrm_FormClosed);
                 f1.ShowDialog();
 
             }
@@ -64,7 +69,12 @@ namespace ITAsset
         }
         private void txtUsername_KeyUp(object sender, KeyEventArgs e)
         {
-            
+            if(e.KeyCode == Keys.Enter) loginBtn_Click(sender, e);
+        }
+
+        private void loginFrm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
     }
 }

@@ -21,11 +21,7 @@ namespace ITAsset
             InitializeComponent();
             strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
             objDTB = new database(strConn);
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            vendorTxt.MaxLength = 50;
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -33,9 +29,17 @@ namespace ITAsset
             SqlConnection conn = new SqlConnection(strConn);
             SqlDataReader dr = null;
             conn.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO [Vendor] (VendorName) VALUES ('" + vendorTxt.Text.Trim() + "' ) ; ", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO [Vendor] (VendorName) VALUES ('" + vendorTxt.Text + "' ) ; ", conn);
             dr = cmd.ExecuteReader();
             MessageBox.Show("New Vendor added successfully ");
+
         }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
     }
 }

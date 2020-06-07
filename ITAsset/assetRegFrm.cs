@@ -26,10 +26,9 @@ namespace ITAsset
             objDTB = new database(strConn);
             itemNameTxt.MaxLength = 50;
             purLocationTxt.MaxLength = 70;
-            //vendorTxt.MaxLength = 30;
-        }
 
-        private void assetRegFrm_Load(object sender, EventArgs e)
+        }
+        private void assetRegFrm_Activated(object sender, EventArgs e)
         {
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "yyyy-MM-dd";
@@ -40,29 +39,6 @@ namespace ITAsset
             vendorCbb.SelectedIndex = -1;
         }
 
-        /*void GetDataIntoAssetDetail()
-        {
-            DataRow dataRow = assetDetailTable.NewRow();
-            dataRow[0] = itemNameTxt.Text;
-            dataRow[1] = dateTimePicker1.Text;
-            assetDetailTable.Rows.Add(dataRow);
-        }
-
-        void GetDataIntoAssetView()
-        {
-            DataRow dataRow = assetViewTable.NewRow();
-            dataRow[0] = statusCbb.SelectedValue.ToString();
-            dataRow[1] = DateTime.Now.ToString();
-            assetViewTable.Rows.Add(dataRow);
-        }
-
-        void GetDataIntoVendor()
-        {
-            DataRow dataRow = vendorTable.NewRow();
-            dataRow[0] = vendorTxt.Text;
-            dataRow[1] = purLocationTxt.Text;
-            vendorTable.Rows.Add(dataRow);
-        }*/
         private void saveBtn_Click(object sender, EventArgs e)
         {
             if (itemNameTxt.Text == "" || vendorCbb.Text == "" || statusCbb.Text == "" || purLocationTxt.Text == "")
@@ -81,15 +57,6 @@ namespace ITAsset
                 cmd.Parameters.AddWithValue("@status", statusCbb.GetItemText(statusCbb.SelectedItem));
                 cmd.Parameters.AddWithValue("@lastup", DateTime.Now.ToString());
                 dr = cmd.ExecuteReader();
-
-        
-
-                /* GetDataIntoAssetDetail();
-                 GetDataIntoAssetView();
-                 GetDataIntoVendor();
-                 objDTB.UpdateData(assetDetailTable, "SELECT AssetName, PurchaseDate FROM [AssetDetail]");
-                 objDTB.UpdateData(assetViewTable, "SELECT Status, LastUpdate FROM [AssetView]");
-                 objDTB.UpdateData(vendorTable, "SELECT VendorName, VendorLocation FROM [Vendor]");*/
                 MessageBox.Show("Item registered successfully ");
                 itemNameTxt.Clear();
                 purLocationTxt.Clear();
@@ -101,10 +68,16 @@ namespace ITAsset
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            assetFrm f1 =  new assetFrm();
-            f1.ShowDialog();
+            this.Close();
             
         }
+
+        private void vendorAddBtn_Click(object sender, EventArgs e)
+        {
+            vendorRegFrm f2 = new vendorRegFrm();
+            f2.ShowDialog();
+        }
+
+
     }
 }

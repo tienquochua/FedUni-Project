@@ -82,9 +82,12 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.assetBtn);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "homeFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.homeFrm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

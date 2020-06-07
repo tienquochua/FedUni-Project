@@ -21,16 +21,20 @@ namespace ITAsset
         {
             this.Hide();
             assetFrm f1 = new assetFrm();
+            f1.FormClosed += new FormClosedEventHandler(homeFrm_FormClosed);
             f1.ShowDialog();
             
         }
 
         private void logoutBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            loginFrm f2 = new loginFrm();
-            f2.ShowDialog();
+            this.Close();
 
+        }
+
+        private void homeFrm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
     }
 }
