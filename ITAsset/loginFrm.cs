@@ -32,14 +32,14 @@ namespace ITAsset
             cmd.Parameters.AddWithValue("@uname", txtUsername.Text);
             cmd.Parameters.AddWithValue("@pass", txtPassword.Text);
             dr = cmd.ExecuteReader();
-
+            
             if (dr.HasRows)
             {
+                conn.Close();
                 this.Hide();
                 homeFrm f1 = new homeFrm();
                 f1.FormClosed += new FormClosedEventHandler(loginFrm_FormClosed);
                 f1.ShowDialog();
-
             }
             else
             {

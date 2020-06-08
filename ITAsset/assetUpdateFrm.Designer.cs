@@ -43,6 +43,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.itemID = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.vendorAddBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cancelBtn
@@ -72,7 +74,7 @@
             "Borrowing",
             "Allocating",
             "Returning"});
-            this.statusCbb.Location = new System.Drawing.Point(180, 245);
+            this.statusCbb.Location = new System.Drawing.Point(180, 264);
             this.statusCbb.Name = "statusCbb";
             this.statusCbb.Size = new System.Drawing.Size(122, 24);
             this.statusCbb.TabIndex = 20;
@@ -80,7 +82,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(48, 248);
+            this.label5.Location = new System.Drawing.Point(48, 267);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 17);
             this.label5.TabIndex = 19;
@@ -179,11 +181,32 @@
             this.itemID.TabIndex = 27;
             this.itemID.Text = "ID";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(177, 234);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(304, 17);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "You can add for more vendor using Add button";
+            // 
+            // vendorAddBtn
+            // 
+            this.vendorAddBtn.Location = new System.Drawing.Point(376, 207);
+            this.vendorAddBtn.Name = "vendorAddBtn";
+            this.vendorAddBtn.Size = new System.Drawing.Size(75, 24);
+            this.vendorAddBtn.TabIndex = 29;
+            this.vendorAddBtn.Text = "Add";
+            this.vendorAddBtn.UseVisualStyleBackColor = true;
+            this.vendorAddBtn.Click += new System.EventHandler(this.vendorAddBtn_Click);
+            // 
             // AssetUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 360);
+            this.Controls.Add(this.vendorAddBtn);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.itemID);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.purLocationTxt);
@@ -204,7 +227,7 @@
             this.Name = "AssetUpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Form";
-            this.Load += new System.EventHandler(this.AssetUpdateForm_Load);
+            this.Activated += new System.EventHandler(this.AssetUpdateForm_Activated);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,5 +250,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label itemID;
         private System.Windows.Forms.ComboBox statusCbb;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button vendorAddBtn;
     }
 }

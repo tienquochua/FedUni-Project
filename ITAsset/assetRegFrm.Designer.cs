@@ -42,6 +42,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.vendorCbb = new System.Windows.Forms.ComboBox();
             this.vendorAddBtn = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -82,7 +83,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 250);
+            this.label5.Location = new System.Drawing.Point(12, 269);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 17);
             this.label5.TabIndex = 8;
@@ -96,7 +97,7 @@
             "Borrowing",
             "Allocating",
             "Returning"});
-            this.statusCbb.Location = new System.Drawing.Point(144, 243);
+            this.statusCbb.Location = new System.Drawing.Point(144, 262);
             this.statusCbb.Name = "statusCbb";
             this.statusCbb.Size = new System.Drawing.Size(125, 24);
             this.statusCbb.TabIndex = 9;
@@ -176,11 +177,21 @@
             this.vendorAddBtn.UseVisualStyleBackColor = true;
             this.vendorAddBtn.Click += new System.EventHandler(this.vendorAddBtn_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(141, 230);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(304, 17);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "You can add for more vendor using Add button";
+            // 
             // assetRegFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(445, 340);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.vendorAddBtn);
             this.Controls.Add(this.vendorCbb);
             this.Controls.Add(this.purLocationTxt);
@@ -199,7 +210,7 @@
             this.MaximizeBox = false;
             this.Name = "assetRegFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "assetRegFrm";
+            this.Text = "Asset Register";
             this.Activated += new System.EventHandler(this.assetRegFrm_Activated);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -222,5 +233,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox vendorCbb;
         private System.Windows.Forms.Button vendorAddBtn;
+        private System.Windows.Forms.Label label7;
     }
 }

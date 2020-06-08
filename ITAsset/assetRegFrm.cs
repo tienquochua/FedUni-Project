@@ -37,6 +37,8 @@ namespace ITAsset
             vendorCbb.DisplayMember = "VendorName";
             vendorCbb.ValueMember = "VendorID";
             vendorCbb.SelectedIndex = -1;
+            this.vendorCbb.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.statusCbb.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -62,7 +64,7 @@ namespace ITAsset
                 purLocationTxt.Clear();
                 vendorCbb.SelectedIndex = -1;
                 statusCbb.SelectedIndex = -1;
-
+                conn.Close();
             }
         }
 

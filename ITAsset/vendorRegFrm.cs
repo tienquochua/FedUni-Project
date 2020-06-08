@@ -15,12 +15,10 @@ namespace ITAsset
     public partial class vendorRegFrm : Form
     {
         string strConn;
-        database objDTB;
         public vendorRegFrm()
         {
             InitializeComponent();
             strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
-            objDTB = new database(strConn);
             vendorTxt.MaxLength = 50;
         }
 
@@ -32,6 +30,7 @@ namespace ITAsset
             SqlCommand cmd = new SqlCommand("INSERT INTO [Vendor] (VendorName) VALUES ('" + vendorTxt.Text + "' ) ; ", conn);
             dr = cmd.ExecuteReader();
             MessageBox.Show("New Vendor added successfully ");
+            conn.Close();
 
         }
 

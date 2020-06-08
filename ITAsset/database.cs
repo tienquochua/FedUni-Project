@@ -26,13 +26,5 @@ namespace ITAsset
             conn.Dispose();
             return dt;
         }
-        public void UpdateData(DataTable dt, string strSql)
-        {
-            conn = new SqlConnection(strConn);
-            da = new SqlDataAdapter(strSql, conn);
-            SqlCommandBuilder cb = new SqlCommandBuilder(da);
-            da.Update(dt);
-            conn.Dispose();
-        }
     }
 }
