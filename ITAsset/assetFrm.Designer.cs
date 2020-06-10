@@ -75,13 +75,13 @@
             // 
             // archiveBtn
             // 
+            this.archiveBtn.Enabled = false;
             this.archiveBtn.Location = new System.Drawing.Point(482, 402);
             this.archiveBtn.Name = "archiveBtn";
             this.archiveBtn.Size = new System.Drawing.Size(75, 36);
             this.archiveBtn.TabIndex = 4;
             this.archiveBtn.Text = "Archive";
             this.archiveBtn.UseVisualStyleBackColor = true;
-            this.archiveBtn.Visible = false;
             // 
             // cancelBtn
             // 
