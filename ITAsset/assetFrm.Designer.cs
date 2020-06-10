@@ -81,6 +81,7 @@
             this.archiveBtn.TabIndex = 4;
             this.archiveBtn.Text = "Archive";
             this.archiveBtn.UseVisualStyleBackColor = true;
+            this.archiveBtn.Visible = false;
             // 
             // cancelBtn
             // 
