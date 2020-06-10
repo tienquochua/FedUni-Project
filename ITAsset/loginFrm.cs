@@ -48,7 +48,7 @@ namespace ITAsset
                     MessageBox.Show("Insert username and password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtUsername.Focus();
                 }
-                else MessageBox.Show("Username or Password is incorrect!", "Login Fail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else MessageBox.Show("Username or Password is incorrect!\r\nPlease contact ithelpdesk@atmc.edu.au for access.", "Login Fail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtUsername.Clear();
                 txtPassword.Clear();
                 txtUsername.Focus();

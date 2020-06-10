@@ -42,7 +42,6 @@ namespace ITAsset
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
-
         }
 
         private void registerBtn_Click(object sender, EventArgs e)

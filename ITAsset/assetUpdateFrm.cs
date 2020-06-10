@@ -54,18 +54,37 @@ namespace ITAsset
                 SqlConnection conn = new SqlConnection(strConn);
                 SqlDataReader dr = null;
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE [AssetView] SET VendorID=@vname, AssetName= @aname, PurchaseDate=@purdate, PurchaseLocation=@purloc, Status=@status, LastUpdate=@lastup  WHERE AssetID=@id", conn);
-                cmd.Parameters.AddWithValue("@id", itemID.Text);
-                cmd.Parameters.AddWithValue("@aname", itemTxt.Text);
-                cmd.Parameters.AddWithValue("@vname", vendorCbb.SelectedValue);
-                cmd.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
-                cmd.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
-                cmd.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
-                cmd.Parameters.AddWithValue("@lastup", DateTime.Now.ToString());
-                dr = cmd.ExecuteReader();
-                MessageBox.Show("Update Complete");
-                conn.Close();
-                this.Close();
+                SqlCommand cmd1 = new SqlCommand("SELECT * FROM [AssetView] WHERE   VendorID=@vname AND AssetName= @aname AND PurchaseDate=@purdate AND PurchaseLocation=@purloc AND Status=@status  ", conn);
+                cmd1.Parameters.AddWithValue("@id", itemID.Text);
+                cmd1.Parameters.AddWithValue("@aname", itemTxt.Text);
+                cmd1.Parameters.AddWithValue("@vname", vendorCbb.SelectedValue);
+                cmd1.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
+                cmd1.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
+                cmd1.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
+                SqlCommand cmd2 = new SqlCommand("UPDATE [AssetView] SET VendorID=@vname, AssetName= @aname, PurchaseDate=@purdate, PurchaseLocation=@purloc, Status=@status, LastUpdate=@lastup  WHERE AssetID=@id", conn);
+                cmd2.Parameters.AddWithValue("@id", itemID.Text);
+                cmd2.Parameters.AddWithValue("@aname", itemTxt.Text);
+                cmd2.Parameters.AddWithValue("@vname", vendorCbb.SelectedValue);
+                cmd2.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
+                cmd2.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
+                cmd2.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
+                cmd2.Parameters.AddWithValue("@lastup", DateTime.Now.ToString());
+                dr = cmd1.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    conn.Close();
+                    MessageBox.Show("No information has been changed, update fail ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    conn.Close();
+                    conn.Open();
+                    dr = cmd2.ExecuteReader();
+                    MessageBox.Show("Update Complete");
+                    conn.Close();
+                    this.Close();
+                }
+                
             }
             
         }

@@ -26,11 +26,24 @@ namespace ITAsset
         {
             SqlConnection conn = new SqlConnection(strConn);
             SqlDataReader dr = null;
+            
             conn.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO [Vendor] (VendorName) VALUES ('" + vendorTxt.Text + "' ) ; ", conn);
-            dr = cmd.ExecuteReader();
-            MessageBox.Show("New Vendor added successfully ");
-            conn.Close();
+            SqlCommand cmd1 = new SqlCommand("SELECT * FROM [Vendor] WHERE VendorName = '" + vendorTxt.Text + "'", conn);
+            SqlCommand cmd2 = new SqlCommand("INSERT INTO [Vendor] (VendorName) VALUES ('" + vendorTxt.Text + "' ) ; ", conn);
+            dr = cmd1.ExecuteReader();
+            if (dr.HasRows)
+            {
+                conn.Close();
+                MessageBox.Show("Vendor is already exist ");
+            }
+            else
+            {
+                conn.Close();
+                conn.Open();
+                dr = cmd2.ExecuteReader();
+                MessageBox.Show("Vendor is successfully added ");
+                conn.Close();
+            }
 
         }
 

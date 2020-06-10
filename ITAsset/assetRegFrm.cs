@@ -50,21 +50,37 @@ namespace ITAsset
                 SqlConnection conn = new SqlConnection(strConn);
                 SqlDataReader dr = null;
                 conn.Open();
-
-                SqlCommand cmd = new SqlCommand("INSERT INTO [AssetView] (VendorID, AssetName, PurchaseDate, PurchaseLocation, Status, LastUpdate) VALUES(@vid,@aname,@purdate,@purloc,@status,@lastup)", conn);
-                cmd.Parameters.AddWithValue("@vid", vendorCbb.SelectedValue);
-                cmd.Parameters.AddWithValue("@aname", itemNameTxt.Text);
-                cmd.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
-                cmd.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
-                cmd.Parameters.AddWithValue("@status", statusCbb.GetItemText(statusCbb.SelectedItem));
-                cmd.Parameters.AddWithValue("@lastup", DateTime.Now.ToString());
-                dr = cmd.ExecuteReader();
-                MessageBox.Show("Item registered successfully ");
-                itemNameTxt.Clear();
-                purLocationTxt.Clear();
-                vendorCbb.SelectedIndex = -1;
-                statusCbb.SelectedIndex = -1;
-                conn.Close();
+                SqlCommand cmd1 = new SqlCommand("SELECT * FROM [AssetView] WHERE   VendorID=@vname AND AssetName= @aname AND PurchaseDate=@purdate AND PurchaseLocation=@purloc AND Status=@status  ", conn);
+                cmd1.Parameters.AddWithValue("@aname", itemNameTxt.Text);
+                cmd1.Parameters.AddWithValue("@vname", vendorCbb.SelectedValue);
+                cmd1.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
+                cmd1.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
+                cmd1.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
+                SqlCommand cmd2 = new SqlCommand("INSERT INTO [AssetView] (VendorID, AssetName, PurchaseDate, PurchaseLocation, Status, LastUpdate) VALUES(@vid,@aname,@purdate,@purloc,@status,@lastup)", conn);
+                cmd2.Parameters.AddWithValue("@vid", vendorCbb.SelectedValue);
+                cmd2.Parameters.AddWithValue("@aname", itemNameTxt.Text);
+                cmd2.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
+                cmd2.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
+                cmd2.Parameters.AddWithValue("@status", statusCbb.GetItemText(statusCbb.SelectedItem));
+                cmd2.Parameters.AddWithValue("@lastup", DateTime.Now.ToString());
+                dr = cmd1.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    conn.Close();
+                    MessageBox.Show("Item is already existed ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    conn.Close();
+                    conn.Open();
+                    MessageBox.Show("Item registered successfully ");
+                    itemNameTxt.Clear();
+                    purLocationTxt.Clear();
+                    vendorCbb.SelectedIndex = -1;
+                    statusCbb.SelectedIndex = -1;
+                    conn.Close();
+                }
+                
             }
         }
 
