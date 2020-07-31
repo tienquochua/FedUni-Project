@@ -40,7 +40,7 @@ namespace ITAsset
             {
                 conn.Close();
                 conn.Open();
-                dr = cmd2.ExecuteReader();
+                cmd2.ExecuteReader();
                 MessageBox.Show("Vendor is successfully added ");
                 conn.Close();
             }

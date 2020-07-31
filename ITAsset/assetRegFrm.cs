@@ -73,6 +73,7 @@ namespace ITAsset
                 {
                     conn.Close();
                     conn.Open();
+                    cmd2.ExecuteReader();
                     MessageBox.Show("Item registered successfully ");
                     itemNameTxt.Clear();
                     purLocationTxt.Clear();

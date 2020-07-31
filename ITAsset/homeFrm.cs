@@ -36,5 +36,13 @@ namespace ITAsset
         {
             this.Show();
         }
+
+        private void staffBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            staffFrm f2 = new staffFrm();
+            f2.FormClosed += new FormClosedEventHandler(homeFrm_FormClosed);
+            f2.ShowDialog();
+        }
     }
 }

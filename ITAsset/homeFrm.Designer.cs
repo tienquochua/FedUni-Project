@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.assetBtn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.staffBtn = new System.Windows.Forms.Button();
             this.logoutBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -54,15 +54,15 @@
             this.assetBtn.UseVisualStyleBackColor = true;
             this.assetBtn.Click += new System.EventHandler(this.assetBtn_Click);
             // 
-            // button2
+            // staffBtn
             // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(350, 135);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 82);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Staff";
-            this.button2.UseVisualStyleBackColor = true;
+            this.staffBtn.Location = new System.Drawing.Point(350, 135);
+            this.staffBtn.Name = "staffBtn";
+            this.staffBtn.Size = new System.Drawing.Size(89, 82);
+            this.staffBtn.TabIndex = 3;
+            this.staffBtn.Text = "Staff";
+            this.staffBtn.UseVisualStyleBackColor = true;
+            this.staffBtn.Click += new System.EventHandler(this.staffBtn_Click);
             // 
             // logoutBtn
             // 
@@ -80,7 +80,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 307);
             this.Controls.Add(this.logoutBtn);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.staffBtn);
             this.Controls.Add(this.assetBtn);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -97,7 +97,7 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button assetBtn;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button staffBtn;
         private System.Windows.Forms.Button logoutBtn;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Data.SqlClient;
 
 namespace ITAsset
 {
@@ -17,6 +18,7 @@ namespace ITAsset
         database objDTB;
         DataTable assetTable;
         int curRow;
+        
         public static string ValueForText1 = "";
         public static string ValueForText2 = "";
         public static string ValueForText3 = "";
@@ -28,6 +30,7 @@ namespace ITAsset
             InitializeComponent();
             strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
             objDTB = new database(strConn);
+            
         }
         private void assetFrm_Activated(object sender, EventArgs e)
         {
@@ -37,6 +40,7 @@ namespace ITAsset
             dataGridView1.DataSource = assetTable;
             dataGridView1.Columns[2].DefaultCellStyle.Format = "yyyy/MM/dd";
             dataGridView1.Columns[6].DefaultCellStyle.Format = "yyyy/MM/dd HH:mm:ss";
+            searchCbb.SelectedIndex = 0;
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -70,6 +74,14 @@ namespace ITAsset
         private void otherForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
+        }
+
+
+        private void searchTxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = assetTable.DefaultView;
+            dv.RowFilter = string.Format("{0} like '%{1}%'", searchCbb.Text, searchTxt.Text);
+            dataGridView1.DataSource = dv.ToTable();
         }
     }
 }

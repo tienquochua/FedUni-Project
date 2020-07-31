@@ -34,7 +34,13 @@
             this.archiveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.registerBtn = new System.Windows.Forms.Button();
+            this.searchCbb = new System.Windows.Forms.ComboBox();
+            this.searchTxt = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -55,12 +61,12 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 62);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 112);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(971, 318);
+            this.dataGridView1.Size = new System.Drawing.Size(971, 268);
             this.dataGridView1.TabIndex = 2;
             // 
             // updateBtn
@@ -103,6 +109,58 @@
             this.registerBtn.UseVisualStyleBackColor = true;
             this.registerBtn.Click += new System.EventHandler(this.registerBtn_Click);
             // 
+            // searchCbb
+            // 
+            this.searchCbb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.searchCbb.FormattingEnabled = true;
+            this.searchCbb.Items.AddRange(new object[] {
+            "Item",
+            "Purchase Location",
+            "Vendor",
+            "Status"});
+            this.searchCbb.Location = new System.Drawing.Point(580, 19);
+            this.searchCbb.Name = "searchCbb";
+            this.searchCbb.Size = new System.Drawing.Size(121, 24);
+            this.searchCbb.TabIndex = 7;
+            // 
+            // searchTxt
+            // 
+            this.searchTxt.Location = new System.Drawing.Point(73, 21);
+            this.searchTxt.Name = "searchTxt";
+            this.searchTxt.Size = new System.Drawing.Size(408, 22);
+            this.searchTxt.TabIndex = 8;
+            this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.searchTxt);
+            this.groupBox1.Controls.Add(this.searchCbb);
+            this.groupBox1.Location = new System.Drawing.Point(97, 44);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(713, 56);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 17);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Search:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(546, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(28, 17);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "By:";
+            // 
             // assetFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -110,6 +168,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(985, 450);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.registerBtn);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.archiveBtn);
@@ -124,6 +183,8 @@
             this.Activated += new System.EventHandler(this.assetFrm_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.otherForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,5 +197,10 @@
         private System.Windows.Forms.Button archiveBtn;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button registerBtn;
+        private System.Windows.Forms.ComboBox searchCbb;
+        private System.Windows.Forms.TextBox searchTxt;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
     }
 }
