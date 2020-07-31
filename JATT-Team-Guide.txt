@@ -1,0 +1,13 @@
+Coding Application: Microsoft Visual Studio 2019 Enterprise
+Database Server: Microsoft SQL Server 2017
+Database management: Microsoft SQL Server Management Studio 18
+
+Github Link:
+https://github.com/ITECH3208andITECH3209feduni/teamrepository-it-asset-register
+
+Guide Video:
+1. Import database into SQL Management Studio 18:https://drive.google.com/file/d/1XDnzYgXY1jx3Xu4GIzYvKXFeZqX2afBU/view?usp=sharing
+2. Setup Connection string in App.Config: https://drive.google.com/file/d/1XDnzYgXY1jx3Xu4GIzYvKXFeZqX2afBU/view?usp=sharing
+3. Product walkthrough:https://drive.google.com/file/d/1R4zt7Gx6cp2kd7TP0D_k3LsKwtQqlxGE/view?usp=sharing
+login username: admin
+      password: admin
