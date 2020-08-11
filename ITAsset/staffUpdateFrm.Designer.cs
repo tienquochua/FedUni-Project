@@ -41,6 +41,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.staffID = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cancelBtn
@@ -65,11 +67,9 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Lending",
-            "Borrowing",
-            "Allocating",
-            "Returning"});
-            this.comboBox1.Location = new System.Drawing.Point(135, 193);
+            "Super User",
+            "IT Operation"});
+            this.comboBox1.Location = new System.Drawing.Point(135, 207);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(190, 24);
             this.comboBox1.TabIndex = 33;
@@ -77,7 +77,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 200);
+            this.label5.Location = new System.Drawing.Point(31, 214);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(98, 17);
             this.label5.TabIndex = 32;
@@ -85,14 +85,14 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(135, 155);
+            this.textBox4.Location = new System.Drawing.Point(135, 169);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(286, 22);
             this.textBox4.TabIndex = 29;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(135, 117);
+            this.textBox3.Location = new System.Drawing.Point(135, 131);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(286, 22);
@@ -101,7 +101,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 160);
+            this.label6.Location = new System.Drawing.Point(31, 174);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 17);
             this.label6.TabIndex = 25;
@@ -109,7 +109,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(135, 78);
+            this.textBox2.Location = new System.Drawing.Point(135, 92);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(286, 22);
             this.textBox2.TabIndex = 31;
@@ -117,7 +117,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 122);
+            this.label4.Location = new System.Drawing.Point(31, 136);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 17);
             this.label4.TabIndex = 26;
@@ -125,7 +125,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(135, 238);
+            this.textBox1.Location = new System.Drawing.Point(135, 252);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(288, 22);
             this.textBox1.TabIndex = 28;
@@ -133,7 +133,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 83);
+            this.label3.Location = new System.Drawing.Point(31, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 17);
             this.label3.TabIndex = 27;
@@ -152,17 +152,37 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 241);
+            this.label1.Location = new System.Drawing.Point(31, 255);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 17);
             this.label1.TabIndex = 23;
             this.label1.Text = "Email";
+            // 
+            // staffID
+            // 
+            this.staffID.AutoSize = true;
+            this.staffID.Location = new System.Drawing.Point(97, 62);
+            this.staffID.Name = "staffID";
+            this.staffID.Size = new System.Drawing.Size(21, 17);
+            this.staffID.TabIndex = 37;
+            this.staffID.Text = "ID";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(31, 62);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 17);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "Staff No.";
             // 
             // staffUpdateFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(439, 337);
+            this.Controls.Add(this.staffID);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.comboBox1);
@@ -178,6 +198,7 @@
             this.Controls.Add(this.label1);
             this.Name = "staffUpdateFrm";
             this.Text = "staffUpdateFrm";
+            this.Activated += new System.EventHandler(this.staffUpdateFrm_Activated);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,5 +219,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label staffID;
+        private System.Windows.Forms.Label label7;
     }
 }

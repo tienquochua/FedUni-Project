@@ -96,6 +96,7 @@
     <Compile Include="loginFrm.Designer.cs">
       <DependentUpon>loginFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MD5.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="staffFrm.cs">

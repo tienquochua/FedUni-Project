@@ -13,7 +13,12 @@ namespace ITAsset
 {
     public partial class loginFrm : Form
     {
+        public static string ValueForText1 = "";
+        public static string ValueForText2 = "";
         string strConn;
+        database objDTB;
+        DataTable userTable;
+        MD5 md5Encryption;
         public loginFrm()
         {
             InitializeComponent();
@@ -21,25 +26,36 @@ namespace ITAsset
             txtUsername.MaxLength = 20;
             txtPassword.MaxLength = 20;
             strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
+            objDTB = new database(strConn);
+            md5Encryption = new MD5();
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(strConn);
             SqlDataReader dr = null;
+            string password = md5Encryption.encrypt(txtPassword.Text);
             conn.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM [User] where Username=@uname and Password=@pass ", conn);
-            cmd.Parameters.AddWithValue("@uname", txtUsername.Text);
-            cmd.Parameters.AddWithValue("@pass", txtPassword.Text);
-            dr = cmd.ExecuteReader();
+            SqlCommand cmd1 = new SqlCommand("SELECT * FROM [User] where Username=@uname and Password=@pass ", conn);
+            cmd1.Parameters.AddWithValue("@uname", txtUsername.Text);
+            cmd1.Parameters.AddWithValue("@pass", password);
+            SqlCommand cmd2 = new SqlCommand("SELECT FullName, Email FROM [User] where Username=@uname and Password=@pass ", conn);
+            cmd2.Parameters.AddWithValue("@uname", txtUsername.Text);
+            cmd2.Parameters.AddWithValue("@pass", password);
+            dr = cmd1.ExecuteReader();
+            
             
             if (dr.HasRows)
             {
                 conn.Close();
+                userTable = objDTB.ReadData("SELECT FullName, Email FROM [User] where Username ='" + txtUsername.Text + "'and Password ='" + password + "' ");
+                ValueForText1 = Convert.ToString(userTable.Rows[0][0]);
+                ValueForText2 = Convert.ToString(userTable.Rows[0][1]);
                 this.Hide();
                 homeFrm f1 = new homeFrm();
                 f1.FormClosed += new FormClosedEventHandler(loginFrm_FormClosed);
                 f1.ShowDialog();
+             
             }
             else
             {

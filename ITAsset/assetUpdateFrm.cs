@@ -31,7 +31,6 @@ namespace ITAsset
             vendorCbb.DataSource = vendorTable;
             vendorCbb.DisplayMember = "VendorName";
             vendorCbb.ValueMember = "VendorID";
-            vendorCbb.SelectedIndex = -1;
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "yyyy-MM-dd";
             itemID.Text = assetFrm.ValueForText1;
@@ -40,8 +39,8 @@ namespace ITAsset
             purLocationTxt.Text = assetFrm.ValueForText5;
             vendorCbb.SelectedIndex = vendorCbb.FindStringExact(assetFrm.ValueForText4);
             statusCbb.SelectedIndex = statusCbb.FindStringExact(assetFrm.ValueForText6);
-            this.vendorCbb.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.statusCbb.DropDownStyle = ComboBoxStyle.DropDownList;
+            vendorCbb.DropDownStyle = ComboBoxStyle.DropDownList;
+            statusCbb.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
        

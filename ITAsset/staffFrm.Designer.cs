@@ -71,6 +71,7 @@
             this.updateBtn.TabIndex = 9;
             this.updateBtn.Text = "Update";
             this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
             // dataGridView1
             // 
@@ -165,7 +166,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Name = "staffFrm";
-            this.Text = "staffFrm";
+            this.Text = "Staff Menu";
             this.Activated += new System.EventHandler(this.staffFrm_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.staffFrm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

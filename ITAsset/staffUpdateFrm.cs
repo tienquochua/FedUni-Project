@@ -16,5 +16,11 @@ namespace ITAsset
         {
             InitializeComponent();
         }
+
+        private void staffUpdateFrm_Activated(object sender, EventArgs e)
+        {
+            staffID.Text = staffFrm.ValueForText1;
+            
+        }
     }
 }

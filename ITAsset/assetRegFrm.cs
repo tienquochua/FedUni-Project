@@ -37,8 +37,8 @@ namespace ITAsset
             vendorCbb.DisplayMember = "VendorName";
             vendorCbb.ValueMember = "VendorID";
             vendorCbb.SelectedIndex = -1;
-            this.vendorCbb.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.statusCbb.DropDownStyle = ComboBoxStyle.DropDownList;
+            vendorCbb.DropDownStyle = ComboBoxStyle.DropDownList;
+            statusCbb.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace ITAsset
                 cmd2.Parameters.AddWithValue("@aname", itemNameTxt.Text);
                 cmd2.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
                 cmd2.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
-                cmd2.Parameters.AddWithValue("@status", statusCbb.GetItemText(statusCbb.SelectedItem));
+                cmd2.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
                 cmd2.Parameters.AddWithValue("@lastup", DateTime.Now.ToString());
                 dr = cmd1.ExecuteReader();
                 if (dr.HasRows)

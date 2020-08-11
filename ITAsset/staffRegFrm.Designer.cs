@@ -30,17 +30,17 @@
         {
             this.cancelBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbbAuth = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cancelBtn
@@ -48,31 +48,31 @@
             this.cancelBtn.Location = new System.Drawing.Point(362, 292);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 36);
-            this.cancelBtn.TabIndex = 22;
+            this.cancelBtn.TabIndex = 7;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // saveBtn
             // 
             this.saveBtn.Location = new System.Drawing.Point(264, 292);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(75, 36);
-            this.saveBtn.TabIndex = 21;
+            this.saveBtn.TabIndex = 6;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // comboBox1
+            // cbbAuth
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Lending",
-            "Borrowing",
-            "Allocating",
-            "Returning"});
-            this.comboBox1.Location = new System.Drawing.Point(149, 195);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(190, 24);
-            this.comboBox1.TabIndex = 20;
+            this.cbbAuth.FormattingEnabled = true;
+            this.cbbAuth.Items.AddRange(new object[] {
+            "Super User",
+            "IT Operation "});
+            this.cbbAuth.Location = new System.Drawing.Point(149, 195);
+            this.cbbAuth.Name = "cbbAuth";
+            this.cbbAuth.Size = new System.Drawing.Size(190, 24);
+            this.cbbAuth.TabIndex = 4;
             // 
             // label5
             // 
@@ -83,19 +83,19 @@
             this.label5.TabIndex = 19;
             this.label5.Text = "Authentication";
             // 
-            // textBox2
+            // txtName
             // 
-            this.textBox2.Location = new System.Drawing.Point(149, 80);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(286, 22);
-            this.textBox2.TabIndex = 17;
+            this.txtName.Location = new System.Drawing.Point(149, 80);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(286, 22);
+            this.txtName.TabIndex = 1;
             // 
-            // textBox1
+            // txtEmail
             // 
-            this.textBox1.Location = new System.Drawing.Point(149, 240);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(288, 22);
-            this.textBox1.TabIndex = 16;
+            this.txtEmail.Location = new System.Drawing.Point(149, 240);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(288, 22);
+            this.txtEmail.TabIndex = 5;
             // 
             // label3
             // 
@@ -134,12 +134,12 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Username";
             // 
-            // textBox3
+            // txtUsername
             // 
-            this.textBox3.Location = new System.Drawing.Point(149, 119);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(286, 22);
-            this.textBox3.TabIndex = 17;
+            this.txtUsername.Location = new System.Drawing.Point(149, 119);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(286, 22);
+            this.txtUsername.TabIndex = 2;
             // 
             // label6
             // 
@@ -150,12 +150,12 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Password";
             // 
-            // textBox4
+            // txtPassword
             // 
-            this.textBox4.Location = new System.Drawing.Point(149, 157);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(286, 22);
-            this.textBox4.TabIndex = 17;
+            this.txtPassword.Location = new System.Drawing.Point(149, 157);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(286, 22);
+            this.txtPassword.TabIndex = 3;
             // 
             // staffRegFrm
             // 
@@ -164,19 +164,20 @@
             this.ClientSize = new System.Drawing.Size(447, 340);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbbAuth);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "staffRegFrm";
             this.Text = "Staff Register";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.staffRegFrm_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,16 +187,16 @@
 
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbbAuth;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtPassword;
     }
 }
