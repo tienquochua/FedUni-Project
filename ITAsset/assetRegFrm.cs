@@ -31,7 +31,7 @@ namespace ITAsset
         private void assetRegFrm_Activated(object sender, EventArgs e)
         {
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+            dateTimePicker1.CustomFormat = "dd-MM-yyyy";
             vendorTable = objDTB.ReadData("SELECT * FROM [Vendor]");
             vendorCbb.DataSource = vendorTable;
             vendorCbb.DisplayMember = "VendorName";
@@ -50,18 +50,20 @@ namespace ITAsset
                 SqlConnection conn = new SqlConnection(strConn);
                 SqlDataReader dr = null;
                 conn.Open();
-                SqlCommand cmd1 = new SqlCommand("SELECT * FROM [AssetView] WHERE   VendorID=@vname AND AssetName= @aname AND PurchaseDate=@purdate AND PurchaseLocation=@purloc AND Status=@status  ", conn);
+                SqlCommand cmd1 = new SqlCommand("SELECT * FROM [AssetView] WHERE   VendorID=@vname AND AssetName= @aname AND PurchaseDate=@purdate AND PurchaseLocation=@purloc AND Status=@status AND LeaseAgreement = @agreement  ", conn);
                 cmd1.Parameters.AddWithValue("@aname", itemNameTxt.Text);
                 cmd1.Parameters.AddWithValue("@vname", vendorCbb.SelectedValue);
                 cmd1.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
                 cmd1.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
                 cmd1.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
-                SqlCommand cmd2 = new SqlCommand("INSERT INTO [AssetView] (VendorID, AssetName, PurchaseDate, PurchaseLocation, Status, LastUpdate) VALUES(@vid,@aname,@purdate,@purloc,@status,@lastup)", conn);
+                cmd1.Parameters.AddWithValue("@agreement", txtAgreement.Text);
+                SqlCommand cmd2 = new SqlCommand("INSERT INTO [AssetView] (VendorID, AssetName, PurchaseDate, PurchaseLocation, Status, LeaseAgreement, LastUpdate) VALUES(@vid,@aname,@purdate,@purloc,@status,@agreement,@lastup)", conn);
                 cmd2.Parameters.AddWithValue("@vid", vendorCbb.SelectedValue);
                 cmd2.Parameters.AddWithValue("@aname", itemNameTxt.Text);
                 cmd2.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
                 cmd2.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
                 cmd2.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
+                cmd2.Parameters.AddWithValue("@agreement", txtAgreement.Text);
                 cmd2.Parameters.AddWithValue("@lastup", DateTime.Now.ToString());
                 dr = cmd1.ExecuteReader();
                 if (dr.HasRows)

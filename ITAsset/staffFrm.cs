@@ -32,14 +32,15 @@ namespace ITAsset
 
         private void staffFrm_Activated(object sender, EventArgs e)
         {
-            staffTable = objDTB.ReadData("SELECT UserID AS 'ID', FullName AS 'Staff Name', Username, Password, Authentication, Email FROM [User]");
+            staffTable = objDTB.ReadData("SELECT UserID AS 'ID', FullName AS 'Staff Name', Username, Authentication, Email FROM [User]");
             dataGridView1.DataSource = staffTable;
+            searchCbb.SelectedIndex = 0;
         }
 
         private void searchTxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = staffTable.DefaultView;
-            dv.RowFilter = string.Format("{0} like '%{1}%'", searchCbb.Text, searchTxt.Text);
+            dv.RowFilter = string.Format("[{0}] like '%{1}%'", searchCbb.Text, searchTxt.Text);
             dataGridView1.DataSource = dv.ToTable();
         }
 

@@ -45,7 +45,7 @@
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(461, 402);
+            this.addBtn.Location = new System.Drawing.Point(233, 388);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(100, 36);
             this.addBtn.TabIndex = 11;
@@ -55,7 +55,7 @@
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(785, 402);
+            this.cancelBtn.Location = new System.Drawing.Point(557, 388);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 36);
             this.cancelBtn.TabIndex = 10;
@@ -65,7 +65,7 @@
             // 
             // updateBtn
             // 
-            this.updateBtn.Location = new System.Drawing.Point(587, 402);
+            this.updateBtn.Location = new System.Drawing.Point(359, 388);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(75, 36);
             this.updateBtn.TabIndex = 9;
@@ -75,19 +75,27 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView1.Location = new System.Drawing.Point(34, 106);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(826, 276);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(599, 276);
             this.dataGridView1.TabIndex = 8;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(388, 9);
+            this.label2.Location = new System.Drawing.Point(227, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(195, 32);
             this.label2.TabIndex = 7;
@@ -95,7 +103,7 @@
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(688, 402);
+            this.deleteBtn.Location = new System.Drawing.Point(460, 388);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(75, 36);
             this.deleteBtn.TabIndex = 12;
@@ -108,16 +116,16 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.searchTxt);
             this.groupBox1.Controls.Add(this.searchCbb);
-            this.groupBox1.Location = new System.Drawing.Point(118, 44);
+            this.groupBox1.Location = new System.Drawing.Point(34, 44);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(713, 56);
+            this.groupBox1.Size = new System.Drawing.Size(599, 56);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(546, 22);
+            this.label3.Location = new System.Drawing.Point(418, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 17);
             this.label3.TabIndex = 10;
@@ -136,7 +144,7 @@
             // 
             this.searchTxt.Location = new System.Drawing.Point(73, 21);
             this.searchTxt.Name = "searchTxt";
-            this.searchTxt.Size = new System.Drawing.Size(408, 22);
+            this.searchTxt.Size = new System.Drawing.Size(285, 22);
             this.searchTxt.TabIndex = 8;
             this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
             // 
@@ -145,10 +153,10 @@
             this.searchCbb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.searchCbb.FormattingEnabled = true;
             this.searchCbb.Items.AddRange(new object[] {
-            "ID",
-            "Name",
+            "Staff Name",
+            "Username",
             "Email"});
-            this.searchCbb.Location = new System.Drawing.Point(580, 19);
+            this.searchCbb.Location = new System.Drawing.Point(452, 19);
             this.searchCbb.Name = "searchCbb";
             this.searchCbb.Size = new System.Drawing.Size(121, 24);
             this.searchCbb.TabIndex = 7;
@@ -157,7 +165,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 450);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(651, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.addBtn);

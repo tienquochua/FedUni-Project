@@ -32,7 +32,7 @@ namespace ITAsset
             vendorCbb.DisplayMember = "VendorName";
             vendorCbb.ValueMember = "VendorID";
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+            dateTimePicker1.CustomFormat = "dd-MM-yyyy";
             itemID.Text = assetFrm.ValueForText1;
             itemTxt.Text = assetFrm.ValueForText2;
             dateTimePicker1.Value = DateTime.Parse(assetFrm.ValueForText3);
@@ -41,6 +41,7 @@ namespace ITAsset
             statusCbb.SelectedIndex = statusCbb.FindStringExact(assetFrm.ValueForText6);
             vendorCbb.DropDownStyle = ComboBoxStyle.DropDownList;
             statusCbb.DropDownStyle = ComboBoxStyle.DropDownList;
+            txtAgreement.Text = assetFrm.ValueForText7;
 
         }
        
@@ -53,20 +54,22 @@ namespace ITAsset
                 SqlConnection conn = new SqlConnection(strConn);
                 SqlDataReader dr = null;
                 conn.Open();
-                SqlCommand cmd1 = new SqlCommand("SELECT * FROM [AssetView] WHERE   VendorID=@vname AND AssetName= @aname AND PurchaseDate=@purdate AND PurchaseLocation=@purloc AND Status=@status  ", conn);
+                SqlCommand cmd1 = new SqlCommand("SELECT * FROM [AssetView] WHERE   VendorID=@vname AND AssetName= @aname AND PurchaseDate=@purdate AND PurchaseLocation=@purloc AND Status=@status AND LeaseAgreement=@agreement  ", conn);
                 cmd1.Parameters.AddWithValue("@id", itemID.Text);
                 cmd1.Parameters.AddWithValue("@aname", itemTxt.Text);
                 cmd1.Parameters.AddWithValue("@vname", vendorCbb.SelectedValue);
                 cmd1.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
                 cmd1.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
                 cmd1.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
-                SqlCommand cmd2 = new SqlCommand("UPDATE [AssetView] SET VendorID=@vname, AssetName= @aname, PurchaseDate=@purdate, PurchaseLocation=@purloc, Status=@status, LastUpdate=@lastup  WHERE AssetID=@id", conn);
+                cmd1.Parameters.AddWithValue("@agreement", txtAgreement.Text);
+                SqlCommand cmd2 = new SqlCommand("UPDATE [AssetView] SET VendorID=@vname, AssetName= @aname, PurchaseDate=@purdate, PurchaseLocation=@purloc, Status=@status, LeaseAgreement=@agreement, LastUpdate=@lastup  WHERE AssetID=@id", conn);
                 cmd2.Parameters.AddWithValue("@id", itemID.Text);
                 cmd2.Parameters.AddWithValue("@aname", itemTxt.Text);
                 cmd2.Parameters.AddWithValue("@vname", vendorCbb.SelectedValue);
                 cmd2.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
                 cmd2.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
                 cmd2.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
+                cmd2.Parameters.AddWithValue("@agreement", txtAgreement.Text);
                 cmd2.Parameters.AddWithValue("@lastup", DateTime.Now.ToString());
                 dr = cmd1.ExecuteReader();
                 if (dr.HasRows)

@@ -37,18 +37,22 @@ namespace ITAsset
                 MessageBox.Show("Please enter all the detail");
             else
             {
+                // connect to database and execute sql command
                 SqlConnection conn = new SqlConnection(strConn);
                 SqlDataReader dr = null;
                 string passwords = md5Encryption.encrypt(txtPassword.Text);
                 conn.Open();
                 SqlCommand cmd1 = new SqlCommand("SELECT * FROM [User] WHERE Username=@username", conn);
                 cmd1.Parameters.AddWithValue("@username", txtUsername.Text);
-                SqlCommand cmd2 = new SqlCommand("INSERT INTO [User] (FullName, Username, Password, Authentication, Email) VALUES(@name,@username,@password,@authentication,@email)", conn);
+                SqlCommand cmd2 = new SqlCommand("INSERT INTO [User] (FullName, Username, Password, Authentication, Email) " +
+                    "VALUES(@name,@username,@password,@authentication,@email)", conn);
                 cmd2.Parameters.AddWithValue("@name", txtName.Text);
                 cmd2.Parameters.AddWithValue("@username", txtUsername.Text);
                 cmd2.Parameters.AddWithValue("@password", passwords);
                 cmd2.Parameters.AddWithValue("@authentication", cbbAuth.SelectedItem);
                 cmd2.Parameters.AddWithValue("@email", txtEmail.Text);
+                
+                //check if user name is existed, else execute sql command 2
                 dr = cmd1.ExecuteReader();
                 if (dr.HasRows)
                 {

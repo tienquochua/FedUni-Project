@@ -26,3 +26,31 @@ E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.AssetUpdateForm.resour
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.staffRegFrm.resources
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.staffUpdateFrm.resources
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.vendorRegFrm.resources
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\ITAsset.exe.config
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\ITAsset.exe
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\ITAsset.pdb
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\System.Configuration.ConfigurationManager.dll
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\System.Security.AccessControl.dll
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\System.Security.Permissions.dll
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\System.Security.Principal.Windows.dll
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\System.Configuration.ConfigurationManager.xml
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\System.Security.AccessControl.xml
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\System.Security.Permissions.xml
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\System.Security.Principal.Windows.xml
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.csprojAssemblyReference.cache
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.archiveFrm.resources
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.assetFrm.resources
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.assetRegFrm.resources
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.homeFrm.resources
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.loginFrm.resources
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.Properties.Resources.resources
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.staffFrm.resources
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.AssetUpdateForm.resources
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.staffRegFrm.resources
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.staffUpdateFrm.resources
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.vendorRegFrm.resources
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.csproj.GenerateResource.cache
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.csproj.CoreCompileInputs.cache
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.csproj.CopyComplete
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.exe
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.pdb

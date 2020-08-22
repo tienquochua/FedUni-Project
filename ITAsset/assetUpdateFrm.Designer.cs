@@ -45,11 +45,13 @@
             this.itemID = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.vendorAddBtn = new System.Windows.Forms.Button();
+            this.txtAgreement = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(393, 304);
+            this.cancelBtn.Location = new System.Drawing.Point(406, 448);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 36);
             this.cancelBtn.TabIndex = 22;
@@ -59,7 +61,7 @@
             // 
             // updateBtn
             // 
-            this.updateBtn.Location = new System.Drawing.Point(295, 304);
+            this.updateBtn.Location = new System.Drawing.Point(308, 448);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(75, 36);
             this.updateBtn.TabIndex = 21;
@@ -73,7 +75,8 @@
             "Lending",
             "Borrowing",
             "Allocating",
-            "Returning"});
+            "Returning",
+            "Purchased"});
             this.statusCbb.Location = new System.Drawing.Point(180, 264);
             this.statusCbb.Name = "statusCbb";
             this.statusCbb.Size = new System.Drawing.Size(122, 24);
@@ -200,11 +203,30 @@
             this.vendorAddBtn.UseVisualStyleBackColor = true;
             this.vendorAddBtn.Click += new System.EventHandler(this.vendorAddBtn_Click);
             // 
+            // txtAgreement
+            // 
+            this.txtAgreement.Location = new System.Drawing.Point(180, 303);
+            this.txtAgreement.Multiline = true;
+            this.txtAgreement.Name = "txtAgreement";
+            this.txtAgreement.Size = new System.Drawing.Size(288, 127);
+            this.txtAgreement.TabIndex = 31;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(48, 303);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(120, 17);
+            this.label9.TabIndex = 30;
+            this.label9.Text = "Lease Agreement";
+            // 
             // AssetUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 360);
+            this.ClientSize = new System.Drawing.Size(486, 491);
+            this.Controls.Add(this.txtAgreement);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.vendorAddBtn);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.itemID);
@@ -252,5 +274,7 @@
         private System.Windows.Forms.ComboBox statusCbb;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button vendorAddBtn;
+        private System.Windows.Forms.TextBox txtAgreement;
+        private System.Windows.Forms.Label label9;
     }
 }

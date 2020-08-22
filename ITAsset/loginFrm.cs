@@ -42,32 +42,31 @@ namespace ITAsset
             SqlCommand cmd2 = new SqlCommand("SELECT FullName, Email FROM [User] where Username=@uname and Password=@pass ", conn);
             cmd2.Parameters.AddWithValue("@uname", txtUsername.Text);
             cmd2.Parameters.AddWithValue("@pass", password);
-            dr = cmd1.ExecuteReader();
             
-            
-            if (dr.HasRows)
+            if (txtUsername.Text == "" || txtPassword.Text == "")
             {
-                conn.Close();
-                userTable = objDTB.ReadData("SELECT FullName, Email FROM [User] where Username ='" + txtUsername.Text + "'and Password ='" + password + "' ");
-                ValueForText1 = Convert.ToString(userTable.Rows[0][0]);
-                ValueForText2 = Convert.ToString(userTable.Rows[0][1]);
-                this.Hide();
-                homeFrm f1 = new homeFrm();
-                f1.FormClosed += new FormClosedEventHandler(loginFrm_FormClosed);
-                f1.ShowDialog();
-             
+                MessageBox.Show("Insert username and password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsername.Focus();
             }
             else
             {
-                if (txtUsername.Text == "" || txtPassword.Text == "")
+                dr = cmd1.ExecuteReader();
+                if (dr.HasRows)
                 {
-                    MessageBox.Show("Insert username and password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtUsername.Focus();
+                    conn.Close();
+                    userTable = objDTB.ReadData("SELECT FullName, Email FROM [User] where Username ='" + txtUsername.Text + "'and Password ='" + password + "' ");
+                    ValueForText1 = Convert.ToString(userTable.Rows[0][0]);
+                    ValueForText2 = Convert.ToString(userTable.Rows[0][1]);
+                    this.Hide();
+                    homeFrm f1 = new homeFrm();
+                    f1.FormClosed += new FormClosedEventHandler(loginFrm_FormClosed);
+                    f1.ShowDialog();
                 }
                 else MessageBox.Show("Username or Password is incorrect!\r\nPlease contact ithelpdesk@atmc.edu.au for access.", "Login Fail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtUsername.Clear();
                 txtPassword.Clear();
                 txtUsername.Focus();
+
             }
         }
 
@@ -87,7 +86,6 @@ namespace ITAsset
         {
             if(e.KeyCode == Keys.Enter) loginBtn_Click(sender, e);
         }
-
         private void loginFrm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();

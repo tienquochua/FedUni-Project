@@ -25,6 +25,7 @@ namespace ITAsset
         public static string ValueForText4 = "";
         public static string ValueForText5 = "";
         public static string ValueForText6 = "";
+        public static string ValueForText7 = "";
         public assetFrm()
         {
             InitializeComponent();
@@ -34,12 +35,12 @@ namespace ITAsset
         }
         private void assetFrm_Activated(object sender, EventArgs e)
         {
-            assetTable = objDTB.ReadData("SELECT av.AssetID AS 'Item No.', av.AssetName AS 'Item', av.PurchaseDate AS 'Purchase Date', v.VendorName AS 'Vendor', av.PurchaseLocation AS 'Purchase Location', av.Status, av.LastUpdate AS 'Last Update' " +
+            assetTable = objDTB.ReadData("SELECT av.AssetID AS 'Item No.', av.AssetName AS 'Item', av.PurchaseDate AS 'Purchase Date', v.VendorName AS 'Vendor', av.PurchaseLocation AS 'Purchase Location', av.Status, av.LeaseAgreement AS 'Lease Agreement', av.LastUpdate AS 'Last Update' " +
                "FROM [AssetView] av INNER JOIN [Vendor] v " +
                "ON av.VendorID= v.VendorID");
             dataGridView1.DataSource = assetTable;
-            dataGridView1.Columns[2].DefaultCellStyle.Format = "yyyy/MM/dd";
-            dataGridView1.Columns[6].DefaultCellStyle.Format = "yyyy/MM/dd HH:mm:ss";
+            dataGridView1.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns[6].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
             searchCbb.SelectedIndex = 0;
         }
 
@@ -66,6 +67,7 @@ namespace ITAsset
             ValueForText4 = dataRow[3].ToString();
             ValueForText5 = dataRow[4].ToString();
             ValueForText6 = dataRow[5].ToString();
+            ValueForText7 = dataRow[6].ToString();
             AssetUpdateForm f3 = new AssetUpdateForm();
             f3.ShowDialog();
 
@@ -80,7 +82,7 @@ namespace ITAsset
         private void searchTxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = assetTable.DefaultView;
-            dv.RowFilter = string.Format("{0} like '%{1}%'", searchCbb.Text, searchTxt.Text);
+            dv.RowFilter = string.Format("[{0}] like '%{1}%'", searchCbb.Text, searchTxt.Text);
             dataGridView1.DataSource = dv.ToTable();
         }
     }
