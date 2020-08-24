@@ -54,7 +54,7 @@ namespace ITAsset
                 SqlConnection conn = new SqlConnection(strConn);
                 SqlDataReader dr = null;
                 conn.Open();
-                SqlCommand cmd1 = new SqlCommand("SELECT * FROM [AssetView] WHERE   VendorID=@vname AND AssetName= @aname AND PurchaseDate=@purdate AND PurchaseLocation=@purloc AND Status=@status AND LeaseAgreement=@agreement  ", conn);
+                SqlCommand cmd1 = new SqlCommand("SELECT * FROM [AssetView] WHERE VendorID=@vid AND AssetName= @aname AND PurchaseDate=@purdate AND PurchaseLocation=@purloc AND Status=@status AND LeaseAgreement=@agreement  ", conn);
                 cmd1.Parameters.AddWithValue("@id", itemID.Text);
                 cmd1.Parameters.AddWithValue("@aname", itemTxt.Text);
                 cmd1.Parameters.AddWithValue("@vname", vendorCbb.SelectedValue);
@@ -62,10 +62,10 @@ namespace ITAsset
                 cmd1.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
                 cmd1.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
                 cmd1.Parameters.AddWithValue("@agreement", txtAgreement.Text);
-                SqlCommand cmd2 = new SqlCommand("UPDATE [AssetView] SET VendorID=@vname, AssetName= @aname, PurchaseDate=@purdate, PurchaseLocation=@purloc, Status=@status, LeaseAgreement=@agreement, LastUpdate=@lastup  WHERE AssetID=@id", conn);
+                SqlCommand cmd2 = new SqlCommand("UPDATE [AssetView] SET VendorID=@vid, AssetName=@aname, PurchaseDate=@purdate, PurchaseLocation=@purloc, Status=@status, LeaseAgreement=@agreement, LastUpdate=@lastup  WHERE AssetID=@id", conn);
                 cmd2.Parameters.AddWithValue("@id", itemID.Text);
                 cmd2.Parameters.AddWithValue("@aname", itemTxt.Text);
-                cmd2.Parameters.AddWithValue("@vname", vendorCbb.SelectedValue);
+                cmd2.Parameters.AddWithValue("@vid", vendorCbb.SelectedValue);
                 cmd2.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
                 cmd2.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
                 cmd2.Parameters.AddWithValue("@status", statusCbb.SelectedItem);

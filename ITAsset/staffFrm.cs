@@ -17,12 +17,7 @@ namespace ITAsset
         database objDTB;
         DataTable staffTable;
         int curRow;
-        public static string ValueForText1 = "";
-        public static string ValueForText2 = "";
-        public static string ValueForText3 = "";
-        public static string ValueForText4 = "";
-        public static string ValueForText5 = "";
-        public static string ValueForText6 = "";
+        public static string IDValue = "";
         public staffFrm()
         {
             InitializeComponent();
@@ -65,16 +60,22 @@ namespace ITAsset
         {
             curRow = dataGridView1.CurrentRow.Index;
             DataRow dataRow = staffTable.Rows[curRow];
-            ValueForText1 = dataRow[0].ToString();
-            ValueForText2 = dataRow[1].ToString();
-            ValueForText3 = dataRow[2].ToString();
-            ValueForText4 = dataRow[3].ToString();
-            ValueForText5 = dataRow[4].ToString();
-            ValueForText6 = dataRow[5].ToString();
-            this.Hide();
-            staffUpdateFrm f2 = new staffUpdateFrm();
-            f2.FormClosed += new FormClosedEventHandler(staffFrm_FormClosed);
-            f2.ShowDialog();
+            IDValue = dataRow[0].ToString();
+            //check if id value is 1 which is admin account, show warning 
+            if(IDValue=="1")
+                MessageBox.Show("Admin account cannot be updated ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                this.Hide();
+                staffUpdateFrm f2 = new staffUpdateFrm();
+                f2.FormClosed += new FormClosedEventHandler(staffFrm_FormClosed);
+                f2.ShowDialog();
+            }
+        }
+
+        private void searchCbb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            searchTxt.Focus();
         }
     }
 }

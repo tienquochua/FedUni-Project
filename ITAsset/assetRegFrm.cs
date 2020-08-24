@@ -50,9 +50,9 @@ namespace ITAsset
                 SqlConnection conn = new SqlConnection(strConn);
                 SqlDataReader dr = null;
                 conn.Open();
-                SqlCommand cmd1 = new SqlCommand("SELECT * FROM [AssetView] WHERE   VendorID=@vname AND AssetName= @aname AND PurchaseDate=@purdate AND PurchaseLocation=@purloc AND Status=@status AND LeaseAgreement = @agreement  ", conn);
+                SqlCommand cmd1 = new SqlCommand("SELECT * FROM [AssetView] WHERE VendorID=@vid AND AssetName= @aname AND PurchaseDate=@purdate AND PurchaseLocation=@purloc AND Status=@status AND LeaseAgreement = @agreement  ", conn);
                 cmd1.Parameters.AddWithValue("@aname", itemNameTxt.Text);
-                cmd1.Parameters.AddWithValue("@vname", vendorCbb.SelectedValue);
+                cmd1.Parameters.AddWithValue("@vid", vendorCbb.SelectedValue);
                 cmd1.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
                 cmd1.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
                 cmd1.Parameters.AddWithValue("@status", statusCbb.SelectedItem);

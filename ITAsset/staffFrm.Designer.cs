@@ -160,6 +160,7 @@
             this.searchCbb.Name = "searchCbb";
             this.searchCbb.Size = new System.Drawing.Size(121, 24);
             this.searchCbb.TabIndex = 7;
+            this.searchCbb.SelectedIndexChanged += new System.EventHandler(this.searchCbb_SelectedIndexChanged);
             // 
             // staffFrm
             // 

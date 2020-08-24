@@ -42,7 +42,7 @@ namespace ITAsset
                 SqlDataReader dr = null;
                 string passwords = md5Encryption.encrypt(txtPassword.Text);
                 conn.Open();
-                SqlCommand cmd1 = new SqlCommand("SELECT * FROM [User] WHERE Username=@username", conn);
+                SqlCommand cmd1 = new SqlCommand("SELECT Username FROM [User] WHERE Username=@username", conn);
                 cmd1.Parameters.AddWithValue("@username", txtUsername.Text);
                 SqlCommand cmd2 = new SqlCommand("INSERT INTO [User] (FullName, Username, Password, Authentication, Email) " +
                     "VALUES(@name,@username,@password,@authentication,@email)", conn);

@@ -85,5 +85,10 @@ namespace ITAsset
             dv.RowFilter = string.Format("[{0}] like '%{1}%'", searchCbb.Text, searchTxt.Text);
             dataGridView1.DataSource = dv.ToTable();
         }
+
+        private void searchCbb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            searchTxt.Focus();
+        }
     }
 }
