@@ -176,6 +176,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "staffRegFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff Register";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.staffRegFrm_KeyUp);
             this.ResumeLayout(false);

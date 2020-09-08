@@ -16,7 +16,7 @@ namespace ITAsset
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new homeFrm());
+            Application.Run(new loginFrm());
         }
     }
 }

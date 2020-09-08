@@ -22,7 +22,6 @@ namespace ITAsset
             InitializeComponent();
             strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
             objDTB = new database(strConn);
-
         }
 
         private void AssetUpdateForm_Activated(object sender, EventArgs e)
@@ -55,14 +54,13 @@ namespace ITAsset
                 SqlDataReader dr = null;
                 conn.Open();
                 SqlCommand cmd1 = new SqlCommand("SELECT * FROM [AssetView] WHERE VendorID=@vid AND AssetName= @aname AND PurchaseDate=@purdate AND PurchaseLocation=@purloc AND Status=@status AND LeaseAgreement=@agreement  ", conn);
-                cmd1.Parameters.AddWithValue("@id", itemID.Text);
                 cmd1.Parameters.AddWithValue("@aname", itemTxt.Text);
-                cmd1.Parameters.AddWithValue("@vname", vendorCbb.SelectedValue);
+                cmd1.Parameters.AddWithValue("@vid", vendorCbb.SelectedValue);
                 cmd1.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
                 cmd1.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
                 cmd1.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
                 cmd1.Parameters.AddWithValue("@agreement", txtAgreement.Text);
-                SqlCommand cmd2 = new SqlCommand("UPDATE [AssetView] SET VendorID=@vid, AssetName=@aname, PurchaseDate=@purdate, PurchaseLocation=@purloc, Status=@status, LeaseAgreement=@agreement, LastUpdate=@lastup  WHERE AssetID=@id", conn);
+                SqlCommand cmd2 = new SqlCommand("UPDATE [AssetView] SET VendorID=@vid, AssetName=@aname, PurchaseDate=@purdate, PurchaseLocation=@purloc, Status=@status, LeaseAgreement=@agreement, LastUpdate=@lastup, UserID=@uid  WHERE AssetID=@id", conn);
                 cmd2.Parameters.AddWithValue("@id", itemID.Text);
                 cmd2.Parameters.AddWithValue("@aname", itemTxt.Text);
                 cmd2.Parameters.AddWithValue("@vid", vendorCbb.SelectedValue);
@@ -71,6 +69,7 @@ namespace ITAsset
                 cmd2.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
                 cmd2.Parameters.AddWithValue("@agreement", txtAgreement.Text);
                 cmd2.Parameters.AddWithValue("@lastup", DateTime.Now.ToString());
+                cmd2.Parameters.AddWithValue("@uid",loginFrm.staffIDValue);
                 dr = cmd1.ExecuteReader();
                 if (dr.HasRows)
                 {

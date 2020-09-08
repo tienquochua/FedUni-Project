@@ -88,6 +88,7 @@
             this.Name = "homeFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
+            this.Activated += new System.EventHandler(this.homeFrm_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.homeFrm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

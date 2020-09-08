@@ -40,6 +40,7 @@ namespace ITAsset
                 // connect to database and execute sql command
                 SqlConnection conn = new SqlConnection(strConn);
                 SqlDataReader dr = null;
+                //hash password using MD5 encryption
                 string passwords = md5Encryption.encrypt(txtPassword.Text);
                 conn.Open();
                 SqlCommand cmd1 = new SqlCommand("SELECT Username FROM [User] WHERE Username=@username", conn);

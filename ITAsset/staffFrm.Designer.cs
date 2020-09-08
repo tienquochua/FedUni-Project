@@ -45,7 +45,7 @@
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(233, 388);
+            this.addBtn.Location = new System.Drawing.Point(170, 402);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(100, 36);
             this.addBtn.TabIndex = 11;
@@ -55,7 +55,7 @@
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(557, 388);
+            this.cancelBtn.Location = new System.Drawing.Point(494, 402);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 36);
             this.cancelBtn.TabIndex = 10;
@@ -65,7 +65,7 @@
             // 
             // updateBtn
             // 
-            this.updateBtn.Location = new System.Drawing.Point(359, 388);
+            this.updateBtn.Location = new System.Drawing.Point(296, 402);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(75, 36);
             this.updateBtn.TabIndex = 9;
@@ -78,7 +78,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView1.Location = new System.Drawing.Point(34, 106);
@@ -88,8 +88,9 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(599, 276);
+            this.dataGridView1.Size = new System.Drawing.Size(535, 276);
             this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // label2
             // 
@@ -103,12 +104,13 @@
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(460, 388);
+            this.deleteBtn.Location = new System.Drawing.Point(397, 402);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(75, 36);
             this.deleteBtn.TabIndex = 12;
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // groupBox1
             // 
@@ -118,14 +120,14 @@
             this.groupBox1.Controls.Add(this.searchCbb);
             this.groupBox1.Location = new System.Drawing.Point(34, 44);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(599, 56);
+            this.groupBox1.Size = new System.Drawing.Size(544, 56);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(418, 22);
+            this.label3.Location = new System.Drawing.Point(380, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 17);
             this.label3.TabIndex = 10;
@@ -156,7 +158,7 @@
             "Staff Name",
             "Username",
             "Email"});
-            this.searchCbb.Location = new System.Drawing.Point(452, 19);
+            this.searchCbb.Location = new System.Drawing.Point(414, 21);
             this.searchCbb.Name = "searchCbb";
             this.searchCbb.Size = new System.Drawing.Size(121, 24);
             this.searchCbb.TabIndex = 7;
@@ -167,7 +169,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(651, 450);
+            this.ClientSize = new System.Drawing.Size(586, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.addBtn);
@@ -176,6 +178,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Name = "staffFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff Menu";
             this.Activated += new System.EventHandler(this.staffFrm_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.staffFrm_FormClosed);

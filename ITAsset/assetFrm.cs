@@ -35,15 +35,36 @@ namespace ITAsset
         }
         private void assetFrm_Activated(object sender, EventArgs e)
         {
-            assetTable = objDTB.ReadData("SELECT av.AssetID AS 'Item No.', av.AssetName AS 'Item', av.PurchaseDate AS 'Purchase Date', v.VendorName AS 'Vendor', av.PurchaseLocation AS 'Purchase Location', av.Status, av.LeaseAgreement AS 'Lease Agreement', av.LastUpdate AS 'Last Update' " +
-               "FROM [AssetView] av INNER JOIN [Vendor] v " +
-               "ON av.VendorID= v.VendorID");
+            assetTable = objDTB.ReadData("SELECT av.AssetID AS 'Item No.', av.AssetName AS 'Item', av.PurchaseDate AS 'Purchase Date', v.VendorName AS 'Vendor', av.PurchaseLocation AS 'Purchase Location', av.Status, av.LeaseAgreement AS 'Lease Agreement', av.LastUpdate AS 'Last Update', u.FullName AS 'Responsible Staff', u.Email " +
+               "FROM [AssetView] av " +
+               "INNER JOIN [Vendor] v ON av.VendorID= v.VendorID " +
+               "INNER JOIN [User] u ON av.UserID = u.UserID");
             dataGridView1.DataSource = assetTable;
             dataGridView1.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns[6].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
+            dataGridView1.Columns[7].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
             searchCbb.SelectedIndex = 0;
+            dataGridView1.ClearSelection();
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
-
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                curRow = e.RowIndex;
+                DataGridViewRow row = dataGridView1.Rows[curRow];
+                ValueForText1 = row.Cells[0].Value.ToString();
+                ValueForText2 = row.Cells[1].Value.ToString();
+                ValueForText3 = row.Cells[2].Value.ToString();
+                ValueForText4 = row.Cells[3].Value.ToString();
+                ValueForText5 = row.Cells[4].Value.ToString();
+                ValueForText6 = row.Cells[5].Value.ToString();
+                ValueForText7 = row.Cells[6].Value.ToString();
+            }
+            catch (Exception) { }
+        }
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -59,18 +80,14 @@ namespace ITAsset
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            curRow = dataGridView1.CurrentRow.Index;
-            DataRow dataRow = assetTable.Rows[curRow];
-            ValueForText1 = dataRow[0].ToString();
-            ValueForText2 = dataRow[1].ToString();
-            ValueForText3 = dataRow[2].ToString();
-            ValueForText4 = dataRow[3].ToString();
-            ValueForText5 = dataRow[4].ToString();
-            ValueForText6 = dataRow[5].ToString();
-            ValueForText7 = dataRow[6].ToString();
-            AssetUpdateForm f3 = new AssetUpdateForm();
-            f3.ShowDialog();
-
+            if (ValueForText1 == "")
+                MessageBox.Show("Please select staff to update ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                AssetUpdateForm f3 = new AssetUpdateForm();
+                f3.ShowDialog();
+                ValueForText1 = "";
+            }
         }
 
         private void otherForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -78,17 +95,19 @@ namespace ITAsset
             this.Show();
         }
 
-
         private void searchTxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = assetTable.DefaultView;
             dv.RowFilter = string.Format("[{0}] like '%{1}%'", searchCbb.Text, searchTxt.Text);
             dataGridView1.DataSource = dv.ToTable();
+            dataGridView1.ClearSelection();
         }
 
         private void searchCbb_SelectedIndexChanged(object sender, EventArgs e)
         {
             searchTxt.Focus();
         }
+
+        
     }
 }

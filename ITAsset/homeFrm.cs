@@ -44,5 +44,11 @@ namespace ITAsset
             f2.FormClosed += new FormClosedEventHandler(homeFrm_FormClosed);
             f2.ShowDialog();
         }
+
+        private void homeFrm_Activated(object sender, EventArgs e)
+        {
+            if (loginFrm.authValue == "Super User")
+                staffBtn.Enabled = false;
+        }
     }
 }

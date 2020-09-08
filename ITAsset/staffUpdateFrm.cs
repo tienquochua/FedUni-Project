@@ -31,10 +31,10 @@ namespace ITAsset
         {
             staffID.Text = staffFrm.IDValue;
             staffTable = objDTB.ReadData("SELECT FullName, Username, Authentication, Email FROM [User] WHERE UserID = '" + Convert.ToInt32(staffID.Text) + "'");
-            txtName.Text = Convert.ToString(staffTable.Rows[0][0]);
-            txtUsername.Text = Convert.ToString(staffTable.Rows[0][1]);
-            cbbAuth.SelectedIndex = cbbAuth.FindStringExact(Convert.ToString(staffTable.Rows[0][2]));
-            txtEmail.Text = Convert.ToString(staffTable.Rows[0][3]);
+            txtName.Text = staffTable.Rows[0][0].ToString();
+            txtUsername.Text = staffTable.Rows[0][1].ToString();
+            cbbAuth.SelectedIndex = cbbAuth.FindStringExact(staffTable.Rows[0][2].ToString());
+            txtEmail.Text = staffTable.Rows[0][3].ToString();
             cbbAuth.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 

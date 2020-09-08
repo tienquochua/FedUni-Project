@@ -57,7 +57,7 @@ namespace ITAsset
                 cmd1.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
                 cmd1.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
                 cmd1.Parameters.AddWithValue("@agreement", txtAgreement.Text);
-                SqlCommand cmd2 = new SqlCommand("INSERT INTO [AssetView] (VendorID, AssetName, PurchaseDate, PurchaseLocation, Status, LeaseAgreement, LastUpdate) VALUES(@vid,@aname,@purdate,@purloc,@status,@agreement,@lastup)", conn);
+                SqlCommand cmd2 = new SqlCommand("INSERT INTO [AssetView] (VendorID, AssetName, PurchaseDate, PurchaseLocation, Status, LeaseAgreement, LastUpdate, UserID) VALUES(@vid,@aname,@purdate,@purloc,@status,@agreement,@lastup,@uid)", conn);
                 cmd2.Parameters.AddWithValue("@vid", vendorCbb.SelectedValue);
                 cmd2.Parameters.AddWithValue("@aname", itemNameTxt.Text);
                 cmd2.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
@@ -65,6 +65,7 @@ namespace ITAsset
                 cmd2.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
                 cmd2.Parameters.AddWithValue("@agreement", txtAgreement.Text);
                 cmd2.Parameters.AddWithValue("@lastup", DateTime.Now.ToString());
+                cmd2.Parameters.AddWithValue("@uid", loginFrm.staffIDValue);
                 dr = cmd1.ExecuteReader();
                 if (dr.HasRows)
                 {
