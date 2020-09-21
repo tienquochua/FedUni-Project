@@ -54,3 +54,4 @@ E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.csproj.CoreComp
 E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.csproj.CopyComplete
 E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.exe
 E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.pdb
+E:\BaiTap\Visual Studio\ITAsset\ITAsset\bin\Debug\FontAwesome.Sharp.dll

@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             this.addBtn = new System.Windows.Forms.Button();
-            this.cancelBtn = new System.Windows.Forms.Button();
             this.updateBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,29 +43,21 @@
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(170, 402);
+            this.addBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addBtn.Location = new System.Drawing.Point(247, 358);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(100, 36);
+            this.addBtn.Size = new System.Drawing.Size(100, 52);
             this.addBtn.TabIndex = 11;
             this.addBtn.Text = "Add Staff ";
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
-            // cancelBtn
-            // 
-            this.cancelBtn.Location = new System.Drawing.Point(494, 402);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(75, 36);
-            this.cancelBtn.TabIndex = 10;
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.UseVisualStyleBackColor = true;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
-            // 
             // updateBtn
             // 
-            this.updateBtn.Location = new System.Drawing.Point(296, 402);
+            this.updateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateBtn.Location = new System.Drawing.Point(374, 358);
             this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(75, 36);
+            this.updateBtn.Size = new System.Drawing.Size(95, 52);
             this.updateBtn.TabIndex = 9;
             this.updateBtn.Text = "Update";
             this.updateBtn.UseVisualStyleBackColor = true;
@@ -77,36 +67,30 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataGridView1.Location = new System.Drawing.Point(34, 106);
+            this.dataGridView1.Location = new System.Drawing.Point(35, 76);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(535, 276);
+            this.dataGridView1.Size = new System.Drawing.Size(551, 276);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(227, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(195, 32);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Staff Viewing";
-            // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(397, 402);
+            this.deleteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteBtn.Location = new System.Drawing.Point(495, 358);
             this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(75, 36);
+            this.deleteBtn.Size = new System.Drawing.Size(91, 52);
             this.deleteBtn.TabIndex = 12;
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = true;
@@ -114,13 +98,15 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.searchTxt);
             this.groupBox1.Controls.Add(this.searchCbb);
-            this.groupBox1.Location = new System.Drawing.Point(34, 44);
+            this.groupBox1.Location = new System.Drawing.Point(35, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(544, 56);
+            this.groupBox1.Size = new System.Drawing.Size(551, 56);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             // 
@@ -168,35 +154,30 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(586, 450);
+            this.ClientSize = new System.Drawing.Size(611, 421);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.addBtn);
-            this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label2);
             this.Name = "staffFrm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff Menu";
-            this.Activated += new System.EventHandler(this.staffFrm_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.staffFrm_FormClosed);
+            this.Load += new System.EventHandler(this.staffFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button addBtn;
-        private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button updateBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;

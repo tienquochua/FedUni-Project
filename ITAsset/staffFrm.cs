@@ -26,20 +26,40 @@ namespace ITAsset
             objDTB = new database(strConn);
             
         }
-        public void getDataInformation()
+        private void LoadTheme()
+        {
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = Theme.PrimColor;
+                    btn.ForeColor = Color.White;
+                    btn.FlatAppearance.BorderColor = Theme.SecColor;
+                }
+            }
+
+        }
+        private void GetDataInformation()
         {
             staffTable = objDTB.ReadData("SELECT UserID AS 'ID', FullName AS 'Staff Name', Username, Authentication, Email FROM [User]");
             dataGridView1.DataSource = staffTable;
             dataGridView1.ClearSelection();
+            dataGridView1.FirstDisplayedCell = null;
         }
-        private void staffFrm_Activated(object sender, EventArgs e)
+        private void staffFrm_Load(object sender, EventArgs e)
         {
-            getDataInformation();
+            LoadTheme();
+            GetDataInformation();
             searchCbb.SelectedIndex = 0;
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+        }
+        private void staffFrm_Activated(object sender, EventArgs e)
+        {
+            
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -61,7 +81,7 @@ namespace ITAsset
 
         private void staffFrm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Show();
+            GetDataInformation();
             IDValue = "";
         }
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -71,7 +91,6 @@ namespace ITAsset
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
             staffRegFrm f1 = new staffRegFrm();
             f1.FormClosed += new FormClosedEventHandler(staffFrm_FormClosed);
             f1.ShowDialog();
@@ -88,7 +107,6 @@ namespace ITAsset
                     MessageBox.Show("Admin account cannot be updated ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
                 {
-                    this.Hide();
                     staffUpdateFrm f2 = new staffUpdateFrm();
                     f2.FormClosed += new FormClosedEventHandler(staffFrm_FormClosed);
                     f2.ShowDialog();
@@ -125,7 +143,7 @@ namespace ITAsset
                         cmd.Parameters.AddWithValue("@id", Convert.ToInt32(IDValue));
                         cmd.ExecuteReader();
                         conn.Close();
-                        getDataInformation();
+                        GetDataInformation();
                         IDValue = "";
 
                     }
@@ -133,5 +151,11 @@ namespace ITAsset
             }
         }
 
+
+
+        private void refreshBtn_Click(object sender, EventArgs e)
+        {
+            GetDataInformation();
+        }
     }
 }

@@ -57,7 +57,7 @@ namespace ITAsset
                 cmd1.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
                 cmd1.Parameters.AddWithValue("@status", statusCbb.SelectedItem);
                 cmd1.Parameters.AddWithValue("@agreement", txtAgreement.Text);
-                SqlCommand cmd2 = new SqlCommand("INSERT INTO [AssetView] (VendorID, AssetName, PurchaseDate, PurchaseLocation, Status, LeaseAgreement, LastUpdate, UserID) VALUES(@vid,@aname,@purdate,@purloc,@status,@agreement,@lastup,@uid)", conn);
+                SqlCommand cmd2 = new SqlCommand("INSERT INTO [AssetView] (VendorID, AssetName, PurchaseDate, PurchaseLocation, Status, LeaseAgreement, LastUpdate, UserID, Archive) VALUES(@vid,@aname,@purdate,@purloc,@status,@agreement,@lastup,@uid,0)", conn);
                 cmd2.Parameters.AddWithValue("@vid", vendorCbb.SelectedValue);
                 cmd2.Parameters.AddWithValue("@aname", itemNameTxt.Text);
                 cmd2.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
@@ -75,6 +75,7 @@ namespace ITAsset
                 else
                 {
                     conn.Close();
+
                     conn.Open();
                     cmd2.ExecuteReader();
                     MessageBox.Show("Item registered successfully ");
@@ -91,7 +92,6 @@ namespace ITAsset
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
-            
         }
 
         private void vendorAddBtn_Click(object sender, EventArgs e)

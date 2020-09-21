@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,9 +15,22 @@ namespace ITAsset
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new loginFrm());
+            bool instanceCountOne = false;
+
+            using (Mutex mtex = new Mutex(true, "MyRunningApp", out instanceCountOne))
+            {
+                if (instanceCountOne)
+                {
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    Application.Run(new loginFrm());
+                    mtex.ReleaseMutex();
+                }
+                else
+                {
+                    MessageBox.Show("An application instance is already running");
+                }
+            }
         }
     }
 }

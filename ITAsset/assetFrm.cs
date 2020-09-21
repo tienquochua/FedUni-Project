@@ -33,21 +33,45 @@ namespace ITAsset
             objDTB = new database(strConn);
             
         }
-        private void assetFrm_Activated(object sender, EventArgs e)
+        private void LoadTheme()
+        {
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = Theme.PrimColor;
+                    btn.ForeColor = Color.White;
+                    btn.FlatAppearance.BorderColor = Theme.SecColor;
+                }
+            }
+
+        }
+        public void GetDataInformation()
         {
             assetTable = objDTB.ReadData("SELECT av.AssetID AS 'Item No.', av.AssetName AS 'Item', av.PurchaseDate AS 'Purchase Date', v.VendorName AS 'Vendor', av.PurchaseLocation AS 'Purchase Location', av.Status, av.LeaseAgreement AS 'Lease Agreement', av.LastUpdate AS 'Last Update', u.FullName AS 'Responsible Staff', u.Email " +
                "FROM [AssetView] av " +
                "INNER JOIN [Vendor] v ON av.VendorID= v.VendorID " +
-               "INNER JOIN [User] u ON av.UserID = u.UserID");
+               "INNER JOIN [User] u ON av.UserID = u.UserID " +
+               "WHERE av.Archive = 0");
             dataGridView1.DataSource = assetTable;
+            dataGridView1.ClearSelection();
+        }
+        private void assetFrm_Load(object sender, EventArgs e)
+        {
+            LoadTheme();
+            GetDataInformation();
             dataGridView1.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns[7].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
             searchCbb.SelectedIndex = 0;
-            dataGridView1.ClearSelection();
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+        }
+            private void assetFrm_Activated(object sender, EventArgs e)
+        {
+           
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -65,14 +89,8 @@ namespace ITAsset
             }
             catch (Exception) { }
         }
-        private void cancelBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void registerBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
             assetRegFrm f2 = new assetRegFrm();
             f2.FormClosed += new FormClosedEventHandler(otherForm_FormClosed);
             f2.ShowDialog();
@@ -81,7 +99,7 @@ namespace ITAsset
         private void updateBtn_Click(object sender, EventArgs e)
         {
             if (ValueForText1 == "")
-                MessageBox.Show("Please select staff to update ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select item to update ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
                 AssetUpdateForm f3 = new AssetUpdateForm();
@@ -92,7 +110,7 @@ namespace ITAsset
 
         private void otherForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Show();
+            GetDataInformation();
         }
 
         private void searchTxt_TextChanged(object sender, EventArgs e)
@@ -108,6 +126,34 @@ namespace ITAsset
             searchTxt.Focus();
         }
 
-        
+        private void toArchiveBtn_Click(object sender, EventArgs e)
+        {
+            if (ValueForText1 == "")
+                MessageBox.Show("Please select item to send to Archive ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                DialogResult res = MessageBox.Show("Do you want to send this item to archive ?\r\nOnce sent it can't be undone", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
+                    SqlConnection conn = new SqlConnection(strConn);
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE [AssetView] SET Archive = 1  WHERE AssetID=@id", conn);
+                    cmd.Parameters.AddWithValue("@id", Convert.ToInt32(ValueForText1));
+                    cmd.ExecuteReader();
+                    conn.Close();
+                    GetDataInformation();
+                    ValueForText1 = "";
+                }
+            }
+        }
+
+        private void archiveBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            archiveFrm f4 = new archiveFrm();
+            f4.FormClosed += new FormClosedEventHandler(otherForm_FormClosed);
+            f4.ShowDialog();
+            
+        }
     }
 }
