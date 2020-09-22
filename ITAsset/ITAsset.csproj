@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ITAsset</RootNamespace>
     <AssemblyName>ITAsset</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -152,6 +153,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="staffFrm.resx">
       <DependentUpon>staffFrm.cs</DependentUpon>
@@ -181,6 +183,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\password icon.jfif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\username icon.jfif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_male_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\purchase_order_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\autograph_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gps_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gps_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ggps_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\procurement_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\company_assets_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\company_assets_50px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\company_assets_50px2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\identification_documents_24px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
