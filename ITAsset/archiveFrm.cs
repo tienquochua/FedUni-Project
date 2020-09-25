@@ -17,13 +17,29 @@ namespace ITAsset
         string strConn;
         database objDTB;
         DataTable assetTable;
+        int curRow;
+
+        public static string IDValue = "";
         public archiveFrm()
         {
             InitializeComponent();
             strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
             objDTB = new database(strConn);
         }
-        private void archiveFrm_Load(object sender, EventArgs e)
+        private void LoadTheme()
+        {
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = Color.FromArgb(255, 0, 0);
+                    btn.ForeColor = Color.White;
+                }
+            }
+
+        }
+        public void GetDataInformation()
         {
             assetTable = objDTB.ReadData("SELECT av.AssetID AS 'Item No.', av.AssetName AS 'Item', av.PurchaseDate AS 'Purchase Date', v.VendorName AS 'Vendor', av.PurchaseLocation AS 'Purchase Location', av.Status, av.LeaseAgreement AS 'Lease Agreement', av.LastUpdate AS 'Last Update', u.FullName AS 'Responsible Staff', u.Email " +
               "FROM [AssetView] av " +
@@ -31,6 +47,12 @@ namespace ITAsset
               "INNER JOIN [User] u ON av.UserID = u.UserID " +
               "WHERE av.Archive = 1");
             dataGridView1.DataSource = assetTable;
+        }
+
+        private void archiveFrm_Load(object sender, EventArgs e)
+        {
+            LoadTheme();
+            GetDataInformation();
             dataGridView1.Rows[0].Selected = false;
             dataGridView1.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns[7].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
@@ -40,7 +62,16 @@ namespace ITAsset
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
-
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                curRow = e.RowIndex;
+                DataGridViewRow row = dataGridView1.Rows[curRow];
+                IDValue = row.Cells[0].Value.ToString();
+            }
+            catch (Exception) { }
+        }
         private void searchTxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = assetTable.DefaultView;
@@ -54,6 +85,27 @@ namespace ITAsset
             searchTxt.Focus();
         }
 
-        
+        private void toAssetBtn_Click(object sender, EventArgs e)
+        {
+            if (IDValue == "")
+                MessageBox.Show("Please select item to send to Asset Menu ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                DialogResult res = MessageBox.Show("Do you want to send this item to Asset Menu ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
+                    SqlConnection conn = new SqlConnection(strConn);
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE [AssetView] SET Archive = 0  WHERE AssetID=@id", conn);
+                    cmd.Parameters.AddWithValue("@id", Convert.ToInt32(IDValue));
+                    cmd.ExecuteReader();
+                    conn.Close();
+                    GetDataInformation();
+                    IDValue = "";
+                }
+            }
+        }
+
+       
     }
 }

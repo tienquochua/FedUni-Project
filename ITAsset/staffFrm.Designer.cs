@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.searchTxt = new System.Windows.Forms.TextBox();
             this.searchCbb = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -44,9 +45,10 @@
             // addBtn
             // 
             this.addBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.addBtn.Location = new System.Drawing.Point(247, 358);
+            this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addBtn.Location = new System.Drawing.Point(350, 358);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(100, 52);
+            this.addBtn.Size = new System.Drawing.Size(112, 52);
             this.addBtn.TabIndex = 11;
             this.addBtn.Text = "Add Staff ";
             this.addBtn.UseVisualStyleBackColor = true;
@@ -55,7 +57,8 @@
             // updateBtn
             // 
             this.updateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateBtn.Location = new System.Drawing.Point(374, 358);
+            this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateBtn.Location = new System.Drawing.Point(480, 357);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(95, 52);
             this.updateBtn.TabIndex = 9;
@@ -74,21 +77,22 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataGridView1.Location = new System.Drawing.Point(35, 76);
+            this.dataGridView1.Location = new System.Drawing.Point(23, 76);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(551, 276);
+            this.dataGridView1.Size = new System.Drawing.Size(660, 276);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // deleteBtn
             // 
             this.deleteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteBtn.Location = new System.Drawing.Point(495, 358);
+            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteBtn.Location = new System.Drawing.Point(592, 357);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(91, 52);
             this.deleteBtn.TabIndex = 12;
@@ -100,63 +104,84 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.searchTxt);
             this.groupBox1.Controls.Add(this.searchCbb);
-            this.groupBox1.Location = new System.Drawing.Point(35, 14);
+            this.groupBox1.Location = new System.Drawing.Point(23, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(551, 56);
+            this.groupBox1.Size = new System.Drawing.Size(660, 56);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(380, 24);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(452, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 17);
+            this.label3.Size = new System.Drawing.Size(41, 25);
             this.label3.TabIndex = 10;
             this.label3.Text = "By:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 22);
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(10, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 17);
+            this.label1.Size = new System.Drawing.Size(81, 25);
             this.label1.TabIndex = 9;
             this.label1.Text = "Search:";
             // 
             // searchTxt
             // 
-            this.searchTxt.Location = new System.Drawing.Point(73, 21);
+            this.searchTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.searchTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchTxt.ForeColor = System.Drawing.SystemColors.Control;
+            this.searchTxt.Location = new System.Drawing.Point(133, 23);
             this.searchTxt.Name = "searchTxt";
-            this.searchTxt.Size = new System.Drawing.Size(285, 22);
+            this.searchTxt.Size = new System.Drawing.Size(285, 20);
             this.searchTxt.TabIndex = 8;
+            this.searchTxt.Text = "Enter text here";
             this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
             // 
             // searchCbb
             // 
             this.searchCbb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.searchCbb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searchCbb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchCbb.FormattingEnabled = true;
             this.searchCbb.Items.AddRange(new object[] {
             "Staff Name",
             "Username",
             "Email"});
-            this.searchCbb.Location = new System.Drawing.Point(414, 21);
+            this.searchCbb.Location = new System.Drawing.Point(512, 20);
             this.searchCbb.Name = "searchCbb";
-            this.searchCbb.Size = new System.Drawing.Size(121, 24);
+            this.searchCbb.Size = new System.Drawing.Size(142, 28);
             this.searchCbb.TabIndex = 7;
             this.searchCbb.SelectedIndexChanged += new System.EventHandler(this.searchCbb_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Location = new System.Drawing.Point(133, 45);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(285, 1);
+            this.panel1.TabIndex = 11;
             // 
             // staffFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(611, 421);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.ClientSize = new System.Drawing.Size(695, 421);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.addBtn);
@@ -184,5 +209,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox searchTxt;
         private System.Windows.Forms.ComboBox searchCbb;
+        private System.Windows.Forms.Panel panel1;
     }
 }

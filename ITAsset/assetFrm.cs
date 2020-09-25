@@ -40,9 +40,8 @@ namespace ITAsset
                 if (btns.GetType() == typeof(Button))
                 {
                     Button btn = (Button)btns;
-                    btn.BackColor = Theme.PrimColor;
+                    btn.BackColor = Color.FromArgb(30, 144, 255);
                     btn.ForeColor = Color.White;
-                    btn.FlatAppearance.BorderColor = Theme.SecColor;
                 }
             }
 
@@ -132,7 +131,7 @@ namespace ITAsset
                 MessageBox.Show("Please select item to send to Archive ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
-                DialogResult res = MessageBox.Show("Do you want to send this item to archive ?\r\nOnce sent it can't be undone", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult res = MessageBox.Show("Do you want to send this item to Archive ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
                 {
                     SqlConnection conn = new SqlConnection(strConn);

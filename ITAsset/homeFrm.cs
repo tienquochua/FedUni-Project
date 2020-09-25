@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,6 +27,12 @@ namespace ITAsset
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             panelMenu.Controls.Add(leftBorderBtn);
+            //Form
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            // Reduce flicker in Form graphic
+            this.DoubleBuffered = true;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
         // Form Style 1
        /* private Color SelectThemeColor()
@@ -95,6 +102,9 @@ namespace ITAsset
                     leftBorderBtn.Location = new Point(0, curBtn.Location.Y);
                     leftBorderBtn.Visible = true;
                     leftBorderBtn.BringToFront();
+                    //Icon Current Child Form
+                    iconCurChildFrm.IconChar = curBtn.IconChar;
+                    iconCurChildFrm.IconColor = color;
                 }
             }
         }
@@ -121,8 +131,8 @@ namespace ITAsset
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            panelChild.Controls.Add(childForm);
-            panelChild.Tag = childForm;
+            panelDesktop.Controls.Add(childForm);
+            panelDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
             lbTitle.Text = childForm.Text;
@@ -156,11 +166,12 @@ namespace ITAsset
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.Application.Exit();
+            Application.Exit();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
+            activeForm.Close();
             reset();
         }
 
@@ -168,6 +179,37 @@ namespace ITAsset
         {
             DisableButton();
             leftBorderBtn.Visible = false;
+            iconCurChildFrm.IconChar = IconChar.Home;
+            iconCurChildFrm.IconColor = Color.MediumPurple;
+            lbTitle.Text = "Home";
+        }
+        //Drag Form
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -33,9 +33,8 @@ namespace ITAsset
                 if (btns.GetType() == typeof(Button))
                 {
                     Button btn = (Button)btns;
-                    btn.BackColor = Theme.PrimColor;
+                    btn.BackColor = Color.FromArgb(255, 165, 0);
                     btn.ForeColor = Color.White;
-                    btn.FlatAppearance.BorderColor = Theme.SecColor;
                 }
             }
 
