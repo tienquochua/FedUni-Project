@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Runtime.InteropServices;
+
 namespace ITAsset
 {
     public partial class loginFrm : Form
@@ -22,7 +24,8 @@ namespace ITAsset
         public loginFrm()
         {
             InitializeComponent();
-            txtPassword.UseSystemPasswordChar = true;
+            this.Text = string.Empty;
+            this.ControlBox = false;
             txtUsername.MaxLength = 20;
             txtPassword.MaxLength = 20;
             strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
@@ -40,7 +43,7 @@ namespace ITAsset
             cmd1.Parameters.AddWithValue("@uname", txtUsername.Text);
             cmd1.Parameters.AddWithValue("@pass", password);
             
-            if (txtUsername.Text == "" || txtPassword.Text == "")
+            if (txtUsername.Text == "Username" || txtPassword.Text == "Password" || txtUsername.Text == "" || txtPassword.Text == "")
             {
                 MessageBox.Show("Insert username and password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtUsername.Focus();
@@ -86,6 +89,22 @@ namespace ITAsset
         private void loginFrm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
+        }
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text != "Password")
+                txtPassword.UseSystemPasswordChar = true;
+        }
+        //Drag Form
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void loginFrm_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

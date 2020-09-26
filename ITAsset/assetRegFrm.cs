@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using Syncfusion.WinForms.Themes;
 
 
 namespace ITAsset
@@ -26,7 +27,8 @@ namespace ITAsset
             objDTB = new database(strConn);
             itemNameTxt.MaxLength = 50;
             purLocationTxt.MaxLength = 70;
-
+            
+           
         }
         private void assetRegFrm_Activated(object sender, EventArgs e)
         {
@@ -37,7 +39,7 @@ namespace ITAsset
             vendorCbb.DisplayMember = "VendorName";
             vendorCbb.ValueMember = "VendorID";
             vendorCbb.SelectedIndex = -1;
-            vendorCbb.DropDownStyle = ComboBoxStyle.DropDownList;
+            //vendorCbb.DropDownStyle = ComboBoxStyle.DropDownList;
             statusCbb.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
@@ -99,7 +101,5 @@ namespace ITAsset
             vendorRegFrm f2 = new vendorRegFrm();
             f2.ShowDialog();
         }
-
-
     }
 }

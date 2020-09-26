@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace ITAsset
 {
@@ -33,50 +34,59 @@ namespace ITAsset
             // Reduce flicker in Form graphic
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            //Timer
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+        }
+        void timer_Tick(object sender, EventArgs e)
+        {
+            lblTimer.Text = DateTime.Now.ToLongTimeString();
         }
         // Form Style 1
-       /* private Color SelectThemeColor()
-         {
-             int index = random.Next(Theme.ColorList.Count);
-             while (tempIndex == index)
-             {
-                 index = random.Next(Theme.ColorList.Count);
-             }
-             tempIndex = index;
-             string color = Theme.ColorList[index];
-             return ColorTranslator.FromHtml(color);
-         }*/
-         /*private void ActivateButton(object btnSender)
-         {
-             if(btnSender !=null)
-             {
-                 if(curBut != (Button)btnSender)
-                 {
-                     DisableButton();
-                     Color color = SelectThemeColor();
-                     curBut = (Button)btnSender;
-                     curBut.BackColor = color;
-                     curBut.ForeColor = Color.White;
-                     curBut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                     panelTitleBar.BackColor = color;
-                     panelLogo.BackColor = Theme.ChangeColorBrightness(color, -0.3);
-                     Theme.PrimColor = color;
-                     Theme.SecColor = Theme.ChangeColorBrightness(color, -0.3);
-                 }
-             }
-         }
-         private void DisableButton()
-         {
-             foreach(Control previousBtn in panelMenu.Controls)
-             {
-                 if(previousBtn.GetType() == typeof(Button))
-                 {
-                     previousBtn.BackColor = Color.FromArgb(51, 51, 76);
-                     previousBtn.ForeColor = Color.Gainsboro;
-                     previousBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                 }
-             }
-         }*/
+        /* private Color SelectThemeColor()
+          {
+              int index = random.Next(Theme.ColorList.Count);
+              while (tempIndex == index)
+              {
+                  index = random.Next(Theme.ColorList.Count);
+              }
+              tempIndex = index;
+              string color = Theme.ColorList[index];
+              return ColorTranslator.FromHtml(color);
+          }*/
+        /*private void ActivateButton(object btnSender)
+        {
+            if(btnSender !=null)
+            {
+                if(curBut != (Button)btnSender)
+                {
+                    DisableButton();
+                    Color color = SelectThemeColor();
+                    curBut = (Button)btnSender;
+                    curBut.BackColor = color;
+                    curBut.ForeColor = Color.White;
+                    curBut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    panelTitleBar.BackColor = color;
+                    panelLogo.BackColor = Theme.ChangeColorBrightness(color, -0.3);
+                    Theme.PrimColor = color;
+                    Theme.SecColor = Theme.ChangeColorBrightness(color, -0.3);
+                }
+            }
+        }
+        private void DisableButton()
+        {
+            foreach(Control previousBtn in panelMenu.Controls)
+            {
+                if(previousBtn.GetType() == typeof(Button))
+                {
+                    previousBtn.BackColor = Color.FromArgb(51, 51, 76);
+                    previousBtn.ForeColor = Color.Gainsboro;
+                    previousBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                }
+            }
+        }*/
         private struct RBGColors
         {
             public static Color color1 = Color.FromArgb(30, 144, 255);
@@ -117,7 +127,7 @@ namespace ITAsset
                 curBtn.TextAlign = ContentAlignment.MiddleLeft;
                 curBtn.IconColor = Color.Gainsboro;
                 curBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-                curBtn.ImageAlign = ContentAlignment.MiddleRight;
+                curBtn.ImageAlign = ContentAlignment.MiddleLeft;
             }
         }
         private void OpenChildForm(Form childForm, object btnSender)
@@ -126,7 +136,6 @@ namespace ITAsset
             {
                 activeForm.Close();
             }
-            
             activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;

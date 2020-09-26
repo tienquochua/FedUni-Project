@@ -28,8 +28,10 @@ namespace ITAsset
             SqlDataReader dr = null;
             
             conn.Open();
-            SqlCommand cmd1 = new SqlCommand("SELECT * FROM [Vendor] WHERE VendorName = '" + vendorTxt.Text + "'", conn);
-            SqlCommand cmd2 = new SqlCommand("INSERT INTO [Vendor] (VendorName) VALUES ('" + vendorTxt.Text + "' ) ; ", conn);
+            SqlCommand cmd1 = new SqlCommand("SELECT * FROM [Vendor] WHERE VendorName = @vendor", conn);
+            cmd1.Parameters.AddWithValue("@vendor", vendorTxt.Text);
+            SqlCommand cmd2 = new SqlCommand("INSERT INTO [Vendor] (VendorName) VALUES (@vendor) ", conn);
+            cmd2.Parameters.AddWithValue("@vendor", vendorTxt.Text);
             dr = cmd1.ExecuteReader();
             if (dr.HasRows)
             {

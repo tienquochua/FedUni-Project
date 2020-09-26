@@ -35,9 +35,9 @@
             this.searchCbb = new System.Windows.Forms.ComboBox();
             this.searchTxt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +59,7 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(702, 275);
+            this.dataGridView1.Size = new System.Drawing.Size(635, 275);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -68,7 +68,7 @@
             this.updateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.updateBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateBtn.Location = new System.Drawing.Point(489, 365);
+            this.updateBtn.Location = new System.Drawing.Point(422, 365);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(75, 44);
             this.updateBtn.TabIndex = 3;
@@ -81,7 +81,7 @@
             this.toArchiveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.toArchiveBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.toArchiveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toArchiveBtn.Location = new System.Drawing.Point(585, 365);
+            this.toArchiveBtn.Location = new System.Drawing.Point(518, 365);
             this.toArchiveBtn.Name = "toArchiveBtn";
             this.toArchiveBtn.Size = new System.Drawing.Size(131, 44);
             this.toArchiveBtn.TabIndex = 4;
@@ -94,7 +94,7 @@
             this.registerBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.registerBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.registerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerBtn.Location = new System.Drawing.Point(345, 365);
+            this.registerBtn.Location = new System.Drawing.Point(278, 365);
             this.registerBtn.Name = "registerBtn";
             this.registerBtn.Size = new System.Drawing.Size(120, 44);
             this.registerBtn.TabIndex = 6;
@@ -105,6 +105,7 @@
             // searchCbb
             // 
             this.searchCbb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.searchCbb.DropDownWidth = 130;
             this.searchCbb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchCbb.FormattingEnabled = true;
             this.searchCbb.Items.AddRange(new object[] {
@@ -114,7 +115,7 @@
             "Status"});
             this.searchCbb.Location = new System.Drawing.Point(502, 23);
             this.searchCbb.Name = "searchCbb";
-            this.searchCbb.Size = new System.Drawing.Size(121, 28);
+            this.searchCbb.Size = new System.Drawing.Size(121, 25);
             this.searchCbb.TabIndex = 7;
             this.searchCbb.SelectedIndexChanged += new System.EventHandler(this.searchCbb_SelectedIndexChanged);
             // 
@@ -126,7 +127,7 @@
             this.searchTxt.ForeColor = System.Drawing.SystemColors.Control;
             this.searchTxt.Location = new System.Drawing.Point(110, 26);
             this.searchTxt.Name = "searchTxt";
-            this.searchTxt.Size = new System.Drawing.Size(302, 20);
+            this.searchTxt.Size = new System.Drawing.Size(302, 16);
             this.searchTxt.TabIndex = 8;
             this.searchTxt.Text = "Enter name here";
             this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
@@ -142,9 +143,17 @@
             this.groupBox1.Controls.Add(this.searchCbb);
             this.groupBox1.Location = new System.Drawing.Point(14, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(702, 56);
+            this.groupBox1.Size = new System.Drawing.Size(635, 56);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Location = new System.Drawing.Point(110, 45);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(302, 1);
+            this.panel1.TabIndex = 11;
             // 
             // label3
             // 
@@ -153,7 +162,7 @@
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
             this.label3.Location = new System.Drawing.Point(455, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 25);
+            this.label3.Size = new System.Drawing.Size(31, 20);
             this.label3.TabIndex = 10;
             this.label3.Text = "By:";
             // 
@@ -164,24 +173,16 @@
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(6, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 25);
+            this.label1.Size = new System.Drawing.Size(64, 20);
             this.label1.TabIndex = 9;
             this.label1.Text = "Search:";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(110, 45);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(302, 1);
-            this.panel1.TabIndex = 11;
             // 
             // assetFrm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.ClientSize = new System.Drawing.Size(732, 421);
+            this.ClientSize = new System.Drawing.Size(665, 421);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.registerBtn);
             this.Controls.Add(this.toArchiveBtn);

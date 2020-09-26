@@ -33,7 +33,7 @@ namespace ITAsset
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "dd-MM-yyyy";
             itemID.Text = assetFrm.ValueForText1;
-            itemTxt.Text = assetFrm.ValueForText2;
+            itemNameTxt.Text = assetFrm.ValueForText2;
             dateTimePicker1.Value = DateTime.Parse(assetFrm.ValueForText3);
             purLocationTxt.Text = assetFrm.ValueForText5;
             vendorCbb.SelectedIndex = vendorCbb.FindStringExact(assetFrm.ValueForText4);
@@ -46,7 +46,7 @@ namespace ITAsset
        
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            if (itemTxt.Text == "" || vendorCbb.Text == "" || statusCbb.Text == "" || purLocationTxt.Text == "")
+            if (itemNameTxt.Text == "" || vendorCbb.Text == "" || statusCbb.Text == "" || purLocationTxt.Text == "")
                 MessageBox.Show("Please enter all the detail");
             else
             {
@@ -54,7 +54,7 @@ namespace ITAsset
                 SqlDataReader dr = null;
                 conn.Open();
                 SqlCommand cmd1 = new SqlCommand("SELECT * FROM [AssetView] WHERE VendorID=@vid AND AssetName= @aname AND PurchaseDate=@purdate AND PurchaseLocation=@purloc AND Status=@status AND LeaseAgreement=@agreement  ", conn);
-                cmd1.Parameters.AddWithValue("@aname", itemTxt.Text);
+                cmd1.Parameters.AddWithValue("@aname", itemNameTxt.Text);
                 cmd1.Parameters.AddWithValue("@vid", vendorCbb.SelectedValue);
                 cmd1.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
                 cmd1.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
@@ -62,7 +62,7 @@ namespace ITAsset
                 cmd1.Parameters.AddWithValue("@agreement", txtAgreement.Text);
                 SqlCommand cmd2 = new SqlCommand("UPDATE [AssetView] SET VendorID=@vid, AssetName=@aname, PurchaseDate=@purdate, PurchaseLocation=@purloc, Status=@status, LeaseAgreement=@agreement, LastUpdate=@lastup, UserID=@uid  WHERE AssetID=@id", conn);
                 cmd2.Parameters.AddWithValue("@id", itemID.Text);
-                cmd2.Parameters.AddWithValue("@aname", itemTxt.Text);
+                cmd2.Parameters.AddWithValue("@aname", itemNameTxt.Text);
                 cmd2.Parameters.AddWithValue("@vid", vendorCbb.SelectedValue);
                 cmd2.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
                 cmd2.Parameters.AddWithValue("@purloc", purLocationTxt.Text);
@@ -100,7 +100,5 @@ namespace ITAsset
             vendorRegFrm f2 = new vendorRegFrm();
             f2.ShowDialog();
         }
-
-
     }
 }

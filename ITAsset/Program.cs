@@ -23,7 +23,7 @@ namespace ITAsset
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new loginFrm());
+                    Application.Run(new homeFrm());
                     mtex.ReleaseMutex();
                 }
                 else
