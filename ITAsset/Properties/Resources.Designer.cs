@@ -103,6 +103,16 @@ namespace ITAsset.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Email_Open_48px {
+            get {
+                object obj = ResourceManager.GetObject("Email Open_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ggps_30px {
             get {
                 object obj = ResourceManager.GetObject("ggps_30px", resourceCulture);
@@ -126,6 +136,16 @@ namespace ITAsset.Properties {
         internal static System.Drawing.Bitmap gps_50px {
             get {
                 object obj = ResourceManager.GetObject("gps_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap id_not_verified_50px {
+            get {
+                object obj = ResourceManager.GetObject("id_not_verified_50px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

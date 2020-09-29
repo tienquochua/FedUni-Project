@@ -81,5 +81,20 @@ namespace ITAsset
         {
             if (e.KeyCode == Keys.Enter) saveBtn_Click(sender, e);
         }
+
+        private void staffRegFrm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

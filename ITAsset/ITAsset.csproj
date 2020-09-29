@@ -229,5 +229,11 @@
   <ItemGroup>
     <None Include="Resources\identification_documents_24px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Email Open_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id_not_verified_50px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
