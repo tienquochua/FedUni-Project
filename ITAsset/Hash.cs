@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ITAsset
 {
-    class MD5
+    class Hash
     {
-        public string encrypt(String password)
+        public string md5(String password)
         {
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
             byte[] encrypt;

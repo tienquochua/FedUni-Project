@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Runtime.InteropServices;
+using ITAsset.Entity;
 
 namespace ITAsset
 {
@@ -18,9 +18,7 @@ namespace ITAsset
         public static int staffIDValue;
         public static string authValue = "";
         string strConn;
-        database objDTB;
-        DataTable userTable;
-        MD5 md5Encryption;
+        Hash hash;
         public loginFrm()
         {
             InitializeComponent();
@@ -29,20 +27,51 @@ namespace ITAsset
             txtUsername.MaxLength = 20;
             txtPassword.MaxLength = 20;
             strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
-            objDTB = new database(strConn);
-            md5Encryption = new MD5();
+            hash = new Hash();
+        }
+        private void Login()
+        {
+            User user = FindUser(txtUsername.Text, txtPassword.Text);
+            if (user.UserID > 0)
+            {
+                staffIDValue = user.UserID;
+                authValue = user.Authentication;
+                this.Hide();
+
+                homeFrm f1 = new homeFrm();
+                f1.FormClosed += new FormClosedEventHandler(loginFrm_FormClosed);
+                f1.ShowDialog();
+
+                return;
+            }
+
+            MessageBox.Show("Username or Password is incorrect!\r\nPlease contact ithelpdesk@atmc.edu.au for access.", "Login Fail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            txtPassword.Clear();
+        }
+
+        private User FindUser(string username, string password)
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+
+            SqlCommand cmd1 = new SqlCommand("SELECT UserID, Authentication FROM [User] where Username=@uname and Password=@pass ", conn);
+            cmd1.Parameters.AddWithValue("@uname", username);
+            cmd1.Parameters.AddWithValue("@pass", hash.md5(password));
+            SqlDataReader dr = cmd1.ExecuteReader(CommandBehavior.SingleRow);
+            User user = new User();
+            if (dr.Read())
+            {
+                user.UserID = Convert.ToInt32(dr["UserID"]);
+                user.Authentication = dr["Authentication"].ToString();
+            }
+
+            conn.Close();
+
+            return user;
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(strConn);
-            SqlDataReader dr = null;
-            string password = md5Encryption.encrypt(txtPassword.Text);
-            conn.Open();
-            SqlCommand cmd1 = new SqlCommand("SELECT * FROM [User] where Username=@uname and Password=@pass ", conn);
-            cmd1.Parameters.AddWithValue("@uname", txtUsername.Text);
-            cmd1.Parameters.AddWithValue("@pass", password);
-            
             if (txtUsername.Text == "Username" || txtPassword.Text == "Password" || txtUsername.Text == "" || txtPassword.Text == "")
             {
                 MessageBox.Show("Insert username and password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -50,23 +79,7 @@ namespace ITAsset
             }
             else
             {
-                dr = cmd1.ExecuteReader();
-                if (dr.HasRows)
-                {
-                    conn.Close();
-                    userTable = objDTB.ReadData("SELECT UserID, Authentication FROM [User] where Username ='" + txtUsername.Text + "'");
-                    staffIDValue = Convert.ToInt32(userTable.Rows[0][0]);
-                    authValue = userTable.Rows[0][1].ToString();
-                    this.Hide();
-                    homeFrm f1 = new homeFrm();
-                    f1.FormClosed += new FormClosedEventHandler(loginFrm_FormClosed);
-                    f1.ShowDialog();
-                }
-                else MessageBox.Show("Username or Password is incorrect!\r\nPlease contact ithelpdesk@atmc.edu.au for access.", "Login Fail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtUsername.Clear();
-                txtPassword.Clear();
-                txtUsername.Focus();
-
+                Login();
             }
         }
 
@@ -95,16 +108,11 @@ namespace ITAsset
             if (txtPassword.Text != "Password")
                 txtPassword.UseSystemPasswordChar = true;
         }
-        //Drag Form
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         private void loginFrm_MouseDown(object sender, MouseEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            DragForm.ReleaseCapture();
+            DragForm.SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

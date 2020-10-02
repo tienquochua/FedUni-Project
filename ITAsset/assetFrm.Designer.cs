@@ -115,7 +115,7 @@
             "Status"});
             this.searchCbb.Location = new System.Drawing.Point(502, 23);
             this.searchCbb.Name = "searchCbb";
-            this.searchCbb.Size = new System.Drawing.Size(121, 25);
+            this.searchCbb.Size = new System.Drawing.Size(121, 28);
             this.searchCbb.TabIndex = 7;
             this.searchCbb.SelectedIndexChanged += new System.EventHandler(this.searchCbb_SelectedIndexChanged);
             // 
@@ -127,7 +127,7 @@
             this.searchTxt.ForeColor = System.Drawing.SystemColors.Control;
             this.searchTxt.Location = new System.Drawing.Point(110, 26);
             this.searchTxt.Name = "searchTxt";
-            this.searchTxt.Size = new System.Drawing.Size(302, 16);
+            this.searchTxt.Size = new System.Drawing.Size(302, 20);
             this.searchTxt.TabIndex = 8;
             this.searchTxt.Text = "Enter name here";
             this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
@@ -162,7 +162,7 @@
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
             this.label3.Location = new System.Drawing.Point(455, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 20);
+            this.label3.Size = new System.Drawing.Size(41, 25);
             this.label3.TabIndex = 10;
             this.label3.Text = "By:";
             // 
@@ -173,7 +173,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(6, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 20);
+            this.label1.Size = new System.Drawing.Size(81, 25);
             this.label1.TabIndex = 9;
             this.label1.Text = "Search:";
             // 
@@ -190,7 +190,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "assetFrm";
             this.Text = "Asset Viewing";
-            this.Activated += new System.EventHandler(this.assetFrm_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.otherForm_FormClosed);
             this.Load += new System.EventHandler(this.assetFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

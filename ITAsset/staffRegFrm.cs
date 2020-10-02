@@ -9,25 +9,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
 
 namespace ITAsset
 {
     public partial class staffRegFrm : Form
     {
         string strConn;
-        MD5 md5Encryption;
+        Hash md5Encryption;
 
         public staffRegFrm()
         {
             InitializeComponent();
             strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
-            txtPassword.UseSystemPasswordChar = true;
             txtUsername.MaxLength = 20;
             txtPassword.MaxLength = 20;
             cbbAuth.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbAuth.SelectedIndex = 0;
-            md5Encryption = new MD5();
+            md5Encryption = new Hash();
 
         }
 
@@ -41,7 +39,7 @@ namespace ITAsset
                 SqlConnection conn = new SqlConnection(strConn);
                 SqlDataReader dr = null;
                 //hash password using MD5 encryption
-                string passwords = md5Encryption.encrypt(txtPassword.Text);
+                string passwords = md5Encryption.md5(txtPassword.Text);
                 conn.Open();
                 SqlCommand cmd1 = new SqlCommand("SELECT Username FROM [User] WHERE Username=@username", conn);
                 cmd1.Parameters.AddWithValue("@username", txtUsername.Text);
@@ -80,6 +78,17 @@ namespace ITAsset
         private void staffRegFrm_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) saveBtn_Click(sender, e);
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text != "Enter Password")
+                txtPassword.UseSystemPasswordChar = true;
+        }
+        private void staffRegFrm_MouseDown(object sender, MouseEventArgs e)
+        {
+            DragForm.ReleaseCapture();
+            DragForm.SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

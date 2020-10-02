@@ -15,11 +15,8 @@ namespace ITAsset
 {
     public partial class homeFrm : Form
     {
-        //private Button curBtn;
         private IconButton curBtn;
         private Panel leftBorderBtn;
-        private Random random;
-        private int tempIndex;
         private Form activeForm;
         public homeFrm()
         {
@@ -44,49 +41,6 @@ namespace ITAsset
         {
             lblTimer.Text = DateTime.Now.ToLongTimeString();
         }
-        // Form Style 1
-        /* private Color SelectThemeColor()
-          {
-              int index = random.Next(Theme.ColorList.Count);
-              while (tempIndex == index)
-              {
-                  index = random.Next(Theme.ColorList.Count);
-              }
-              tempIndex = index;
-              string color = Theme.ColorList[index];
-              return ColorTranslator.FromHtml(color);
-          }*/
-        /*private void ActivateButton(object btnSender)
-        {
-            if(btnSender !=null)
-            {
-                if(curBut != (Button)btnSender)
-                {
-                    DisableButton();
-                    Color color = SelectThemeColor();
-                    curBut = (Button)btnSender;
-                    curBut.BackColor = color;
-                    curBut.ForeColor = Color.White;
-                    curBut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                    panelTitleBar.BackColor = color;
-                    panelLogo.BackColor = Theme.ChangeColorBrightness(color, -0.3);
-                    Theme.PrimColor = color;
-                    Theme.SecColor = Theme.ChangeColorBrightness(color, -0.3);
-                }
-            }
-        }
-        private void DisableButton()
-        {
-            foreach(Control previousBtn in panelMenu.Controls)
-            {
-                if(previousBtn.GetType() == typeof(Button))
-                {
-                    previousBtn.BackColor = Color.FromArgb(51, 51, 76);
-                    previousBtn.ForeColor = Color.Gainsboro;
-                    previousBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                }
-            }
-        }*/
         private struct RBGColors
         {
             public static Color color1 = Color.FromArgb(30, 144, 255);
@@ -181,10 +135,10 @@ namespace ITAsset
         private void btnHome_Click(object sender, EventArgs e)
         {
             activeForm.Close();
-            reset();
+            Reset();
         }
 
-        private void reset()
+        private void Reset()
         {
             DisableButton();
             leftBorderBtn.Visible = false;

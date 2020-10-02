@@ -51,14 +51,6 @@ namespace ITAsset
             LoadTheme();
             GetDataInformation();
             searchCbb.SelectedIndex = 0;
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
-            {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-        }
-        private void staffFrm_Activated(object sender, EventArgs e)
-        {
-            
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -68,7 +60,8 @@ namespace ITAsset
                 DataGridViewRow row = dataGridView1.Rows[curRow];
                 IDValue = row.Cells[0].Value.ToString();
             }
-            catch (Exception) { }
+            catch (Exception) { };
+            
         }
         private void searchTxt_TextChanged(object sender, EventArgs e)
         {

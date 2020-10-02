@@ -18,13 +18,13 @@ namespace ITAsset
         DataTable staffTable;
         string strConn;
         database objDTB;
-        MD5 md5Encryption;
+        Hash md5Encryption;
         public staffUpdateFrm()
         {
             InitializeComponent();
             strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
             objDTB = new database(strConn);
-            md5Encryption = new MD5();
+            md5Encryption = new Hash();
         }
 
         private void staffUpdateFrm_Activated(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace ITAsset
         {
             SqlConnection conn = new SqlConnection(strConn);
             SqlDataReader dr = null;
-            string passwords = md5Encryption.encrypt(txtPassword.Text);
+            string passwords = md5Encryption.md5(txtPassword.Text);
             SqlCommand cmd1 = new SqlCommand("SELECT * FROM [User] WHERE FullName=@name AND Authentication=@authentication AND Email=@email  ", conn);
             cmd1.Parameters.AddWithValue("@name", txtName.Text);
             cmd1.Parameters.AddWithValue("@authentication", cbbAuth.SelectedItem);
@@ -96,6 +96,17 @@ namespace ITAsset
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text != "Enter New Password")
+                txtPassword.UseSystemPasswordChar = true;
+        }
+        private void staffUpdateFrm_MouseDown(object sender, MouseEventArgs e)
+        {
+            DragForm.ReleaseCapture();
+            DragForm.SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }
