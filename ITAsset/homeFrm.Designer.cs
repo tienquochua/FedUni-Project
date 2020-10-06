@@ -66,7 +66,7 @@
             this.lbTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(58, 20);
-            this.lbTitle.TabIndex = 1;
+            this.lbTitle.TabIndex = 0;
             this.lbTitle.Text = "Home";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -104,7 +104,7 @@
             this.btnLogout.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnLogout.Rotation = 0D;
             this.btnLogout.Size = new System.Drawing.Size(220, 60);
-            this.btnLogout.TabIndex = 9;
+            this.btnLogout.TabIndex = 4;
             this.btnLogout.Text = "Log out";
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -129,7 +129,7 @@
             this.btnArchive.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnArchive.Rotation = 0D;
             this.btnArchive.Size = new System.Drawing.Size(220, 60);
-            this.btnArchive.TabIndex = 8;
+            this.btnArchive.TabIndex = 3;
             this.btnArchive.Text = "Archive";
             this.btnArchive.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnArchive.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -154,7 +154,7 @@
             this.btnStaff.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnStaff.Rotation = 0D;
             this.btnStaff.Size = new System.Drawing.Size(220, 60);
-            this.btnStaff.TabIndex = 7;
+            this.btnStaff.TabIndex = 2;
             this.btnStaff.Text = "Staff Management";
             this.btnStaff.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStaff.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -179,7 +179,7 @@
             this.btnAsset.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnAsset.Rotation = 0D;
             this.btnAsset.Size = new System.Drawing.Size(220, 60);
-            this.btnAsset.TabIndex = 2;
+            this.btnAsset.TabIndex = 1;
             this.btnAsset.Text = "Asset Management";
             this.btnAsset.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAsset.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -199,7 +199,7 @@
             this.exitBtn.Margin = new System.Windows.Forms.Padding(2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(220, 60);
-            this.exitBtn.TabIndex = 6;
+            this.exitBtn.TabIndex = 5;
             this.exitBtn.Text = "Exit";
             this.exitBtn.UseVisualStyleBackColor = true;
             this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
@@ -213,7 +213,7 @@
             this.panelLogo.Margin = new System.Windows.Forms.Padding(2);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(220, 118);
-            this.panelLogo.TabIndex = 1;
+            this.panelLogo.TabIndex = 0;
             // 
             // btnHome
             // 
@@ -239,8 +239,8 @@
             this.panelTitleBar.Location = new System.Drawing.Point(220, 0);
             this.panelTitleBar.Margin = new System.Windows.Forms.Padding(2);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(944, 80);
-            this.panelTitleBar.TabIndex = 6;
+            this.panelTitleBar.Size = new System.Drawing.Size(872, 80);
+            this.panelTitleBar.TabIndex = 0;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
             // btnMinimize
@@ -249,11 +249,11 @@
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
-            this.btnMinimize.Location = new System.Drawing.Point(824, 0);
+            this.btnMinimize.Location = new System.Drawing.Point(763, 0);
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(30, 30);
-            this.btnMinimize.TabIndex = 4;
+            this.btnMinimize.TabIndex = 0;
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
@@ -263,11 +263,11 @@
             this.btnMaximize.FlatAppearance.BorderSize = 0;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximize.Image")));
-            this.btnMaximize.Location = new System.Drawing.Point(860, 0);
+            this.btnMaximize.Location = new System.Drawing.Point(797, 0);
             this.btnMaximize.Margin = new System.Windows.Forms.Padding(2);
             this.btnMaximize.Name = "btnMaximize";
             this.btnMaximize.Size = new System.Drawing.Size(30, 30);
-            this.btnMaximize.TabIndex = 3;
+            this.btnMaximize.TabIndex = 0;
             this.btnMaximize.UseVisualStyleBackColor = true;
             this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
             // 
@@ -278,11 +278,11 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.SystemColors.Control;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(896, 0);
+            this.btnClose.Location = new System.Drawing.Point(831, 0);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(30, 30);
-            this.btnClose.TabIndex = 2;
+            this.btnClose.TabIndex = 0;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -307,7 +307,7 @@
             this.panelShadow.Location = new System.Drawing.Point(220, 80);
             this.panelShadow.Margin = new System.Windows.Forms.Padding(2);
             this.panelShadow.Name = "panelShadow";
-            this.panelShadow.Size = new System.Drawing.Size(944, 9);
+            this.panelShadow.Size = new System.Drawing.Size(872, 9);
             this.panelShadow.TabIndex = 3;
             // 
             // panelDesktop
@@ -320,8 +320,8 @@
             this.panelDesktop.Location = new System.Drawing.Point(220, 89);
             this.panelDesktop.Margin = new System.Windows.Forms.Padding(2);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(944, 509);
-            this.panelDesktop.TabIndex = 7;
+            this.panelDesktop.Size = new System.Drawing.Size(872, 509);
+            this.panelDesktop.TabIndex = 0;
             // 
             // lblTimer
             // 
@@ -329,7 +329,7 @@
             this.lblTimer.AutoSize = true;
             this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimer.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTimer.Location = new System.Drawing.Point(271, 218);
+            this.lblTimer.Location = new System.Drawing.Point(235, 218);
             this.lblTimer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTimer.Name = "lblTimer";
             this.lblTimer.Size = new System.Drawing.Size(60, 25);
@@ -342,7 +342,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(271, 177);
+            this.label1.Location = new System.Drawing.Point(235, 177);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(411, 25);
@@ -353,7 +353,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(166, 162);
+            this.pictureBox1.Location = new System.Drawing.Point(130, 162);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);
@@ -366,7 +366,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1164, 598);
+            this.ClientSize = new System.Drawing.Size(1092, 598);
             this.ControlBox = false;
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelShadow);
@@ -374,7 +374,7 @@
             this.Controls.Add(this.panelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(1179, 608);
+            this.MinimumSize = new System.Drawing.Size(900, 608);
             this.Name = "homeFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IT Register";

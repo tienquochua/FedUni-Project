@@ -1,6 +1,6 @@
 ﻿namespace ITAsset
 {
-    partial class AssetUpdateForm
+    partial class assetUpdateForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssetUpdateForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(assetUpdateForm));
             this.cancelBtn = new System.Windows.Forms.Button();
             this.updateBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,7 +68,7 @@
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(94, 44);
-            this.cancelBtn.TabIndex = 22;
+            this.cancelBtn.TabIndex = 9;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
@@ -80,7 +80,7 @@
             this.updateBtn.Margin = new System.Windows.Forms.Padding(2);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(94, 44);
-            this.updateBtn.TabIndex = 21;
+            this.updateBtn.TabIndex = 8;
             this.updateBtn.Text = "Update";
             this.updateBtn.UseVisualStyleBackColor = true;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
@@ -228,7 +228,7 @@
             this.txtAgreement.Multiline = true;
             this.txtAgreement.Name = "txtAgreement";
             this.txtAgreement.Size = new System.Drawing.Size(362, 158);
-            this.txtAgreement.TabIndex = 35;
+            this.txtAgreement.TabIndex = 7;
             this.txtAgreement.Text = "Lease Agreement ";
             this.txtAgreement.Click += new System.EventHandler(this.CurText_Click);
             // 
@@ -249,7 +249,7 @@
             this.vendorAddBtn.Margin = new System.Windows.Forms.Padding(2);
             this.vendorAddBtn.Name = "vendorAddBtn";
             this.vendorAddBtn.Size = new System.Drawing.Size(94, 31);
-            this.vendorAddBtn.TabIndex = 33;
+            this.vendorAddBtn.TabIndex = 5;
             this.vendorAddBtn.Text = "Add";
             this.vendorAddBtn.UseVisualStyleBackColor = true;
             this.vendorAddBtn.Click += new System.EventHandler(this.btnAddVendor_Click);
@@ -271,7 +271,7 @@
             this.cbbVendor.Margin = new System.Windows.Forms.Padding(2);
             this.cbbVendor.Name = "cbbVendor";
             this.cbbVendor.Size = new System.Drawing.Size(236, 28);
-            this.cbbVendor.TabIndex = 32;
+            this.cbbVendor.TabIndex = 4;
             // 
             // txtPurLocation
             // 
@@ -283,7 +283,7 @@
             this.txtPurLocation.Margin = new System.Windows.Forms.Padding(2);
             this.txtPurLocation.Name = "txtPurLocation";
             this.txtPurLocation.Size = new System.Drawing.Size(362, 20);
-            this.txtPurLocation.TabIndex = 31;
+            this.txtPurLocation.TabIndex = 3;
             this.txtPurLocation.Text = "Purchase Location";
             this.txtPurLocation.Click += new System.EventHandler(this.CurText_Click);
             // 
@@ -304,7 +304,7 @@
             this.cbbStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cbbStatus.Name = "cbbStatus";
             this.cbbStatus.Size = new System.Drawing.Size(125, 28);
-            this.cbbStatus.TabIndex = 34;
+            this.cbbStatus.TabIndex = 6;
             this.cbbStatus.SelectedIndexChanged += new System.EventHandler(this.statusCbb_SelectedIndexChanged);
             // 
             // label5
@@ -326,7 +326,7 @@
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(280, 26);
-            this.dateTimePicker1.TabIndex = 30;
+            this.dateTimePicker1.TabIndex = 2;
             // 
             // txtItemName
             // 
@@ -338,7 +338,7 @@
             this.txtItemName.Margin = new System.Windows.Forms.Padding(2);
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.Size = new System.Drawing.Size(362, 20);
-            this.txtItemName.TabIndex = 29;
+            this.txtItemName.TabIndex = 1;
             this.txtItemName.Text = "Item Name";
             this.txtItemName.Click += new System.EventHandler(this.CurText_Click);
             // 
@@ -354,7 +354,7 @@
             this.label4.TabIndex = 28;
             this.label4.Text = "Vendor";
             // 
-            // AssetUpdateForm
+            // assetUpdateForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
@@ -386,7 +386,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.Name = "AssetUpdateForm";
+            this.Name = "assetUpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Form";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AssetUpdateForm_FormClosed);

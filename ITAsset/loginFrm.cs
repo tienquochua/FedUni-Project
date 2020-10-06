@@ -19,6 +19,8 @@ namespace ITAsset
         public static string authValue = "";
         string strConn;
         Hash hash;
+        TextBox curText;
+
         public loginFrm()
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace ITAsset
         private void Login()
         {
             User user = FindUser(txtUsername.Text, txtPassword.Text);
-            if (user.UserID > 0)
+            if (user != null)
             {
                 staffIDValue = user.UserID;
                 authValue = user.Authentication;
@@ -58,9 +60,11 @@ namespace ITAsset
             cmd1.Parameters.AddWithValue("@uname", username);
             cmd1.Parameters.AddWithValue("@pass", hash.md5(password));
             SqlDataReader dr = cmd1.ExecuteReader(CommandBehavior.SingleRow);
-            User user = new User();
+
+            User user = null;
             if (dr.Read())
             {
+                user = new User();
                 user.UserID = Convert.ToInt32(dr["UserID"]);
                 user.Authentication = dr["Authentication"].ToString();
             }
@@ -102,6 +106,9 @@ namespace ITAsset
         private void loginFrm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
+            txtPassword.Text = "Password";
+            txtUsername.Text = "Username";
+            txtPassword.UseSystemPasswordChar = false;
         }
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
@@ -113,6 +120,13 @@ namespace ITAsset
         {
             DragForm.ReleaseCapture();
             DragForm.SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void curText_Click(object sender, EventArgs e)
+        {
+            curText = (TextBox)sender;
+            if (curText.Text.Trim() == "Username" || curText.Text.Trim() == "Password")
+                curText.Text = string.Empty;
         }
     }
 }

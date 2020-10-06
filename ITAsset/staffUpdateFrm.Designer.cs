@@ -61,7 +61,7 @@
             this.cancelBtn.Location = new System.Drawing.Point(346, 474);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 36);
-            this.cancelBtn.TabIndex = 35;
+            this.cancelBtn.TabIndex = 7;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
@@ -71,7 +71,7 @@
             this.saveBtn.Location = new System.Drawing.Point(248, 474);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(75, 36);
-            this.saveBtn.TabIndex = 34;
+            this.saveBtn.TabIndex = 6;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
@@ -201,7 +201,7 @@
             this.cbbAuth.Location = new System.Drawing.Point(97, 330);
             this.cbbAuth.Name = "cbbAuth";
             this.cbbAuth.Size = new System.Drawing.Size(190, 28);
-            this.cbbAuth.TabIndex = 41;
+            this.cbbAuth.TabIndex = 4;
             // 
             // label5
             // 
@@ -223,8 +223,9 @@
             this.txtPassword.Location = new System.Drawing.Point(97, 254);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(286, 20);
-            this.txtPassword.TabIndex = 40;
-            this.txtPassword.Text = "Enter New Password";
+            this.txtPassword.TabIndex = 3;
+            this.txtPassword.Text = "New Password";
+            this.txtPassword.Click += new System.EventHandler(this.curText_Click);
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtUsername
@@ -237,7 +238,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.ReadOnly = true;
             this.txtUsername.Size = new System.Drawing.Size(286, 20);
-            this.txtUsername.TabIndex = 39;
+            this.txtUsername.TabIndex = 2;
             // 
             // txtName
             // 
@@ -248,8 +249,9 @@
             this.txtName.Location = new System.Drawing.Point(97, 128);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(286, 20);
-            this.txtName.TabIndex = 38;
+            this.txtName.TabIndex = 1;
             this.txtName.Text = "Enter Staff Name";
+            this.txtName.Click += new System.EventHandler(this.curText_Click);
             // 
             // txtEmail
             // 
@@ -260,7 +262,7 @@
             this.txtEmail.Location = new System.Drawing.Point(97, 399);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(288, 20);
-            this.txtEmail.TabIndex = 42;
+            this.txtEmail.TabIndex = 5;
             this.txtEmail.Text = "Enter Email Address";
             // 
             // staffUpdateFrm
@@ -294,6 +296,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "staffUpdateFrm";
             this.Activated += new System.EventHandler(this.staffUpdateFrm_Activated);
+            this.Load += new System.EventHandler(this.staffUpdateFrm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.staffUpdateFrm_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

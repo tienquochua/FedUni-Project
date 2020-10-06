@@ -14,17 +14,20 @@ namespace ITAsset
 {
     public partial class staffUpdateFrm : Form
     {
-
         DataTable staffTable;
         string strConn;
         database objDTB;
-        Hash md5Encryption;
+        Hash hash;
+        TextBox curText;
         public staffUpdateFrm()
         {
             InitializeComponent();
             strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
             objDTB = new database(strConn);
-            md5Encryption = new Hash();
+            txtName.MaxLength = 50;
+            txtUsername.MaxLength = 20;
+            txtEmail.MaxLength = 30;
+            hash = new Hash();
         }
 
         private void staffUpdateFrm_Activated(object sender, EventArgs e)
@@ -38,58 +41,87 @@ namespace ITAsset
             cbbAuth.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        private void LoadTheme()
+        {
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = Color.FromArgb(78, 184, 206);
+                    btn.ForeColor = Color.Black;
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
+                }
+            }
+        }
+        private void UpdateWithPassword()
         {
             SqlConnection conn = new SqlConnection(strConn);
-            SqlDataReader dr = null;
-            string passwords = md5Encryption.md5(txtPassword.Text);
-            SqlCommand cmd1 = new SqlCommand("SELECT * FROM [User] WHERE FullName=@name AND Authentication=@authentication AND Email=@email  ", conn);
-            cmd1.Parameters.AddWithValue("@name", txtName.Text);
-            cmd1.Parameters.AddWithValue("@authentication", cbbAuth.SelectedItem);
-            cmd1.Parameters.AddWithValue("@email", txtEmail.Text);
-            SqlCommand cmd2 = new SqlCommand("UPDATE [User] SET FullName=@name, Authentication=@authentication, Email=@email WHERE UserID=@id " , conn);
+            SqlCommand cmd3 = new SqlCommand("UPDATE [User] SET FullName=@name, Password=@password, Authentication=@authentication, Email=@email WHERE UserID=@id ", conn);
+            cmd3.Parameters.AddWithValue("@id", staffID.Text);
+            cmd3.Parameters.AddWithValue("@name", txtName.Text);
+            cmd3.Parameters.AddWithValue("@password", hash.md5(txtPassword.Text));
+            cmd3.Parameters.AddWithValue("@authentication", cbbAuth.SelectedItem);
+            cmd3.Parameters.AddWithValue("@email", txtEmail.Text);
+            conn.Open();
+            cmd3.ExecuteReader();
+            MessageBox.Show("Update Complete");
+            conn.Close();
+            this.Close();
+        }
+
+        private void UpdateWithoutPassword()
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            SqlCommand cmd2 = new SqlCommand("UPDATE [User] SET FullName=@name, Authentication=@authentication, Email=@email WHERE UserID=@id ", conn);
             cmd2.Parameters.AddWithValue("@id", staffID.Text);
             cmd2.Parameters.AddWithValue("@name", txtName.Text);
             cmd2.Parameters.AddWithValue("@authentication", cbbAuth.SelectedItem);
             cmd2.Parameters.AddWithValue("@email", txtEmail.Text);
-            SqlCommand cmd3 = new SqlCommand("UPDATE [User] SET FullName=@name, Password=@password, Authentication=@authentication, Email=@email WHERE UserID=@id ", conn);
-            cmd3.Parameters.AddWithValue("@id", staffID.Text);
-            cmd3.Parameters.AddWithValue("@name", txtName.Text);
-            cmd3.Parameters.AddWithValue("@password", passwords);
-            cmd3.Parameters.AddWithValue("@authentication", cbbAuth.SelectedItem);
-            cmd3.Parameters.AddWithValue("@email", txtEmail.Text);
+            conn.Open();
+            cmd2.ExecuteReader();
+            MessageBox.Show("Update Complete");
+            conn.Close();
+            this.Close();
+        }
+
+        private void ExecuteCommand()
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            SqlCommand cmd1 = new SqlCommand("SELECT * FROM [User] WHERE FullName=@name AND Authentication=@authentication AND Email=@email  ", conn);
+            cmd1.Parameters.AddWithValue("@name", txtName.Text);
+            cmd1.Parameters.AddWithValue("@authentication", cbbAuth.SelectedItem);
+            cmd1.Parameters.AddWithValue("@email", txtEmail.Text);
+            if (txtPassword.Text == "" || txtPassword.Text == "New Password")
+            {
+                conn.Open();
+                SqlDataReader dr = cmd1.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    conn.Close();
+                    MessageBox.Show("No information has been changed, update fail ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    conn.Close();
+                    UpdateWithoutPassword();
+                }
+            }
+            else
+            {
+                conn.Close();
+                UpdateWithPassword();
+            }
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
             if (txtName.Text == "" || txtEmail.Text == "")
                 MessageBox.Show("Please enter all the detail");
             else
             {
-                if (txtPassword.Text == "")
-                {
-                    conn.Open();
-                    dr = cmd1.ExecuteReader();
-                    if (dr.HasRows)
-                    {
-                        conn.Close();
-                        MessageBox.Show("No information has been changed, update fail ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        conn.Close();
-                        conn.Open();
-                        cmd2.ExecuteReader();
-                        MessageBox.Show("Update Complete");
-                        conn.Close();
-                        this.Close();
-                    }
-                }
-                else
-                {
-                        conn.Close();
-                        conn.Open();
-                        cmd3.ExecuteReader();
-                        MessageBox.Show("Update Complete");
-                        conn.Close();
-                        this.Close();
-                }
+                ExecuteCommand();
             }
         }
 
@@ -100,13 +132,25 @@ namespace ITAsset
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            if (txtPassword.Text != "Enter New Password")
+            if (txtPassword.Text != "New Password")
                 txtPassword.UseSystemPasswordChar = true;
         }
         private void staffUpdateFrm_MouseDown(object sender, MouseEventArgs e)
         {
             DragForm.ReleaseCapture();
             DragForm.SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void staffUpdateFrm_Load(object sender, EventArgs e)
+        {
+            LoadTheme();
+        }
+
+        private void curText_Click(object sender, EventArgs e)
+        {
+            curText = (TextBox)sender;
+            if (curText.Text.Trim() == "New Password")
+                curText.Text = string.Empty;
         }
     }
 }

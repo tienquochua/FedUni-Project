@@ -35,10 +35,12 @@ namespace ITAsset
                     Button btn = (Button)btns;
                     btn.BackColor = Color.FromArgb(255, 165, 0);
                     btn.ForeColor = Color.White;
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
                 }
             }
-
         }
+
         private void GetDataInformation()
         {
             staffTable = objDTB.ReadData("SELECT UserID AS 'ID', FullName AS 'Staff Name', Username, Authentication, Email FROM [User]");
@@ -50,7 +52,7 @@ namespace ITAsset
         {
             LoadTheme();
             GetDataInformation();
-            searchCbb.SelectedIndex = 0;
+            cbbSearch.SelectedIndex = 0;
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -63,10 +65,10 @@ namespace ITAsset
             catch (Exception) { };
             
         }
-        private void searchTxt_TextChanged(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             DataView dv = staffTable.DefaultView;
-            dv.RowFilter = string.Format("[{0}] like '%{1}%'", searchCbb.Text, searchTxt.Text);
+            dv.RowFilter = string.Format("[{0}] like '%{1}%'", cbbSearch.Text, txtSearch.Text);
             dataGridView1.DataSource = dv.ToTable();
             dataGridView1.ClearSelection();
         }
@@ -109,7 +111,7 @@ namespace ITAsset
 
         private void searchCbb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            searchTxt.Focus();
+            txtSearch.Focus();
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
@@ -148,6 +150,12 @@ namespace ITAsset
         private void refreshBtn_Click(object sender, EventArgs e)
         {
             GetDataInformation();
+        }
+
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+            if (txtSearch.Text.Trim() == "Enter text here")
+                txtSearch.Text = string.Empty;
         }
     }
 }

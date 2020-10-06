@@ -107,7 +107,8 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(286, 20);
             this.txtName.TabIndex = 1;
-            this.txtName.Text = "Enter Staff Name";
+            this.txtName.Text = "Staff Name";
+            this.txtName.Click += new System.EventHandler(this.curText_Click);
             // 
             // txtEmail
             // 
@@ -119,7 +120,8 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(288, 20);
             this.txtEmail.TabIndex = 5;
-            this.txtEmail.Text = "Enter Email Address";
+            this.txtEmail.Text = "Email Address";
+            this.txtEmail.Click += new System.EventHandler(this.curText_Click);
             // 
             // label2
             // 
@@ -142,7 +144,8 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(286, 20);
             this.txtUsername.TabIndex = 2;
-            this.txtUsername.Text = "Enter Username";
+            this.txtUsername.Text = "Username";
+            this.txtUsername.Click += new System.EventHandler(this.curText_Click);
             // 
             // txtPassword
             // 
@@ -154,6 +157,8 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(286, 20);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.Text = "Password";
+            this.txtPassword.Click += new System.EventHandler(this.curText_Click);
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // panel1
@@ -266,6 +271,7 @@
             this.Name = "staffRegFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff Register";
+            this.Load += new System.EventHandler(this.staffRegFrm_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.staffRegFrm_KeyUp);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.staffRegFrm_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

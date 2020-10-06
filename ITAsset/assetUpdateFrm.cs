@@ -12,13 +12,13 @@ using System.Data.SqlClient;
 
 namespace ITAsset
 {
-    public partial class AssetUpdateForm : Form
+    public partial class assetUpdateForm : Form
     {
         string strConn;
         database objDTB;
         DataTable vendorTable;
         TextBox curText;
-        public AssetUpdateForm()
+        public assetUpdateForm()
         {
             InitializeComponent();
             strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
@@ -27,28 +27,44 @@ namespace ITAsset
             dateTimePicker1.CustomFormat = "dd-MM-yyyy";
             cbbVendor.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            txtItemName.MaxLength = 50;
+            txtPurLocation.MaxLength = 70;
         }
+        private void LoadTheme()
+        {
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = Color.FromArgb(78, 184, 206);
+                    btn.ForeColor = Color.Black;
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
+                }
+            }
+        }
+
         private void GetDataInformation()
         {
             vendorTable = objDTB.ReadData("SELECT * FROM [Vendor]");
             cbbVendor.DataSource = vendorTable;
             cbbVendor.DisplayMember = "VendorName";
             cbbVendor.ValueMember = "VendorID";
-            lblItemID.Text = assetFrm.ID;
+            lblItemID.Text = assetFrm.ID.ToString();
             txtItemName.Text = assetFrm.ItemName;
             dateTimePicker1.Value = DateTime.Parse(assetFrm.PurDate);
             txtPurLocation.Text = assetFrm.PurLoc;
             cbbVendor.SelectedIndex = cbbVendor.FindStringExact(assetFrm.Vendor);
             cbbStatus.SelectedIndex = cbbStatus.FindStringExact(assetFrm.Status);
             txtAgreement.Text = assetFrm.LeaseAgree;
-            if (txtAgreement.Text == "")
-                txtAgreement.Text = "Lease Agreement";
         }
+
         private void CheckLeaseAgreementAndExecute()
         {
             SqlConnection conn = new SqlConnection(strConn);
             SqlCommand cmd2 = new SqlCommand("UPDATE [AssetView] SET VendorID=@vid, AssetName=@aname, PurchaseDate=@purdate, PurchaseLocation=@purloc, Status=@status, LeaseAgreement=@agreement, LastUpdate=@lastup, UserID=@uid  WHERE AssetID=@id", conn);
-            cmd2.Parameters.AddWithValue("@id", lblItemID.Text);
+            cmd2.Parameters.AddWithValue("@id", assetFrm.ID);
             cmd2.Parameters.AddWithValue("@aname", txtItemName.Text);
             cmd2.Parameters.AddWithValue("@vid", cbbVendor.SelectedValue);
             cmd2.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
@@ -70,10 +86,11 @@ namespace ITAsset
                 this.Close();
             }
         }
+
         private void ExecuteCommandWithoutAgreement()
         {
             SqlConnection conn = new SqlConnection(strConn);
-            SqlCommand cmd3 = new SqlCommand("UPDATE [AssetView] SET VendorID=@vid, AssetName=@aname, PurchaseDate=@purdate, PurchaseLocation=@purloc, Status=@status, LastUpdate=@lastup, UserID=@uid  WHERE AssetID=@id", conn);
+            SqlCommand cmd3 = new SqlCommand("UPDATE [AssetView] SET VendorID=@vid, AssetName=@aname, PurchaseDate=@purdate, PurchaseLocation=@purloc, Status=@status, LeaseAgreement=' ', LastUpdate=@lastup, UserID=@uid  WHERE AssetID=@id", conn);
             cmd3.Parameters.AddWithValue("@id", lblItemID.Text);
             cmd3.Parameters.AddWithValue("@aname", txtItemName.Text);
             cmd3.Parameters.AddWithValue("@vid", cbbVendor.SelectedValue);
@@ -88,6 +105,7 @@ namespace ITAsset
             conn.Close();
             this.Close();
         }
+
         private void ExecuteCommand()
         {
             SqlConnection conn = new SqlConnection(strConn);
@@ -120,10 +138,15 @@ namespace ITAsset
                 }
             }
         }
+
         private void AssetUpdateForm_Load(object sender, EventArgs e)
         {
+            LoadTheme();
             GetDataInformation();
+            if (txtAgreement.Text == "")
+                txtAgreement.Text = "Lease Agreement";
         }
+
         private void updateBtn_Click(object sender, EventArgs e)
         {
             if (txtItemName.Text == "" || cbbVendor.Text == "" || cbbStatus.Text == "" || txtPurLocation.Text == "")
@@ -144,6 +167,7 @@ namespace ITAsset
             DragForm.ReleaseCapture();
             DragForm.SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
         //Remove default text when click
         private void CurText_Click(object sender, EventArgs e)
         {

@@ -19,7 +19,7 @@ namespace ITAsset
         DataTable assetTable;
         int curRow;
         
-        public static string ID = "";
+        public static int ID = 0;
         public static string ItemName = "";
         public static string PurDate = "";
         public static string Vendor = "";
@@ -41,6 +41,8 @@ namespace ITAsset
                     Button btn = (Button)btns;
                     btn.BackColor = Color.FromArgb(30, 144, 255);
                     btn.ForeColor = Color.White;
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
                 }
             }
         }
@@ -62,11 +64,11 @@ namespace ITAsset
                 SqlConnection conn = new SqlConnection(strConn);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("UPDATE [AssetView] SET Archive = 1  WHERE AssetID=@id", conn);
-                cmd.Parameters.AddWithValue("@id", Convert.ToInt32(ID));
+                cmd.Parameters.AddWithValue("@id", ID);
                 cmd.ExecuteReader();
                 conn.Close();
                 GetDataInformation();
-                ID = "";
+                ID = 0;
             }
         }
         private void assetFrm_Load(object sender, EventArgs e)
@@ -75,7 +77,7 @@ namespace ITAsset
             GetDataInformation();
             dataGridView1.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns[7].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
-            searchCbb.SelectedIndex = 0;
+            cbbSearch.SelectedIndex = 0;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -84,7 +86,7 @@ namespace ITAsset
             {
                 curRow = e.RowIndex;
                 DataGridViewRow row = dataGridView1.Rows[curRow];
-                ID = row.Cells[0].Value.ToString();
+                ID = (int)row.Cells[0].Value;
                 ItemName = row.Cells[1].Value.ToString();
                 PurDate = row.Cells[2].Value.ToString();
                 Vendor = row.Cells[3].Value.ToString();
@@ -98,19 +100,19 @@ namespace ITAsset
         {
             assetRegFrm f2 = new assetRegFrm();
             f2.FormClosed += new FormClosedEventHandler(otherForm_FormClosed);
-            f2.ShowDialog();
+            f2.Show();
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            if (ID == "")
+            if (ID == 0)
                 MessageBox.Show("Please select item to update ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
-                AssetUpdateForm f3 = new AssetUpdateForm();
+                assetUpdateForm f3 = new assetUpdateForm();
                 f3.FormClosed += new FormClosedEventHandler(otherForm_FormClosed);
                 f3.ShowDialog();
-                ID = "";
+                ID = 0;
             }
         }
 
@@ -119,27 +121,33 @@ namespace ITAsset
             GetDataInformation();
         }
 
-        private void searchTxt_TextChanged(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             DataView dv = assetTable.DefaultView;
-            dv.RowFilter = string.Format("[{0}] like '%{1}%'", searchCbb.Text, searchTxt.Text);
+            dv.RowFilter = string.Format("[{0}] like '%{1}%'", cbbSearch.Text, txtSearch.Text);
             dataGridView1.DataSource = dv.ToTable();
             dataGridView1.ClearSelection();
         }
 
-        private void searchCbb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            searchTxt.Focus();
-        }
-
         private void toArchiveBtn_Click(object sender, EventArgs e)
         {
-            if (ID == "")
+            if (ID == 0)
                 MessageBox.Show("Please select item to send to Archive ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
                 SendToArchive(); 
             }
+        }
+
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+            if (txtSearch.Text.Trim() == "Enter text here")
+                txtSearch.Text = string.Empty;
+        }
+
+        private void cbbSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSearch.Focus();
         }
     }
 }

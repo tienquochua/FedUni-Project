@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(vendorRegFrm));
-            this.vendorTxt = new System.Windows.Forms.TextBox();
+            this.txtVendor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
@@ -38,17 +38,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // vendorTxt
+            // txtVendor
             // 
-            this.vendorTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.vendorTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.vendorTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vendorTxt.ForeColor = System.Drawing.SystemColors.Control;
-            this.vendorTxt.Location = new System.Drawing.Point(84, 55);
-            this.vendorTxt.Name = "vendorTxt";
-            this.vendorTxt.Size = new System.Drawing.Size(200, 20);
-            this.vendorTxt.TabIndex = 8;
-            this.vendorTxt.Text = "Vendor name";
+            this.txtVendor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.txtVendor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtVendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVendor.ForeColor = System.Drawing.SystemColors.Control;
+            this.txtVendor.Location = new System.Drawing.Point(84, 55);
+            this.txtVendor.Name = "txtVendor";
+            this.txtVendor.Size = new System.Drawing.Size(200, 20);
+            this.txtVendor.TabIndex = 1;
+            this.txtVendor.Text = "Vendor name";
+            this.txtVendor.Click += new System.EventHandler(this.txtVendor_Click);
             // 
             // label2
             // 
@@ -67,7 +68,7 @@
             this.cancelBtn.Location = new System.Drawing.Point(241, 94);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 36);
-            this.cancelBtn.TabIndex = 13;
+            this.cancelBtn.TabIndex = 3;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
@@ -77,7 +78,7 @@
             this.addBtn.Location = new System.Drawing.Point(143, 94);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(75, 36);
-            this.addBtn.TabIndex = 12;
+            this.addBtn.TabIndex = 2;
             this.addBtn.Text = "Add";
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
@@ -110,13 +111,15 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.addBtn);
-            this.Controls.Add(this.vendorTxt);
+            this.Controls.Add(this.txtVendor);
             this.Controls.Add(this.label2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "vendorRegFrm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Vendor Register";
+            this.Load += new System.EventHandler(this.vendorRegFrm_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.vendorRegFrm_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -125,7 +128,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox vendorTxt;
+        private System.Windows.Forms.TextBox txtVendor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button addBtn;

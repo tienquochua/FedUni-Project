@@ -17,7 +17,7 @@ namespace ITAsset
         string strConn;
         database objDTB;
         DataTable  vendorTable;
-        private TextBox curText;
+        TextBox curText;
 
         public assetRegFrm()
         {
@@ -31,6 +31,22 @@ namespace ITAsset
             cbbVendor.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
         }
+
+        private void LoadTheme()
+        {
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = Color.FromArgb(78, 184, 206);
+                    btn.ForeColor = Color.Black;
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
+                }
+            }
+        }
+
         private void GetVendorName()
         {
             vendorTable = objDTB.ReadData("SELECT * FROM [Vendor]");
@@ -38,6 +54,7 @@ namespace ITAsset
             cbbVendor.DisplayMember = "VendorName";
             cbbVendor.ValueMember = "VendorID";
         }
+
         private void CheckLeaseAgreementAndExecute()
         {
             SqlConnection conn = new SqlConnection(strConn);
@@ -59,14 +76,16 @@ namespace ITAsset
                 conn.Open();
                 cmd3.ExecuteReader();
                 MessageBox.Show("Item registered successfully ");
-                txtItemName.Clear();
-                txtPurLocation.Clear();
+                txtItemName.Text = "Item Name";
+                txtPurLocation.Text = "Purchase Location";
+                txtAgreement.Text = "Lease Agreement";
                 cbbVendor.SelectedIndex = -1;
                 cbbStatus.SelectedIndex = -1;
                 conn.Close();
                 txtAgreement.Enabled = false;
             }
         }
+
         private void ExecuteCommandWithoutAgreement()
         {
             SqlConnection conn = new SqlConnection(strConn);
@@ -81,13 +100,14 @@ namespace ITAsset
             conn.Open();
             cmd2.ExecuteReader();
             MessageBox.Show("Item registered successfully ");
-            txtItemName.Clear();
-            txtPurLocation.Clear();
+            txtItemName.Text = "Item Name";
+            txtPurLocation.Text = "Purchase Location";
+            txtAgreement.Text = "Lease Agreement";
             cbbVendor.SelectedIndex = -1;
             cbbStatus.SelectedIndex = -1;
             conn.Close();
-
         }
+
         private void ExecuteCommand()
         {
             SqlConnection conn = new SqlConnection(strConn);
@@ -116,6 +136,7 @@ namespace ITAsset
                 {
                     ExecuteCommandWithoutAgreement();
                 }
+                
             }
         }
 
@@ -125,6 +146,7 @@ namespace ITAsset
                 MessageBox.Show("Please enter all the detail");
             else
                 ExecuteCommand();
+
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -149,6 +171,7 @@ namespace ITAsset
 
         private void assetRegFrm_Load(object sender, EventArgs e)
         {
+            LoadTheme();
             GetVendorName();
             cbbVendor.SelectedIndex = -1;
         }
@@ -158,11 +181,13 @@ namespace ITAsset
             GetVendorName();
             cbbVendor.SelectedIndex = -1;
         }
+
         private void assetRegFrm_MouseDown(object sender, MouseEventArgs e)
         {
             DragForm.ReleaseCapture();
             DragForm.SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
         private void CurText_Click(object sender, EventArgs e)
         {
             curText = (TextBox)sender;

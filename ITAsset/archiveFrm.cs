@@ -18,8 +18,7 @@ namespace ITAsset
         database objDTB;
         DataTable assetTable;
         int curRow;
-
-        public static string IDValue = "";
+        int IDValue = 0 ;
         public archiveFrm()
         {
             InitializeComponent();
@@ -35,10 +34,12 @@ namespace ITAsset
                     Button btn = (Button)btns;
                     btn.BackColor = Color.FromArgb(255, 0, 0);
                     btn.ForeColor = Color.White;
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
                 }
             }
-
         }
+
         private void GetDataInformation()
         {
             assetTable = objDTB.ReadData("SELECT av.AssetID AS 'Item No.', av.AssetName AS 'Item', av.PurchaseDate AS 'Purchase Date', v.VendorName AS 'Vendor', av.PurchaseLocation AS 'Purchase Location', av.Status, av.LeaseAgreement AS 'Lease Agreement', av.LastUpdate AS 'Last Update', u.FullName AS 'Responsible Staff', u.Email " +
@@ -49,14 +50,27 @@ namespace ITAsset
             dataGridView1.DataSource = assetTable;
         }
 
+        private void SendToAsset()
+        {
+            DialogResult res = MessageBox.Show("Do you want to unarchive this item ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.Yes)
+            {
+                SqlConnection conn = new SqlConnection(strConn);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE [AssetView] SET Archive = 0  WHERE AssetID=@id", conn);
+                cmd.Parameters.AddWithValue("@id", IDValue);
+                cmd.ExecuteReader();
+                conn.Close();
+                IDValue = 0;
+            }
+        }
         private void archiveFrm_Load(object sender, EventArgs e)
         {
             LoadTheme();
             GetDataInformation();
-            dataGridView1.Rows[0].Selected = false;
             dataGridView1.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns[7].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
-            searchCbb.SelectedIndex = 0;
+            cbbSearch.SelectedIndex = 0;
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -68,44 +82,46 @@ namespace ITAsset
             {
                 curRow = e.RowIndex;
                 DataGridViewRow row = dataGridView1.Rows[curRow];
-                IDValue = row.Cells[0].Value.ToString();
+                IDValue = (int) row.Cells[0].Value;
             }
             catch (Exception) { }
         }
         private void searchTxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = assetTable.DefaultView;
-            dv.RowFilter = string.Format("[{0}] like '%{1}%'", searchCbb.Text, searchTxt.Text);
+            dv.RowFilter = string.Format("[{0}] like '%{1}%'", cbbSearch.Text, txtSearch.Text);
             dataGridView1.DataSource = dv.ToTable();
             dataGridView1.ClearSelection();
         }
 
-        private void searchCbb_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbbSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
-            searchTxt.Focus();
+            txtSearch.Focus();
         }
 
-        private void toAssetBtn_Click(object sender, EventArgs e)
+        private void btnToAsset_Click(object sender, EventArgs e)
         {
-            if (IDValue == "")
-                MessageBox.Show("Please select item to send to Asset Menu ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (IDValue == 0)
+                MessageBox.Show("Please select item to update ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
-                DialogResult res = MessageBox.Show("Do you want to send this item to Asset Menu ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (res == DialogResult.Yes)
-                {
-                    SqlConnection conn = new SqlConnection(strConn);
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE [AssetView] SET Archive = 0  WHERE AssetID=@id", conn);
-                    cmd.Parameters.AddWithValue("@id", Convert.ToInt32(IDValue));
-                    cmd.ExecuteReader();
-                    conn.Close();
-                    GetDataInformation();
-                    IDValue = "";
-                }
+                SendToAsset();
+                GetDataInformation();
             }
         }
 
-       
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+            if (txtSearch.Text.Trim() == "Enter text here")
+                txtSearch.Text = string.Empty;
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = assetTable.DefaultView;
+            dv.RowFilter = string.Format("[{0}] like '%{1}%'", cbbSearch.Text, txtSearch.Text);
+            dataGridView1.DataSource = dv.ToTable();
+            dataGridView1.ClearSelection();
+        }
     }
 }

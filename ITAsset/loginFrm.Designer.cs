@@ -99,6 +99,7 @@
             this.txtUsername.Size = new System.Drawing.Size(208, 20);
             this.txtUsername.TabIndex = 1;
             this.txtUsername.Text = "Username";
+            this.txtUsername.Click += new System.EventHandler(this.curText_Click);
             this.txtUsername.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyUp);
             // 
             // pictureBox1

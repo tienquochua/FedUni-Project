@@ -19,20 +19,33 @@ namespace ITAsset
         {
             InitializeComponent();
             strConn = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
-            vendorTxt.MaxLength = 50;
+            txtVendor.MaxLength = 50;
+        }
+
+        private void LoadTheme()
+        {
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = Color.FromArgb(78, 184, 206);
+                    btn.ForeColor = Color.Black;
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
+                }
+            }
         }
 
         private void addBtn_Click(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(strConn);
-            SqlDataReader dr = null;
-            
             conn.Open();
             SqlCommand cmd1 = new SqlCommand("SELECT * FROM [Vendor] WHERE VendorName = @vendor", conn);
-            cmd1.Parameters.AddWithValue("@vendor", vendorTxt.Text);
+            cmd1.Parameters.AddWithValue("@vendor", txtVendor.Text);
             SqlCommand cmd2 = new SqlCommand("INSERT INTO [Vendor] (VendorName) VALUES (@vendor) ", conn);
-            cmd2.Parameters.AddWithValue("@vendor", vendorTxt.Text);
-            dr = cmd1.ExecuteReader();
+            cmd2.Parameters.AddWithValue("@vendor", txtVendor.Text);
+            SqlDataReader dr = cmd1.ExecuteReader();
             if (dr.HasRows)
             {
                 conn.Close();
@@ -46,14 +59,28 @@ namespace ITAsset
                 MessageBox.Show("Vendor is successfully added ");
                 conn.Close();
             }
-
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
-
         }
 
+        private void txtVendor_Click(object sender, EventArgs e)
+        {
+            if (txtVendor.Text.Trim() == "Vendor Name")
+                txtVendor.Text = string.Empty;
+        }
+
+        private void vendorRegFrm_Load(object sender, EventArgs e)
+        {
+            LoadTheme();
+        }
+
+        private void vendorRegFrm_MouseDown(object sender, MouseEventArgs e)
+        {
+            DragForm.ReleaseCapture();
+            DragForm.SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
     }
 }

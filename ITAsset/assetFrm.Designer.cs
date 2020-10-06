@@ -32,8 +32,8 @@
             this.updateBtn = new System.Windows.Forms.Button();
             this.toArchiveBtn = new System.Windows.Forms.Button();
             this.registerBtn = new System.Windows.Forms.Button();
-            this.searchCbb = new System.Windows.Forms.ComboBox();
-            this.searchTxt = new System.Windows.Forms.TextBox();
+            this.cbbSearch = new System.Windows.Forms.ComboBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,7 +60,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(635, 275);
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // updateBtn
@@ -71,7 +71,7 @@
             this.updateBtn.Location = new System.Drawing.Point(422, 365);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(75, 44);
-            this.updateBtn.TabIndex = 3;
+            this.updateBtn.TabIndex = 5;
             this.updateBtn.Text = "Update";
             this.updateBtn.UseVisualStyleBackColor = true;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
@@ -84,7 +84,7 @@
             this.toArchiveBtn.Location = new System.Drawing.Point(518, 365);
             this.toArchiveBtn.Name = "toArchiveBtn";
             this.toArchiveBtn.Size = new System.Drawing.Size(131, 44);
-            this.toArchiveBtn.TabIndex = 4;
+            this.toArchiveBtn.TabIndex = 6;
             this.toArchiveBtn.Text = "Send to Archive";
             this.toArchiveBtn.UseVisualStyleBackColor = true;
             this.toArchiveBtn.Click += new System.EventHandler(this.toArchiveBtn_Click);
@@ -97,40 +97,41 @@
             this.registerBtn.Location = new System.Drawing.Point(278, 365);
             this.registerBtn.Name = "registerBtn";
             this.registerBtn.Size = new System.Drawing.Size(120, 44);
-            this.registerBtn.TabIndex = 6;
+            this.registerBtn.TabIndex = 4;
             this.registerBtn.Text = "Item Register";
             this.registerBtn.UseVisualStyleBackColor = true;
             this.registerBtn.Click += new System.EventHandler(this.registerBtn_Click);
             // 
-            // searchCbb
+            // cbbSearch
             // 
-            this.searchCbb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.searchCbb.DropDownWidth = 130;
-            this.searchCbb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchCbb.FormattingEnabled = true;
-            this.searchCbb.Items.AddRange(new object[] {
+            this.cbbSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbSearch.DropDownWidth = 130;
+            this.cbbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbSearch.FormattingEnabled = true;
+            this.cbbSearch.Items.AddRange(new object[] {
             "Item",
             "Purchase Location",
             "Vendor",
             "Status"});
-            this.searchCbb.Location = new System.Drawing.Point(502, 23);
-            this.searchCbb.Name = "searchCbb";
-            this.searchCbb.Size = new System.Drawing.Size(121, 28);
-            this.searchCbb.TabIndex = 7;
-            this.searchCbb.SelectedIndexChanged += new System.EventHandler(this.searchCbb_SelectedIndexChanged);
+            this.cbbSearch.Location = new System.Drawing.Point(502, 23);
+            this.cbbSearch.Name = "cbbSearch";
+            this.cbbSearch.Size = new System.Drawing.Size(121, 28);
+            this.cbbSearch.TabIndex = 2;
+            this.cbbSearch.SelectedIndexChanged += new System.EventHandler(this.cbbSearch_SelectedIndexChanged);
             // 
-            // searchTxt
+            // txtSearch
             // 
-            this.searchTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.searchTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.searchTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchTxt.ForeColor = System.Drawing.SystemColors.Control;
-            this.searchTxt.Location = new System.Drawing.Point(110, 26);
-            this.searchTxt.Name = "searchTxt";
-            this.searchTxt.Size = new System.Drawing.Size(302, 20);
-            this.searchTxt.TabIndex = 8;
-            this.searchTxt.Text = "Enter name here";
-            this.searchTxt.TextChanged += new System.EventHandler(this.searchTxt_TextChanged);
+            this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.ForeColor = System.Drawing.SystemColors.Control;
+            this.txtSearch.Location = new System.Drawing.Point(110, 26);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(302, 20);
+            this.txtSearch.TabIndex = 1;
+            this.txtSearch.Text = "Enter text here";
+            this.txtSearch.Click += new System.EventHandler(this.txtSearch_Click);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // groupBox1
             // 
@@ -139,8 +140,8 @@
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.searchTxt);
-            this.groupBox1.Controls.Add(this.searchCbb);
+            this.groupBox1.Controls.Add(this.txtSearch);
+            this.groupBox1.Controls.Add(this.cbbSearch);
             this.groupBox1.Location = new System.Drawing.Point(14, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(635, 56);
@@ -204,8 +205,8 @@
         private System.Windows.Forms.Button updateBtn;
         private System.Windows.Forms.Button toArchiveBtn;
         private System.Windows.Forms.Button registerBtn;
-        private System.Windows.Forms.ComboBox searchCbb;
-        private System.Windows.Forms.TextBox searchTxt;
+        private System.Windows.Forms.ComboBox cbbSearch;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
