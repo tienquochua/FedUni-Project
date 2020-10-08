@@ -50,11 +50,11 @@ namespace ITAsset
             SqlConnection conn = new SqlConnection(strConn);
             SqlCommand cmd2 = new SqlCommand("INSERT INTO [User] (FullName, Username, Password, Authentication, Email) " +
                 "VALUES(@name,@username,@password,@authentication,@email)", conn);
-            cmd2.Parameters.AddWithValue("@name", txtName.Text);
-            cmd2.Parameters.AddWithValue("@username", txtUsername.Text);
-            cmd2.Parameters.AddWithValue("@password", hash.md5(txtPassword.Text));
+            cmd2.Parameters.AddWithValue("@name", txtName.Text.Trim());
+            cmd2.Parameters.AddWithValue("@username", txtUsername.Text.Trim());
+            cmd2.Parameters.AddWithValue("@password", hash.md5(txtPassword.Text.Trim()));
             cmd2.Parameters.AddWithValue("@authentication", cbbAuth.SelectedItem);
-            cmd2.Parameters.AddWithValue("@email", txtEmail.Text);
+            cmd2.Parameters.AddWithValue("@email", txtEmail.Text.Trim());
             conn.Open();
             cmd2.ExecuteReader();
             MessageBox.Show("Staff registered successfully ");
@@ -66,7 +66,7 @@ namespace ITAsset
             SqlConnection conn = new SqlConnection(strConn);
             conn.Open();
             SqlCommand cmd1 = new SqlCommand("SELECT * FROM [User] WHERE Username=@username", conn);
-            cmd1.Parameters.AddWithValue("@username", txtUsername.Text);
+            cmd1.Parameters.AddWithValue("@username", txtUsername.Text.Trim());
             //check if user name is existed, else execute sql command 2
             SqlDataReader dr = cmd1.ExecuteReader();
             if (dr.HasRows)
@@ -88,7 +88,7 @@ namespace ITAsset
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            if (txtName.Text == "" || txtName.Text == "Staff Name" || txtUsername.Text == "" || txtUsername.Text == "Username" || txtPassword.Text == "" || txtPassword.Text == "Password" || txtEmail.Text == "" || txtEmail.Text == "Email") 
+            if (txtName.Text.Trim() == "" || txtName.Text.Trim() == "Staff Name" || txtUsername.Text.Trim() == "" || txtUsername.Text.Trim() == "Username" || txtPassword.Text.Trim() == "" || txtPassword.Text.Trim() == "Password" || txtEmail.Text.Trim() == "" || txtEmail.Text.Trim() == "Email") 
                 MessageBox.Show("Please enter all the detail");
             else
             {
@@ -108,7 +108,7 @@ namespace ITAsset
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            if (txtPassword.Text != "Enter Password")
+            if (txtPassword.Text.Trim() != "Enter Password")
                 txtPassword.UseSystemPasswordChar = true;
         }
 

@@ -68,7 +68,7 @@ namespace ITAsset
 
         private void txtVendor_Click(object sender, EventArgs e)
         {
-            if (txtVendor.Text.Trim() == "Vendor Name")
+            if (txtVendor.Text.Trim() == "Vendor name")
                 txtVendor.Text = string.Empty;
         }
 

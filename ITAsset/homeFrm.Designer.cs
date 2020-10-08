@@ -43,11 +43,11 @@
             this.btnMaximize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.iconCurChildFrm = new FontAwesome.Sharp.IconPictureBox();
-            this.panelShadow = new System.Windows.Forms.Panel();
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.lblTimer = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelShadow = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
@@ -83,7 +83,7 @@
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(2);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(220, 598);
+            this.panelMenu.Size = new System.Drawing.Size(220, 608);
             this.panelMenu.TabIndex = 5;
             // 
             // btnLogout
@@ -195,7 +195,7 @@
             this.exitBtn.ForeColor = System.Drawing.Color.Gainsboro;
             this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
             this.exitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.exitBtn.Location = new System.Drawing.Point(0, 538);
+            this.exitBtn.Location = new System.Drawing.Point(0, 548);
             this.exitBtn.Margin = new System.Windows.Forms.Padding(2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(220, 60);
@@ -300,16 +300,6 @@
             this.iconCurChildFrm.TabIndex = 2;
             this.iconCurChildFrm.TabStop = false;
             // 
-            // panelShadow
-            // 
-            this.panelShadow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(58)))));
-            this.panelShadow.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelShadow.Location = new System.Drawing.Point(220, 80);
-            this.panelShadow.Margin = new System.Windows.Forms.Padding(2);
-            this.panelShadow.Name = "panelShadow";
-            this.panelShadow.Size = new System.Drawing.Size(872, 9);
-            this.panelShadow.TabIndex = 3;
-            // 
             // panelDesktop
             // 
             this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
@@ -320,7 +310,7 @@
             this.panelDesktop.Location = new System.Drawing.Point(220, 89);
             this.panelDesktop.Margin = new System.Windows.Forms.Padding(2);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(872, 509);
+            this.panelDesktop.Size = new System.Drawing.Size(872, 519);
             this.panelDesktop.TabIndex = 0;
             // 
             // lblTimer
@@ -329,7 +319,7 @@
             this.lblTimer.AutoSize = true;
             this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimer.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTimer.Location = new System.Drawing.Point(235, 218);
+            this.lblTimer.Location = new System.Drawing.Point(235, 223);
             this.lblTimer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTimer.Name = "lblTimer";
             this.lblTimer.Size = new System.Drawing.Size(60, 25);
@@ -342,7 +332,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(235, 177);
+            this.label1.Location = new System.Drawing.Point(235, 182);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(411, 25);
@@ -353,7 +343,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(130, 162);
+            this.pictureBox1.Location = new System.Drawing.Point(130, 167);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);
@@ -361,23 +351,34 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // panelShadow
+            // 
+            this.panelShadow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(58)))));
+            this.panelShadow.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelShadow.Location = new System.Drawing.Point(220, 80);
+            this.panelShadow.Margin = new System.Windows.Forms.Padding(2);
+            this.panelShadow.Name = "panelShadow";
+            this.panelShadow.Size = new System.Drawing.Size(872, 9);
+            this.panelShadow.TabIndex = 3;
+            // 
             // homeFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1092, 598);
+            this.ClientSize = new System.Drawing.Size(1092, 608);
             this.ControlBox = false;
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelShadow);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(900, 608);
             this.Name = "homeFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "IT Register";
+            this.Text = "IT Asset Register";
             this.Load += new System.EventHandler(this.homeFrm_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
@@ -404,7 +405,6 @@
         private FontAwesome.Sharp.IconButton btnStaff;
         private FontAwesome.Sharp.IconButton btnAsset;
         private FontAwesome.Sharp.IconPictureBox iconCurChildFrm;
-        private System.Windows.Forms.Panel panelShadow;
         private System.Windows.Forms.Panel panelDesktop;
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button btnMaximize;
@@ -412,5 +412,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.Panel panelShadow;
     }
 }

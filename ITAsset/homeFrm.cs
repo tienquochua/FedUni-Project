@@ -26,7 +26,6 @@ namespace ITAsset
             leftBorderBtn.Size = new Size(7, 60);
             panelMenu.Controls.Add(leftBorderBtn);
             //Form
-            this.Text = string.Empty;
             this.ControlBox = false;
             // Reduce flicker in Form graphic
             this.DoubleBuffered = true;

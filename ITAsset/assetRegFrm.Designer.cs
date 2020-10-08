@@ -357,9 +357,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "assetRegFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asset Register";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.assetRegFrm_FormClosed);
             this.Load += new System.EventHandler(this.assetRegFrm_Load);

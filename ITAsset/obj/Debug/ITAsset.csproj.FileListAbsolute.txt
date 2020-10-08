@@ -57,3 +57,12 @@ E:\BaiTap\Visual Studio\ITAsset\ITAsset\bin\Debug\FontAwesome.Sharp.dll
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\bin\Debug\Syncfusion.Office2019Theme.WinForms.dll
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\bin\Debug\Syncfusion.Office2019Theme.WinForms.xml
 E:\BaiTap\Visual Studio\ITAsset\ITAsset\obj\Debug\ITAsset.csprojAssemblyReference.cache
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\Asset-database_log.ldf
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\FontAwesome.Sharp.dll
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\Syncfusion.Office2019Theme.WinForms.dll
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\Syncfusion.Office2019Theme.WinForms.xml
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\Asset-database.mdf
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\ITAsset.exe.manifest
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\bin\Debug\ITAsset.application
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.exe.manifest
+E:\BaiTap\Visual Studio\ITAsset - Copy\ITAsset\obj\Debug\ITAsset.application

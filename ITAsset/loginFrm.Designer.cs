@@ -84,6 +84,7 @@
             this.txtPassword.Size = new System.Drawing.Size(208, 20);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.Text = "Password";
+            this.txtPassword.Click += new System.EventHandler(this.curText_Click);
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             this.txtPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyUp);
             // 
@@ -186,7 +187,9 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
+            this.ForeColor = System.Drawing.SystemColors.Desktop;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(420, 490);

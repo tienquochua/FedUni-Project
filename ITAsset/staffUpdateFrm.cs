@@ -59,11 +59,11 @@ namespace ITAsset
         {
             SqlConnection conn = new SqlConnection(strConn);
             SqlCommand cmd3 = new SqlCommand("UPDATE [User] SET FullName=@name, Password=@password, Authentication=@authentication, Email=@email WHERE UserID=@id ", conn);
-            cmd3.Parameters.AddWithValue("@id", staffID.Text);
-            cmd3.Parameters.AddWithValue("@name", txtName.Text);
-            cmd3.Parameters.AddWithValue("@password", hash.md5(txtPassword.Text));
+            cmd3.Parameters.AddWithValue("@id", staffID);
+            cmd3.Parameters.AddWithValue("@name", txtName.Text.Trim());
+            cmd3.Parameters.AddWithValue("@password", hash.md5(txtPassword.Text.Trim()));
             cmd3.Parameters.AddWithValue("@authentication", cbbAuth.SelectedItem);
-            cmd3.Parameters.AddWithValue("@email", txtEmail.Text);
+            cmd3.Parameters.AddWithValue("@email", txtEmail.Text.Trim());
             conn.Open();
             cmd3.ExecuteReader();
             MessageBox.Show("Update Complete");
@@ -76,9 +76,9 @@ namespace ITAsset
             SqlConnection conn = new SqlConnection(strConn);
             SqlCommand cmd2 = new SqlCommand("UPDATE [User] SET FullName=@name, Authentication=@authentication, Email=@email WHERE UserID=@id ", conn);
             cmd2.Parameters.AddWithValue("@id", staffID.Text);
-            cmd2.Parameters.AddWithValue("@name", txtName.Text);
+            cmd2.Parameters.AddWithValue("@name", txtName.Text.Trim());
             cmd2.Parameters.AddWithValue("@authentication", cbbAuth.SelectedItem);
-            cmd2.Parameters.AddWithValue("@email", txtEmail.Text);
+            cmd2.Parameters.AddWithValue("@email", txtEmail.Text.Trim());
             conn.Open();
             cmd2.ExecuteReader();
             MessageBox.Show("Update Complete");
@@ -90,10 +90,10 @@ namespace ITAsset
         {
             SqlConnection conn = new SqlConnection(strConn);
             SqlCommand cmd1 = new SqlCommand("SELECT * FROM [User] WHERE FullName=@name AND Authentication=@authentication AND Email=@email  ", conn);
-            cmd1.Parameters.AddWithValue("@name", txtName.Text);
+            cmd1.Parameters.AddWithValue("@name", txtName.Text.Trim());
             cmd1.Parameters.AddWithValue("@authentication", cbbAuth.SelectedItem);
-            cmd1.Parameters.AddWithValue("@email", txtEmail.Text);
-            if (txtPassword.Text == "" || txtPassword.Text == "New Password")
+            cmd1.Parameters.AddWithValue("@email", txtEmail.Text.Trim());
+            if (txtPassword.Text.Trim() == "" || txtPassword.Text.Trim() == "New Password")
             {
                 conn.Open();
                 SqlDataReader dr = cmd1.ExecuteReader();
@@ -117,7 +117,7 @@ namespace ITAsset
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            if (txtName.Text == "" || txtEmail.Text == "")
+            if (txtName.Text.Trim() == "" || txtEmail.Text.Trim() == "")
                 MessageBox.Show("Please enter all the detail");
             else
             {
@@ -132,7 +132,7 @@ namespace ITAsset
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            if (txtPassword.Text != "New Password")
+            if (txtPassword.Text.Trim() != "New Password")
                 txtPassword.UseSystemPasswordChar = true;
         }
         private void staffUpdateFrm_MouseDown(object sender, MouseEventArgs e)

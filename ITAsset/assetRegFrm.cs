@@ -60,14 +60,14 @@ namespace ITAsset
             SqlConnection conn = new SqlConnection(strConn);
             SqlCommand cmd3 = new SqlCommand("INSERT INTO [AssetView] (VendorID, AssetName, PurchaseDate, PurchaseLocation, Status, LeaseAgreement, LastUpdate, UserID, Archive) VALUES(@vid,@aname,@purdate,@purloc,@status,@agreement,@lastup,@uid,0)", conn);
             cmd3.Parameters.AddWithValue("@vid", cbbVendor.SelectedValue);
-            cmd3.Parameters.AddWithValue("@aname", txtItemName.Text);
+            cmd3.Parameters.AddWithValue("@aname", txtItemName.Text.Trim());
             cmd3.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
-            cmd3.Parameters.AddWithValue("@purloc", txtPurLocation.Text);
+            cmd3.Parameters.AddWithValue("@purloc", txtPurLocation.Text.Trim());
             cmd3.Parameters.AddWithValue("@status", cbbStatus.SelectedItem);
-            cmd3.Parameters.AddWithValue("@agreement", txtAgreement.Text);
+            cmd3.Parameters.AddWithValue("@agreement", txtAgreement.Text.Trim());
             cmd3.Parameters.AddWithValue("@lastup", DateTime.Now.ToString());
             cmd3.Parameters.AddWithValue("@uid", loginFrm.staffIDValue);
-            if (txtAgreement.Text == "" || txtAgreement.Text == "Lease Agreement")
+            if (txtAgreement.Text.Trim() == "" || txtAgreement.Text.Trim() == "Lease Agreement")
             {
                 MessageBox.Show("Please enter Lease Agreement ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
             }
@@ -91,9 +91,9 @@ namespace ITAsset
             SqlConnection conn = new SqlConnection(strConn);
             SqlCommand cmd2 = new SqlCommand("INSERT INTO [AssetView] (VendorID, AssetName, PurchaseDate, PurchaseLocation, Status, LastUpdate, UserID, Archive) VALUES(@vid,@aname,@purdate,@purloc,@status,@lastup,@uid,0)", conn);
             cmd2.Parameters.AddWithValue("@vid", cbbVendor.SelectedValue);
-            cmd2.Parameters.AddWithValue("@aname", txtItemName.Text);
+            cmd2.Parameters.AddWithValue("@aname", txtItemName.Text.Trim());
             cmd2.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
-            cmd2.Parameters.AddWithValue("@purloc", txtPurLocation.Text);
+            cmd2.Parameters.AddWithValue("@purloc", txtPurLocation.Text.Trim());
             cmd2.Parameters.AddWithValue("@status", cbbStatus.SelectedItem);
             cmd2.Parameters.AddWithValue("@lastup", DateTime.Now.ToString());
             cmd2.Parameters.AddWithValue("@uid", loginFrm.staffIDValue);
@@ -114,10 +114,10 @@ namespace ITAsset
             SqlDataReader dr;
             conn.Open();
             SqlCommand cmd1 = new SqlCommand("SELECT * FROM [AssetView] WHERE VendorID=@vid AND AssetName= @aname AND PurchaseDate=@purdate AND PurchaseLocation=@purloc AND Status=@status", conn);
-            cmd1.Parameters.AddWithValue("@aname", txtItemName.Text);
+            cmd1.Parameters.AddWithValue("@aname", txtItemName.Text.Trim());
             cmd1.Parameters.AddWithValue("@vid", cbbVendor.SelectedValue);
             cmd1.Parameters.AddWithValue("@purdate", dateTimePicker1.Value.ToShortDateString());
-            cmd1.Parameters.AddWithValue("@purloc", txtPurLocation.Text);
+            cmd1.Parameters.AddWithValue("@purloc", txtPurLocation.Text.Trim());
             cmd1.Parameters.AddWithValue("@status", cbbStatus.SelectedItem);
             dr = cmd1.ExecuteReader();
             if (dr.HasRows)
@@ -142,7 +142,7 @@ namespace ITAsset
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            if (txtItemName.Text == "" || txtItemName.Text == "Item Name" || cbbVendor.Text == "" || cbbStatus.Text == "" || txtPurLocation.Text == "" || txtPurLocation.Text == "Purchase Location")
+            if (txtItemName.Text.Trim() == "" || txtItemName.Text.Trim() == "Item Name" || cbbVendor.Text.Trim() == "" || cbbStatus.Text.Trim() == "" || txtPurLocation.Text.Trim() == "" || txtPurLocation.Text.Trim() == "Purchase Location")
                 MessageBox.Show("Please enter all the detail");
             else
                 ExecuteCommand();

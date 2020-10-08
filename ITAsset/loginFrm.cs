@@ -24,7 +24,6 @@ namespace ITAsset
         public loginFrm()
         {
             InitializeComponent();
-            this.Text = string.Empty;
             this.ControlBox = false;
             txtUsername.MaxLength = 20;
             txtPassword.MaxLength = 20;
@@ -33,7 +32,7 @@ namespace ITAsset
         }
         private void Login()
         {
-            User user = FindUser(txtUsername.Text, txtPassword.Text);
+            User user = FindUser(txtUsername.Text.Trim(), txtPassword.Text.Trim());
             if (user != null)
             {
                 staffIDValue = user.UserID;
@@ -65,7 +64,7 @@ namespace ITAsset
             if (dr.Read())
             {
                 user = new User();
-                user.UserID = Convert.ToInt32(dr["UserID"]);
+                user.UserID = (int) dr["UserID"];
                 user.Authentication = dr["Authentication"].ToString();
             }
 
@@ -76,7 +75,7 @@ namespace ITAsset
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "Username" || txtPassword.Text == "Password" || txtUsername.Text == "" || txtPassword.Text == "")
+            if (txtUsername.Text.Trim() == "Username" || txtPassword.Text.Trim() == "Password" || txtUsername.Text.Trim() == "" || txtPassword.Text.Trim() == "")
             {
                 MessageBox.Show("Insert username and password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtUsername.Focus();
@@ -112,7 +111,7 @@ namespace ITAsset
         }
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            if (txtPassword.Text != "Password")
+            if (txtPassword.Text.Trim() != "Password")
                 txtPassword.UseSystemPasswordChar = true;
         }
 

@@ -193,7 +193,10 @@
             // 
             // cbbAuth
             // 
+            this.cbbAuth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.cbbAuth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbbAuth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbAuth.ForeColor = System.Drawing.SystemColors.Control;
             this.cbbAuth.FormattingEnabled = true;
             this.cbbAuth.Items.AddRange(new object[] {
             "Super User",
@@ -292,9 +295,10 @@
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "staffUpdateFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "staffUpdateFrm";
+            this.Text = "Staff Update";
             this.Activated += new System.EventHandler(this.staffUpdateFrm_Activated);
             this.Load += new System.EventHandler(this.staffUpdateFrm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.staffUpdateFrm_MouseDown);

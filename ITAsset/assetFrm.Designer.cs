@@ -106,6 +106,7 @@
             // 
             this.cbbSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSearch.DropDownWidth = 130;
+            this.cbbSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbSearch.FormattingEnabled = true;
             this.cbbSearch.Items.AddRange(new object[] {

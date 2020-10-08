@@ -71,10 +71,6 @@ namespace ITAsset
             dataGridView1.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns[7].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
             cbbSearch.SelectedIndex = 0;
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
-            {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -102,7 +98,7 @@ namespace ITAsset
         private void btnToAsset_Click(object sender, EventArgs e)
         {
             if (IDValue == 0)
-                MessageBox.Show("Please select item to update ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select item to send back to Asset Menu ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
                 SendToAsset();

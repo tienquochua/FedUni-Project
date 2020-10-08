@@ -48,6 +48,25 @@ namespace ITAsset
             dataGridView1.ClearSelection();
             dataGridView1.FirstDisplayedCell = null;
         }
+        private void DeleteStaffData()
+        {
+            DialogResult res = MessageBox.Show("Do you want to delete this staff information ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow item in dataGridView1.SelectedRows)
+                {
+                    dataGridView1.Rows.RemoveAt(item.Index);
+                }
+                SqlConnection conn = new SqlConnection(strConn);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM [User] WHERE UserID = @id", conn);
+                cmd.Parameters.AddWithValue("@id", Convert.ToInt32(IDValue));
+                cmd.ExecuteReader();
+                conn.Close();
+                GetDataInformation();
+                IDValue = "";
+            }
+        }
         private void staffFrm_Load(object sender, EventArgs e)
         {
             LoadTheme();
@@ -68,7 +87,7 @@ namespace ITAsset
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             DataView dv = staffTable.DefaultView;
-            dv.RowFilter = string.Format("[{0}] like '%{1}%'", cbbSearch.Text, txtSearch.Text);
+            dv.RowFilter = string.Format("[{0}] like '%{1}%'", cbbSearch.Text, txtSearch.Text.Trim());
             dataGridView1.DataSource = dv.ToTable();
             dataGridView1.ClearSelection();
         }
@@ -124,23 +143,7 @@ namespace ITAsset
                     MessageBox.Show("Admin account cannot be deleted ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
                 {
-                    DialogResult res = MessageBox.Show("Do you want to delete this staff information ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (res == DialogResult.Yes)
-                    {
-                        foreach (DataGridViewRow item in dataGridView1.SelectedRows)
-                        {
-                            dataGridView1.Rows.RemoveAt(item.Index);
-                        }
-                        SqlConnection conn = new SqlConnection(strConn);
-                        conn.Open();
-                        SqlCommand cmd = new SqlCommand("DELETE FROM [User] WHERE UserID = @id", conn);
-                        cmd.Parameters.AddWithValue("@id", Convert.ToInt32(IDValue));
-                        cmd.ExecuteReader();
-                        conn.Close();
-                        GetDataInformation();
-                        IDValue = "";
-
-                    }
+                    DeleteStaffData();
                 }
             }
         }
