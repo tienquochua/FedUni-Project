@@ -113,19 +113,15 @@ namespace ITAsset
         {
             if (IDValue == "")
                 MessageBox.Show("Please select staff to update ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (IDValue == "1")
+                MessageBox.Show("Admin account cannot be updated ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
-                //check if id value is 1 which is admin account, show warning
-                if (IDValue == "1")
-                    MessageBox.Show("Admin account cannot be updated ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                else
-                {
-                    staffUpdateFrm f2 = new staffUpdateFrm();
-                    f2.FormClosed += new FormClosedEventHandler(staffFrm_FormClosed);
-                    f2.ShowDialog();
-                    
-                }
+                staffUpdateFrm f2 = new staffUpdateFrm();
+                f2.FormClosed += new FormClosedEventHandler(staffFrm_FormClosed);
+                f2.ShowDialog();
             }
+            
         }
 
         private void searchCbb_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,20 +131,16 @@ namespace ITAsset
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
+                
             if (IDValue == "")
                 MessageBox.Show("Please select staff to delete ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (IDValue == "1")
+                MessageBox.Show("Admin account cannot be deleted ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (IDValue == loginFrm.staffIDValue.ToString())
+                MessageBox.Show("You are using this account, can't be deleted ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
-            {
-                if (IDValue == "1")
-                    MessageBox.Show("Admin account cannot be deleted ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                else
-                {
-                    DeleteStaffData();
-                }
-            }
+                DeleteStaffData();
         }
-
-
 
         private void refreshBtn_Click(object sender, EventArgs e)
         {
