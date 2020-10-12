@@ -108,7 +108,7 @@ namespace ITAsset
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            if (txtPassword.Text.Trim() != "Enter Password")
+            if (txtPassword.Text.Trim() != "Password")
                 txtPassword.UseSystemPasswordChar = true;
         }
 

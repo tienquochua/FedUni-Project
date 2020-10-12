@@ -100,7 +100,7 @@ namespace ITAsset
         {
             assetRegFrm f2 = new assetRegFrm();
             f2.FormClosed += new FormClosedEventHandler(otherForm_FormClosed);
-            f2.Show();
+            f2.ShowDialog();
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
