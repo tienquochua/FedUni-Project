@@ -30,6 +30,7 @@ namespace ITAsset
             // Reduce flicker in Form graphic
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            this.Text = string.Empty;
             //Timer
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
@@ -68,6 +69,7 @@ namespace ITAsset
                     //Icon Current Child Form
                     iconCurChildFrm.IconChar = curBtn.IconChar;
                     iconCurChildFrm.IconColor = color;
+
                 }
             }
         }
