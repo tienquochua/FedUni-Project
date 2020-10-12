@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eZOI3Skb1nxCQmPMwch9ZgZl3eCiN1ev0PrLIxo3qds=</dsig:DigestValue>
+        <dsig:DigestValue>JhBoEWl837HZqV3pfROlVFoId6o7tMVRi4OPeLx+mbE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -131,7 +131,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>94yYQ2w7mpbXzeJY961h9wH1Mtv39pmKkF6NWNR1Yg0=</dsig:DigestValue>
+      <dsig:DigestValue>rxhGudXFNi2vw4pPxlbn27hWvq35pLbC0mbPtJF3Z5Q=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Asset-database_log.ldf" size="8388608" writeableType="applicationData">
@@ -140,7 +140,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>j6ssuCwzUWn3LUhyituHAqgKg8uny+77ySlRhSIZ7J8=</dsig:DigestValue>
+      <dsig:DigestValue>N6vit4/0OH0zIkM5kSPUabrN+7RBr5PDokoSasQyO74=</dsig:DigestValue>
     </hash>
   </file>
   <file name="ITAsset.exe.config" size="365">

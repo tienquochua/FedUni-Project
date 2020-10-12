@@ -88,7 +88,7 @@ namespace ITAsset
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            if (txtName.Text.Trim() == "" || txtName.Text.Trim() == "Staff Name" || txtUsername.Text.Trim() == "" || txtUsername.Text.Trim() == "Username" || txtPassword.Text.Trim() == "" || txtPassword.Text.Trim() == "Password" || txtEmail.Text.Trim() == "" || txtEmail.Text.Trim() == "Email") 
+            if (txtName.Text.Trim() == "" || txtName.Text.Trim() == "Staff Name" || txtUsername.Text.Trim() == "" || txtUsername.Text.Trim() == "Username" || txtPassword.Text.Trim() == "" || txtPassword.Text.Trim() == "Password" || txtEmail.Text.Trim() == "" || txtEmail.Text.Trim() == "Email Address") 
                 MessageBox.Show("Please enter all the detail");
             else
             {

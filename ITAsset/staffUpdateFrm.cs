@@ -59,7 +59,7 @@ namespace ITAsset
         {
             SqlConnection conn = new SqlConnection(strConn);
             SqlCommand cmd3 = new SqlCommand("UPDATE [User] SET FullName=@name, Password=@password, Authentication=@authentication, Email=@email WHERE UserID=@id ", conn);
-            cmd3.Parameters.AddWithValue("@id", staffID);
+            cmd3.Parameters.AddWithValue("@id", staffID.Text);
             cmd3.Parameters.AddWithValue("@name", txtName.Text.Trim());
             cmd3.Parameters.AddWithValue("@password", hash.md5(txtPassword.Text.Trim()));
             cmd3.Parameters.AddWithValue("@authentication", cbbAuth.SelectedItem);
